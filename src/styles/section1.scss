@@ -1,9 +1,41 @@
 .header-image {
     width: 100%;
     height: 90vh;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
     font-size: 50px;
     padding-top: 45vh;
+}
+/*
+.OYR {
+    svg {
+        fill: #1775d1;
+    }
+    g{
+        fill: #1775d1;
+    }
+}
+*/
+.reactLogo {
+    height: 150px; //고민해볼것
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .reactLogo {
+        animation-delay: 1s;
+        animation-iteration-count: infinite;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-name: spin;
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
