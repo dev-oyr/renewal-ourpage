@@ -1,14 +1,7 @@
-$blue: #341cac;
-
-body,
-html {
-    background-color: $blue;
-}
-
 .card {
-    width: 280px;
+    width: 30%;
     display: block;
-    margin: 60px auto;
+    margin: 60px 0;
     box-shadow: 10px 5px 40px 20px darken(#341cac, 5%);
     transition: 0.25s;
 
@@ -59,7 +52,7 @@ html {
     box-shadow: none;
     font-family: inherit;
     background-color: transparent;
-    color: $blue;
+    color: grey;
     font-size: 15px;
     transition: 0.25s;
 

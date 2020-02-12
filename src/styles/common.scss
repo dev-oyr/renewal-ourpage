@@ -1,3 +1,10 @@
+$point-color: #1775d1;
+
+body,
+html {
+    margin: 0;
+}
+
 .header-font {
     font-size: 32px;
     font-weight: 500;
@@ -33,5 +40,25 @@
 
     &.en {
         font-family: 'Montserrat', sans-serif;
+    }
+}
+
+//반응형 layout======================
+@media (min-width: 1920px) {
+    .responsive {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 1920px) and (min-width: 769px) {
+    .responsive {
+        width: 760px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 768px) {
+    .responsive {
+        width: 90%;
+        margin: 0 auto;
     }
 }
