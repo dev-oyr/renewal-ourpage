@@ -14,7 +14,7 @@ function CardHeader({ image }) {
 function Button() {
     return (
         <button className="button button-primary">
-            <i className="fa fa-chevron-right"></i> 자세히
+            <i className="fa fa-chevron-right"></i> <span className="more en">more</span>
         </button>
     );
 }
@@ -22,11 +22,11 @@ function Button() {
 function CardBody({ title, contents }) {
     return (
         <div className="card-body">
-            <p className="date">OYR 7th</p>
+            <p className="date en">OYR 7th</p>
 
-            <h2 className="header-font en">{title}</h2>
+            <h2 className="en header-font">{title}</h2>
 
-            <p className="body-content desc-font kr">{contents}</p>
+            <p className="body-content kr desc-font">{contents}</p>
 
             <Button />
         </div>

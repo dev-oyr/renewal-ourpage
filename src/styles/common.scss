@@ -1,45 +1,56 @@
-$point-color: #1775d1;
+$pointColor: #1775d1;
 
 body,
 html {
     margin: 0;
 }
 
-.header-font {
-    font-size: 32px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.47;
-    letter-spacing: -1.6px;
-    text-align: left;
-    color: #333333;
-
-    &.kr {
-        font-family: 'Noto Sans KR', sans-serif;
+.kr {
+    font-family: 'Noto Sans KR', sans-serif;
+    &.header-font {
+        font-size: 32px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.47;
+        letter-spacing: -1.6px;
+        text-align: left;
+        color: #333333;
     }
 
-    &.en {
-        font-family: 'Montserrat', sans-serif;
+    &.desc-font {
+        font-size: 22px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: -1.1px;
+        text-align: left;
+        color: #666666;
     }
 }
-
-.desc-font {
-    font-size: 22px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: -1.1px;
-    text-align: left;
-    color: #666666;
-
-    &.kr {
-        font-family: 'Noto Sans KR', sans-serif;
+.en {
+    font-family: 'Montserrat', sans-serif;
+    &.header-font {
+        font-size: 32px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.47;
+        letter-spacing: -1.6px;
+        text-align: left;
+        color: #333333;
     }
 
-    &.en {
-        font-family: 'Montserrat', sans-serif;
+    &.desc-font {
+        font-size: 22px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: -1.1px;
+        text-align: left;
+        color: #666666;
     }
 }
 
@@ -55,10 +66,33 @@ html {
         width: 760px;
         margin: 0 auto;
     }
+    .card {
+        width: 31%;
+        & + & {
+            &:nth-child(3n-1) {
+                margin-left: 3.5%;
+            }
+            &:nth-child(3n) {
+                margin-left: 3.5%;
+            }
+        }
+    }
 }
 @media (max-width: 768px) {
     .responsive {
         width: 90%;
         margin: 0 auto;
+    }
+
+    .card {
+        width: 48.5%;
+        & + & {
+            &:nth-child(2n) {
+                margin-left: 3%;
+            }
+            &:nth-child(2n-1) {
+                margin-left: 0;
+            }
+        }
     }
 }

@@ -1,25 +1,24 @@
+@import 'common.scss';
+
 .card {
-    width: 30%;
     display: block;
-    margin: 60px 0;
-    box-shadow: 10px 5px 40px 20px darken(#341cac, 5%);
+    margin: 40px 0;
+    box-shadow: 3px 3px 13px 0 rgba(0, 0, 0, 0.06);
     transition: 0.25s;
 
     &:hover {
-        box-shadow: 10px 5px 40px 20px darken(#341cac, 10%);
+        box-shadow: 3px 3px 13px 0 rgba(0, 0, 0, 0.1);
         cursor: pointer;
 
         .button-primary {
-            transform: translate(10px, 0);
+            transform: translate(6px, 0);
         }
     }
 }
 
 .card-header {
     height: 150px;
-    width: 100%;
-    padding: 15px;
-    width: 100%;
+    padding: 3%;
     background-size: cover;
     color: #fff;
 }
@@ -30,9 +29,8 @@
 }
 
 .card-body {
-    padding: 15px;
+    padding: 6%;
     background-color: #fff;
-    width: 100%;
 }
 
 .date {
@@ -67,4 +65,9 @@
     font-size: 12px;
     text-decoration: none;
     display: block;
+}
+
+.more {
+    color: $pointColor;
+    font-size: 12px;
 }
