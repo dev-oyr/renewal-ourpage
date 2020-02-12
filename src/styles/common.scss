@@ -1,5 +1,58 @@
 $pointColor: #1775d1;
 
+/********************* 폰트 초기화 *************************/
+/********************* Montserrat ***********************/
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 200;
+    src: url('./fonts/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: url('./fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    src: url('./fonts/Montserrat/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    src: url('./fonts/Montserrat/Montserrat-Black.ttf');
+}
+/********************* Montserrat ***********************/
+
+/******************** Noto Sans KR **********************/
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 200;
+    src: url('./fonts/Noto_Sans_KR/NotoSansKR-Light.otf');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    src: url('./fonts/Noto_Sans_KR/NotoSansKR-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 600;
+    src: url('./fonts/Noto_Sans_KR/NotoSansKR-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 800;
+    src: url('./fonts/Noto_Sans_KR/NotoSansKR-Black.otf');
+}
+/******************** Noto Sans KR **********************/
+
 body,
 html {
     margin: 0;
