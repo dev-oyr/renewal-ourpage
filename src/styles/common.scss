@@ -1,0 +1,39 @@
+.header-font {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: -1.6px;
+    text-align: left;
+    color: #333333;
+
+    & .kr {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    & .en {
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+.desc-font {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: -1.1px;
+    text-align: left;
+    color: #666666;
+
+    & .kr {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    & .en {
+        font-family: 'Montserrat', sans-serif;
+    }
+}
