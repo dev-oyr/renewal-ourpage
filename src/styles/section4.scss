@@ -37,6 +37,11 @@ $fontSecondary: #666666;
     color: $fontSecondary;
     font-size: 1.1rem;
 
+    & span {
+        color: $pointColor;
+        font-weight: 600;
+    }
+
     & + & {
         margin-top: 0.875rem;
     }
