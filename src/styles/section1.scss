@@ -4,27 +4,35 @@
     background-color: white;
     color: black;
     text-align: center;
-    font-size: 50px;
-    padding-top: 45vh;
+    font-size: 50px; //...
+    padding-top: 15vh; //45
 }
-/*
-.OYR {
-    svg {
-        fill: #1775d1;
-    }
-    g{
-        fill: #1775d1;
-    }
+.summary {
+    font-weight: bold;
 }
-*/
-.reactLogo {
-    height: 150px; //고민해볼것
+.divider {
+    width: 100%;
+}
+
+.webStudy {
+    width: 100%;
+    margin-top: 5vh;
+}
+
+.oyr_kr {
+    width: 100%;
+}
+.recruit2020 {
+    font-weight: bold;
+}
+.collaboX {
+    width: 15%;
     pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .reactLogo {
-        animation-delay: 1s;
+    .collaboX {
+        animation-delay: 5s;
         animation-iteration-count: infinite;
         animation-duration: 20s;
         animation-timing-function: linear;
@@ -39,3 +47,23 @@
         transform: rotate(360deg);
     }
 }
+
+/*
+@media (prefers-reduced-motion: no-preference) {
+    .divider {
+        animation-delay:2s;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-name: beLong;
+    }
+}
+@keyframes beLong {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+*/
