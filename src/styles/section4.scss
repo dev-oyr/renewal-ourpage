@@ -1,0 +1,43 @@
+$pointColor: #1775d1;
+$fontPrimary: #333333;
+$fontSecondary: #666666;
+
+.section4 {
+    margin: 128px 0;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.inner-header {
+    & h1 {
+        text-align: center;
+    }
+}
+
+.inner-content {
+    padding: 16px 0;
+
+    & .history-group {
+        display: flex;
+        width: 100%;
+        margin: 48px 0;
+
+        & .text-year {
+            margin-right: 48px;
+            & p {
+                margin: 0;
+                color: $fontPrimary;
+            }
+        }
+    }
+}
+
+.text-history {
+    margin: 0;
+    color: $fontSecondary;
+    font-size: 1.1rem;
+
+    & + & {
+        margin-top: 0.875rem;
+    }
+}
