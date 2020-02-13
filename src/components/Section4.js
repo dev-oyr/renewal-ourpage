@@ -87,13 +87,13 @@ function HistoryGroup({ year, contents }) {
     return (
         <div className="history-group">
             <div className="desc-font en text-year">
-                <Fade left distance="60%" fraction={0.7}>
+                <Fade left distance="48px" fraction={0.7}>
                     <p>{year}</p>
                 </Fade>
             </div>
             <div className="history-elements">
                 {contents.map(({ title, content }, k) => (
-                    <Fade left distance="15%" fraction={1} key={k}>
+                    <Fade left distance="72px" fraction={1} key={k}>
                         <p className="kr text-history">
                             {content.substring(0, content.indexOf(title))}
                             <span>{title}</span>
@@ -121,7 +121,7 @@ function Section4() {
         <div className="section4">
             <div className="responsive">
                 <div className="inner-header">
-                    <Fade bottom distance="200%" fraction={1}>
+                    <Fade bottom distance="108px" fraction={1}>
                         <h1 className="header-font kr">동아리 연혁</h1>
                     </Fade>
                 </div>
