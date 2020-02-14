@@ -76,7 +76,6 @@ function Section2() {
     return (
         <Stickyroll pages={comments}>
             {({ page, pageIndex, pages, progress }) => {
-                console.log(window);
                 return (
                     <div className="section2">
                         <div className="responsive">
