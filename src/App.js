@@ -5,7 +5,9 @@ import Main from './pages/Main';
 function App() {
     return (
         <>
+            {/* <NavBar></NavBar> */}
             <Main></Main>
+            {/* <Footer></Footer> */}
         </>
     );
 }
