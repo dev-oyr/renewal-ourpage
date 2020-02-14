@@ -7,13 +7,13 @@ function HistoryGroup({ year, contents }) {
     return (
         <div className="history-group">
             <div className="desc-font en text-year">
-                <Fade left distance="48px" fraction={0.7}>
+                <Fade left distance="48px" fraction={0.7} duration={666}>
                     <p>{year}</p>
                 </Fade>
             </div>
             <div className="history-elements">
                 {contents.map(({ title, content }, k) => (
-                    <Fade left distance="72px" fraction={1} key={k}>
+                    <Fade left distance="72px" fraction={1} duration={666} key={k}>
                         <p className="kr text-history">
                             {content.substring(0, content.indexOf(title))}
                             <span>{title}</span>
