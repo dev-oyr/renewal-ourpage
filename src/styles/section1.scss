@@ -1,9 +1,69 @@
 .header-image {
     width: 100%;
     height: 90vh;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
-    font-size: 50px;
-    padding-top: 45vh;
+    font-size: 50px; //...
+    padding-top: 15vh; //45
 }
+.summary {
+    font-weight: bold;
+}
+.divider {
+    width: 100%;
+}
+
+.webStudy {
+    width: 100%;
+    margin-top: 5vh;
+}
+
+.oyr_kr {
+    width: 100%;
+}
+.recruit2020 {
+    font-weight: bold;
+}
+.collaboX {
+    width: 15%;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .collaboX {
+        animation-delay: 5s;
+        animation-iteration-count: infinite;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-name: spin;
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*
+@media (prefers-reduced-motion: no-preference) {
+    .divider {
+        animation-delay:2s;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-name: beLong;
+    }
+}
+@keyframes beLong {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+*/
