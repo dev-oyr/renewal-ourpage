@@ -4,7 +4,7 @@ import Zoom from 'react-reveal/Zoom';
 import x from './svg/collaboX.svg';
 import webStudy from './svg/webstudy.svg';
 import oyr_kr from './svg/oyr_kr.svg';
-import oyr_ch from './svg/oyr_ch.svg';
+//import oyr_ch from './svg/oyr_ch.svg';
 import divider from './svg/divider.svg';
 import '../styles/section1.scss';
 
