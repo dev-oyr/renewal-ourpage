@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/cardview.scss';
+import Zoom from 'react-reveal/Zoom';
 
 function CardHeader({ image }) {
     var style = {
@@ -19,26 +20,28 @@ function Button() {
     );
 }
 
-function CardBody({ title, contents }) {
+function CardBody({ title, contents, day }) {
     return (
         <div className="card-body">
-            <p className="date en">OYR 7th</p>
+            <p className="date en">{day}</p>
 
-            <h2 className="en header-font">{title}</h2>
+            <h2 className="title kr">{title}</h2>
 
-            <p className="body-content kr desc-font">{contents}</p>
+            <p className="body-content kr">{contents}</p>
 
             <Button />
         </div>
     );
 }
 
-function Card({ title, contents }) {
+function Card({ title, contents, day }) {
     return (
-        <article className="card">
-            <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
-            <CardBody title={title} contents={contents} />
-        </article>
+        <Zoom>
+            <article className="card">
+                <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
+                <CardBody title={title} contents={contents} day={day} />
+            </article>
+        </Zoom>
     );
 }
 
