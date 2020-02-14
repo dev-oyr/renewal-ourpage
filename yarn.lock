@@ -1175,6 +1175,41 @@
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
   integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
+"@stickyroll/context@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/context/-/context-1.2.0.tgz#6b8e45b427e611a892d9de8562ff545a984d2fc6"
+  integrity sha512-LPG5mHaynNcLhbnLdIG0xUR1JjsuySeAIZ/PgsctbLAAer1f3lJAdZGlXDpVcn/L3PDOwV16zt7ObtbCx6kPiQ==
+
+"@stickyroll/frame@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/frame/-/frame-1.2.0.tgz#641870028b59e29ee4d1c64226856668bf69008f"
+  integrity sha512-GDI34hheWL9Jk4pwKYLIHtXRuzCG1V5jcfu2o9o4Pf490yOCXQ47zXTcByMDOuoNskmZOX5hdMXvLaF2zctv5g==
+  dependencies:
+    "@stickyroll/context" "^1.2.0"
+    "@stickyroll/tracker" "^1.2.0"
+    "@stickyroll/utils" "^1.2.0"
+
+"@stickyroll/stickyroll@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/stickyroll/-/stickyroll-1.2.0.tgz#a4a1f0cb94a7492fc57748e80be24b2ddf266896"
+  integrity sha512-HVP/BXrdHmTbPUyXnd6URaf6PP7Bg8QYqTlzHMz5jg2WoMGjCtepvNGStpddFRa/I0rWmeZL6DVk43N31z2PdA==
+  dependencies:
+    "@stickyroll/context" "^1.2.0"
+    "@stickyroll/frame" "^1.2.0"
+    "@stickyroll/tracker" "^1.2.0"
+
+"@stickyroll/tracker@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/tracker/-/tracker-1.2.0.tgz#aeda91b4d30a9aca399bb7cb894b227e65233985"
+  integrity sha512-UCUkDa6vG0ZYsnsEHnSog8flLLhNdG//a0h8e9dY9ie50SWDEZk2J21+T2Gzlc49HINtEuP37NhuWuarqwZt0A==
+  dependencies:
+    "@stickyroll/utils" "^1.2.0"
+
+"@stickyroll/utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/utils/-/utils-1.2.0.tgz#76ca6064cf944ebaa8adee2dfe74f4cde91a0971"
+  integrity sha512-gt1hYn/km3J+sUjRPYanf2aM9LkndpsKon5fCpZU997VIh3iQjAGMFxdBl9QtSnMf61qAfnqdSS8HvuIPPMp8Q==
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -8567,7 +8602,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8794,6 +8829,13 @@ react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
+
+react-reveal@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.2.tgz#f47fbc44debc4c185ae2163a215a9e822c7adfef"
+  integrity sha512-JCv3fAoU6Z+Lcd8U48bwzm4pMZ79qsedSXYwpwt6lJNtj/v5nKJYZZbw3yhaQPPgYePo3Y0NOCoYOq/jcsisuw==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-scripts@3.3.1:
   version "3.3.1"
