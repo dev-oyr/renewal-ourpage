@@ -32,10 +32,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
     .collaboX {
-        animation-delay: 5s;
-        animation-iteration-count: infinite;
-        animation-duration: 20s;
-        animation-timing-function: linear;
+        animation-delay: 1s;
+        animation-iteration-count: unset;
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.71, 0, 0.29, 1);
         animation-name: spin;
     }
 }
@@ -44,8 +44,13 @@
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(720deg);
     }
+}
+
+.maxWidth {
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 /*

@@ -1175,6 +1175,41 @@
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
   integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
+"@stickyroll/context@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/context/-/context-1.2.0.tgz#6b8e45b427e611a892d9de8562ff545a984d2fc6"
+  integrity sha512-LPG5mHaynNcLhbnLdIG0xUR1JjsuySeAIZ/PgsctbLAAer1f3lJAdZGlXDpVcn/L3PDOwV16zt7ObtbCx6kPiQ==
+
+"@stickyroll/frame@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/frame/-/frame-1.2.0.tgz#641870028b59e29ee4d1c64226856668bf69008f"
+  integrity sha512-GDI34hheWL9Jk4pwKYLIHtXRuzCG1V5jcfu2o9o4Pf490yOCXQ47zXTcByMDOuoNskmZOX5hdMXvLaF2zctv5g==
+  dependencies:
+    "@stickyroll/context" "^1.2.0"
+    "@stickyroll/tracker" "^1.2.0"
+    "@stickyroll/utils" "^1.2.0"
+
+"@stickyroll/stickyroll@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/stickyroll/-/stickyroll-1.2.0.tgz#a4a1f0cb94a7492fc57748e80be24b2ddf266896"
+  integrity sha512-HVP/BXrdHmTbPUyXnd6URaf6PP7Bg8QYqTlzHMz5jg2WoMGjCtepvNGStpddFRa/I0rWmeZL6DVk43N31z2PdA==
+  dependencies:
+    "@stickyroll/context" "^1.2.0"
+    "@stickyroll/frame" "^1.2.0"
+    "@stickyroll/tracker" "^1.2.0"
+
+"@stickyroll/tracker@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/tracker/-/tracker-1.2.0.tgz#aeda91b4d30a9aca399bb7cb894b227e65233985"
+  integrity sha512-UCUkDa6vG0ZYsnsEHnSog8flLLhNdG//a0h8e9dY9ie50SWDEZk2J21+T2Gzlc49HINtEuP37NhuWuarqwZt0A==
+  dependencies:
+    "@stickyroll/utils" "^1.2.0"
+
+"@stickyroll/utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stickyroll/utils/-/utils-1.2.0.tgz#76ca6064cf944ebaa8adee2dfe74f4cde91a0971"
+  integrity sha512-gt1hYn/km3J+sUjRPYanf2aM9LkndpsKon5fCpZU997VIh3iQjAGMFxdBl9QtSnMf61qAfnqdSS8HvuIPPMp8Q==
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -3114,6 +3149,11 @@ cosmiconfig@^6.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.7.2"
+
+countup.js@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-1.9.3.tgz#ce3e50cd7160441e478f07da31895edcc0f1c9dd"
+  integrity sha1-zj5QzXFgRB5HjwfaMYle3MDxyd0=
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -8738,6 +8778,15 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-countup@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-4.3.3.tgz#143a8d854d47290b73d6915eac20a12d839153c2"
+  integrity sha512-pWnxpwdPNRyJFha/YKKbyc4RLAw8PzmULdgCziGIgw6vxhT1VdccrvQgj38HBSoM2qF/MoLmn4M2klvDWVIdaw==
+  dependencies:
+    countup.js "^1.9.3"
+    prop-types "^15.7.2"
+    warning "^4.0.3"
+
 react-dev-utils@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-10.1.0.tgz#ccf82135f6dc2fc91969bc729ce57a69d8e86025"
@@ -10669,6 +10718,13 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
+
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+  dependencies:
+    loose-envify "^1.0.0"
 
 watchpack@^1.6.0:
   version "1.6.0"
