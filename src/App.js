@@ -1,11 +1,12 @@
 import React from 'react';
+import Nav from './components/Nav';
 import './styles/common.scss';
 import Main from './pages/Main';
 
 function App() {
     return (
         <>
-            {/* <NavBar></NavBar> */}
+            <Nav current="mail"></Nav>
             <Main></Main>
             {/* <Footer></Footer> */}
         </>
