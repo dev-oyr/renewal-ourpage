@@ -94,11 +94,12 @@ input {
 
     span + span {
         padding-left: 10px;
-        transition: 0.2s;
     }
 
     &:hover {
         span + span {
+            font-size: 16.3px;
+            font-weight: 700;
             padding-left: 14px;
             transition: 0.2s;
         }
