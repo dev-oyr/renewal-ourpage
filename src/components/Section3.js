@@ -10,10 +10,10 @@ import { withStyles } from '@material-ui/core/styles';
 function Section3() {
     const ColorButton = withStyles(theme => ({
         root: {
-            color: theme.palette.getContrastText('#1775d1'),
-            backgroundColor: '#1775d1',
+            color: theme.palette.getContrastText('#ff6d70'),
+            backgroundColor: '#ff6d70',
             '&:hover': {
-                backgroundColor: '#1775d1',
+                backgroundColor: '#ff6d70',
             },
         },
     }))(Button);
