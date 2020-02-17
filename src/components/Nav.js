@@ -1,7 +1,47 @@
 import React from 'react';
 import '../styles/nav.scss';
+import Button from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import { MdArrowDropDown } from 'react-icons/md';
 
 function NavBar() {
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+
+    const handleToggle = () => {
+        setOpen(prevOpen => !prevOpen);
+    };
+
+    const handleClose = event => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        }
+    }
+
+    // return focus to the button when we transitioned from !open -> open
+    const prevOpen = React.useRef(open);
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
+
     return (
         <div className="navbar">
             <div className="responsive">
@@ -24,10 +64,47 @@ function NavBar() {
 
                 <div className="nav_right">
                     <span className="nav_list">
-                        <a>소개</a>
-                        <a>모집안내</a>
-                        <a>FAQ</a>
-                        <a>로그인</a>
+                        <span>
+                            <Button
+                                ref={anchorRef}
+                                aria-controls={open ? 'menu-list-grow' : undefined}
+                                aria-haspopup="true"
+                                onClick={handleToggle}
+                            >
+                                소개
+                                <MdArrowDropDown className="dropIcon" />
+                            </Button>
+
+                            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                                {({ TransitionProps, placement }) => (
+                                    <div className="dropDown">
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleClose}>
+                                                    <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                                        <MenuItem onClick={handleClose}>소개</MenuItem>
+                                                        <MenuItem onClick={handleClose}>프로젝트</MenuItem>
+                                                        <MenuItem onClick={handleClose}>연혁</MenuItem>
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    </div>
+                                )}
+                            </Popper>
+                        </span>
+                        <Button aria-controls="simple-menu" aria-haspopup="true">
+                            <span>모집안내 </span>
+                        </Button>
+                        <Button aria-controls="simple-menu" aria-haspopup="true">
+                            <span>FAQ </span>
+                        </Button>
+                        <Button aria-controls="simple-menu" aria-haspopup="true">
+                            <span>로그인 </span>
+                        </Button>
                     </span>
 
                     <span className="nav_button">

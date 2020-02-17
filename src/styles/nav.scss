@@ -57,8 +57,10 @@ input {
     display: flex;
     align-items: center;
     border-right: 1px solid rgb(229, 229, 229);
+    padding-right: 22px;
 }
-.nav_list a {
+.nav_list span,
+.nav_list li {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 18px;
     font-weight: normal;
@@ -68,11 +70,6 @@ input {
     letter-spacing: -1.1px;
     text-align: left;
     color: #333333;
-    margin-right: 30px;
-
-    &:hover {
-        font-weight: 600;
-    }
 }
 
 .nav_button {
@@ -106,4 +103,10 @@ input {
             transition: 0.2s;
         }
     }
+}
+.dropDown {
+    margin-top: 15.5px;
+}
+.dropIcon {
+    margin-left: 5px;
 }
