@@ -20,11 +20,11 @@ $pointColor: #ff6d70;
     padding: 15px 0;
     display: flex;
     justify-content: space-around;
-    border-bottom: 1.1px solid #333333;
+    border-bottom: 1.4px solid #333333;
 }
 .count {
     & p {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -32,7 +32,8 @@ $pointColor: #ff6d70;
     margin-top: 15px;
     display: flex;
     justify-content: center;
-}
-p {
-    margin: 0;
+    & p {
+        margin: 0;
+        color: white;
+    }
 }
