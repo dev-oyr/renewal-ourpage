@@ -21,21 +21,21 @@ $fontInActive: #999999;
         width: 100%;
         max-width: 420px;
 
-        & svg {
+        & img {
             height: 64px;
             width: 64px;
-            fill: $fontInActive;
-            transition: fill, transform 0.3s;
+            filter: invert(0.666);
+            transition: filter, transform 0.3s;
 
             &.active {
-                fill: $fontPrimary;
+                filter: invert(0.333);
                 transform: scale(1.1);
             }
         }
     }
 }
 
-svg + svg {
+img + img {
     margin-left: 12px;
 }
 
@@ -61,11 +61,17 @@ svg + svg {
         display: flex;
         justify-content: center;
 
-        & p {
-            width: 90%;
-            white-space: pre-line;
-            word-break: keep-all;
-            text-align: center;
+        & .react-reveal {
+            display: flex;
+            justify-content: center;
+
+            & p {
+                position: absolute;
+                // width: 90%;
+                // white-space: pre-line;
+                // word-break: keep-all;
+                // text-align: center;
+            }
         }
     }
 }
