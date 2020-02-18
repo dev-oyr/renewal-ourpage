@@ -6,7 +6,7 @@ import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-
+import Zoom from 'react-reveal/Zoom';
 function Section3() {
     const nameInput = useRef();
     const onReset = () => {
@@ -76,14 +76,21 @@ function Section3() {
                         </span>
                     </div>
                 </Fade>
-
-                <div className="cardView">
-                    {Object.keys(activities)
-                        .filter((i, idx) => idx <= 5)
-                        .map((act, idx) => (
-                            <Card class="card" title={act} day={activities[act].day} contents={activities[act].content} key={idx}></Card>
-                        ))}
-                </div>
+                <Fade bottom cascade fraction={1} duration={666}>
+                    <div className="cardView">
+                        {Object.keys(activities)
+                            .filter((i, idx) => idx <= 5)
+                            .map((act, idx) => (
+                                <Card
+                                    class="card"
+                                    title={act}
+                                    day={activities[act].day}
+                                    contents={activities[act].content}
+                                    key={idx}
+                                ></Card>
+                            ))}
+                    </div>
+                </Fade>
 
                 <div className="moreButton">
                     <ColorButton variant="contained" color="primary">
