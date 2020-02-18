@@ -120,7 +120,7 @@ function Section2() {
                             </Zoom>
                             <div className="introduce inner-header">
                                 <Fade bottom distance="108px" fraction={1}>
-                                    <h1 className="header-font kr">오픈이어라운드</h1>
+                                    <div className="header-font kr">오픈이어라운드</div>
                                 </Fade>
                             </div>
                             <div className="introduce inner-content">

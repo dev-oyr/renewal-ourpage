@@ -53,12 +53,13 @@ img + img {
     &.inner-header {
         & .header-font {
             font-size: 48px;
-            margin: 0;
+            text-align: center;
         }
     }
 
     &.inner-content {
         width: 100%;
+        padding: 0;
 
         & .comments-wrapper {
             display: flex;
