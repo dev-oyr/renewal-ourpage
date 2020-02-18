@@ -76,7 +76,7 @@ function Section3() {
                         </span>
                     </div>
                 </Fade>
-                <Fade bottom cascade fraction={1} duration={666}>
+                <Fade bottom>
                     <div className="cardView">
                         {Object.keys(activities)
                             .filter((i, idx) => idx <= 5)
