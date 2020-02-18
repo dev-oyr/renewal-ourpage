@@ -34,7 +34,7 @@ const stickyProgressLabels = [
 
 const ProgressSlider = withStyles({
     root: {
-        color: '#1775d1',
+        color: '#ff6d70',
         height: 3,
         padding: '15px 0',
     },
@@ -70,7 +70,7 @@ const ProgressSlider = withStyles({
     },
     markActive: {
         opacity: 1,
-        backgroundColor: '#1775d1',
+        backgroundColor: '#ff6d70',
         marginLeft: -2,
     },
 })(Slider);

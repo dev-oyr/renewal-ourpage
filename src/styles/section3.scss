@@ -1,4 +1,4 @@
-$pointColor: #1775d1;
+$pointColor: #ff6d70;
 
 .section3 {
     width: 100%;
@@ -20,11 +20,11 @@ $pointColor: #1775d1;
     padding: 15px 0;
     display: flex;
     justify-content: space-around;
-    border-bottom: 1.1px solid #333333;
+    border-bottom: 1.4px solid #333333;
 }
 .count {
     & p {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -32,7 +32,8 @@ $pointColor: #1775d1;
     margin-top: 15px;
     display: flex;
     justify-content: center;
-}
-p {
-    margin: 0;
+    & p {
+        margin: 0;
+        color: white;
+    }
 }

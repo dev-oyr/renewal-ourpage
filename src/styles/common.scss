@@ -1,4 +1,4 @@
-$pointColor: #1775d1;
+$pointColor: #ff6d70;
 
 /********************* 폰트 초기화 *************************/
 /********************* Montserrat ***********************/
@@ -61,45 +61,53 @@ html {
 .kr {
     font-family: 'Noto Sans KR', sans-serif;
     &.header-font {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 510;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.47;
         letter-spacing: -1.6px;
         color: #333333;
+
+        margin-bottom: 15px;
     }
 
     &.desc-font {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.5;
         letter-spacing: -1.1px;
         color: #666666;
+
+        margin-bottom: 15px;
     }
 }
 .en {
     font-family: 'Montserrat', sans-serif;
     &.header-font {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 500;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.47;
         letter-spacing: -1.6px;
         color: #333333;
+
+        margin-bottom: 15px;
     }
 
     &.desc-font {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.5;
         letter-spacing: -1.1px;
         color: #666666;
+
+        margin-bottom: 15px;
     }
 }
 
