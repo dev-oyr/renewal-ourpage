@@ -15,7 +15,6 @@ const comments = [
     팀 프로젝트를 진행하면서 각종 공모전 및 학술제에 참여하고 있습니다.`,
     `여기에 스터디 설명이 나타납니다.`,
 ];
-
 const lastComments = `여기에 홈커밍 설명이 나타납니다.`;
 
 const stickyProgressLabels = [
@@ -77,22 +76,16 @@ const ProgressSlider = withStyles({
 })(Slider);
 
 let direction = true;
-let lastProgress = 0;
-let lastPageIndex = 0;
 
 function Section2() {
     return (
         <Stickyroll pages={comments} factor={0.5}>
             {({ page, pageIndex, pages, progress }) => {
-                pageIndex * 50 + progress * 50 - lastProgress > 0 ? (direction = true) : (direction = false);
-                lastProgress = pageIndex * 50 + progress * 50;
-
                 if (pageIndex !== 0 && progress >= 0.5) {
                     direction = false;
                 } else {
                     direction = true;
                 }
-                lastPageIndex = pageIndex;
 
                 if (pageIndex >= 1 && progress >= 1) {
                     pageIndex = 2;
@@ -130,17 +123,16 @@ function Section2() {
                                     <h1 className="header-font kr">오픈이어라운드</h1>
                                 </Fade>
                             </div>
-                            {console.log(direction)}
                             <div className="introduce inner-content">
                                 <Fade bottom distance="108px" fraction={1}>
                                     <div className="comments-wrapper">
-                                        <Fade left when={pageIndex === 0}>
+                                        <Fade left when={pageIndex === 0} duration={666}>
                                             <p className="desc-font kr">{comments[0]}</p>
                                         </Fade>
-                                        <Fade left={!direction} right={direction} when={pageIndex === 1}>
+                                        <Fade left={!direction} right={direction} when={pageIndex === 1} duration={666}>
                                             <p className="desc-font kr">{comments[1]}</p>
                                         </Fade>
-                                        <Fade right when={pageIndex === 2}>
+                                        <Fade right when={pageIndex === 2} duration={666}>
                                             <p className="desc-font kr">{lastComments}</p>
                                         </Fade>
                                     </div>

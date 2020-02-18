@@ -58,19 +58,19 @@ img + img {
     }
 
     &.inner-content {
-        display: flex;
-        justify-content: center;
+        width: 100%;
 
-        & .react-reveal {
+        & .comments-wrapper {
             display: flex;
             justify-content: center;
+            height: 16vh;
 
             & p {
                 position: absolute;
-                // width: 90%;
-                // white-space: pre-line;
-                // word-break: keep-all;
-                // text-align: center;
+                width: 90%;
+                white-space: pre-line;
+                word-break: keep-all;
+                text-align: center;
             }
         }
     }
