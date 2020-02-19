@@ -10,7 +10,7 @@ import '../styles/section1.scss';
 
 function Section1() {
     return (
-        <div className="header-image">
+        <div className="section1">
             <div className="responsive">
                 <div className="maxWidth">
                     <Fade duration={2000} delay={1000}>
@@ -18,7 +18,7 @@ function Section1() {
                     </Fade>
                     <Zoom duration={1500}>
                         <div className="divider_div">
-                            <img src={divider} className="divider" alt="선" />
+                            <img src={divider} className="divider top" alt="선" />
                         </div>
                     </Zoom>
                     <Fade duration={2000} delay={1000}>
@@ -34,7 +34,7 @@ function Section1() {
                     </Fade>
                     <Zoom duration={1500}>
                         <div className="divider_div">
-                            <img src={divider} className="divider" alt="선" />
+                            <img src={divider} className="divider bottom" alt="선" />
                         </div>
                     </Zoom>
                     <Fade duration={2000} delay={1000}>
