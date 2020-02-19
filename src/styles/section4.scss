@@ -1,4 +1,4 @@
-$pointColor: #1775d1;
+$pointColor: #ff6d70;
 $fontPrimary: #333333;
 $fontSecondary: #666666;
 
@@ -9,9 +9,13 @@ $fontSecondary: #666666;
 }
 
 .inner-header {
-    & h1 {
+    & .header-font {
         text-align: center;
     }
+}
+
+.history-group + .history-group {
+    margin-top: 56px;
 }
 
 .inner-content {
@@ -20,7 +24,7 @@ $fontSecondary: #666666;
     & .history-group {
         display: flex;
         width: 100%;
-        margin: 56px 0;
+        // margin: 56px 0;
 
         & .text-year {
             margin-right: 48px;

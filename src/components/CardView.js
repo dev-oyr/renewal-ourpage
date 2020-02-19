@@ -36,12 +36,10 @@ function CardBody({ title, contents, day }) {
 
 function Card({ title, contents, day }) {
     return (
-        <Zoom>
-            <article className="card">
-                <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
-                <CardBody title={title} contents={contents} day={day} />
-            </article>
-        </Zoom>
+        <article className="card">
+            <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
+            <CardBody title={title} contents={contents} day={day} />
+        </article>
     );
 }
 

@@ -1,4 +1,4 @@
-$pointColor: #1775d1;
+$pointColor: #ff6d70;
 $fontPrimary: #333333;
 $fontSecondary: #666666;
 $fontInActive: #999999;
@@ -21,21 +21,21 @@ $fontInActive: #999999;
         width: 100%;
         max-width: 420px;
 
-        & svg {
+        & img {
             height: 64px;
             width: 64px;
-            fill: $fontInActive;
-            transition: fill, transform 0.3s;
+            filter: invert(0.666);
+            transition: filter, transform 0.3s;
 
             &.active {
-                fill: $fontPrimary;
+                filter: invert(0.333);
                 transform: scale(1.1);
             }
         }
     }
 }
 
-svg + svg {
+img + img {
     margin-left: 12px;
 }
 
@@ -53,19 +53,26 @@ svg + svg {
     &.inner-header {
         & .header-font {
             font-size: 48px;
-            margin: 0;
+            text-align: center;
         }
     }
 
     &.inner-content {
-        display: flex;
-        justify-content: center;
+        width: 100%;
+        padding: 0;
 
-        & p {
-            width: 90%;
-            white-space: pre-line;
-            word-break: keep-all;
-            text-align: center;
+        & .comments-wrapper {
+            display: flex;
+            justify-content: center;
+            height: 16vh;
+
+            & p {
+                position: absolute;
+                width: 90%;
+                white-space: pre-line;
+                word-break: keep-all;
+                text-align: center;
+            }
         }
     }
 }
