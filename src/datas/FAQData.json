@@ -1,34 +1,28 @@
 {
     "data": [
         {
-            "id": 1,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문1",
+            "paragraph": "대답1"
         },
         {
-            "id": 2,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문2",
+            "paragraph": "대답2"
         },
         {
-            "id": 3,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문3",
+            "paragraph": "대답3"
         },
         {
-            "id": 4,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문4",
+            "paragraph": "대답4"
         },
         {
-            "id": 5,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문5",
+            "paragraph": "대답5"
         },
         {
-            "id": 6,
-            "title": "자주 묻는 질문",
-            "paragraph": "대답"
+            "title": "자주 묻는 질문6",
+            "paragraph": "대답6"
         }
     ]
 }
