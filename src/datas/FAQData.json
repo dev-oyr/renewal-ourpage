@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        },
+        {
+            "id": 2,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        },
+        {
+            "id": 3,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        },
+        {
+            "id": 4,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        },
+        {
+            "id": 5,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        },
+        {
+            "id": 6,
+            "title": "자주 묻는 질문",
+            "paragraph": "대답"
+        }
+    ]
+}
