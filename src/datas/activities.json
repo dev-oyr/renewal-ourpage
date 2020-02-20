@@ -1,31 +1,31 @@
 {
     "Schedury": {
-        "tech": "Reac.js, Next.js",
-        "member": "최준영 / 최세인 / 신동민",
+        "tech": "HTML5, CSS, JavaScript, MySQL, Node.js",
+        "member": "복지호 / 이채원 / 최세인",
         "day": "OYR 7th",
         "content": "일정과 일기를 한 눈에 보면서 동시에 작성하고 관리할 수 있는 나만의 일기장 웹 서비스"
     },
     "Sejong Spec Up": {
-        "tech": "Reac.js, Next.js",
-        "member": "최준영 / 최세인 / 신동민",
+        "tech": "HTML5, CSS, JavaScript, MySQL, Node.js, Bootstrap",
+        "member": " 박정환 / 최세인 / 한성진 / 한진우",
         "day": "OYR 7th",
         "content": "세종대학생들의 취업 스펙 비교 및 자신의 위치를 한 눈에 알아볼 수 있는 웹 서비스"
     },
     "도서로": {
-        "tech": "Reac.js, Next.js",
-        "member": "최준영 / 최세인 / 신동민",
+        "tech": "HTML5, CSS, JavaScript, MySQL, Node.js",
+        "member": "박혜린 / 이정수 / 한진우",
         "day": "OYR 6th",
         "content": "사용하지 않는 책, 혹은 필요한 책을 온라인상에서 다른 사람들과의 거래를 지원해주는 웹 서비스"
     },
     "DAWSON'S DAILY LIFE": {
-        "tech": "Reac.js, Next.js",
-        "member": "최준영 / 최세인 / 신동민",
+        "tech": "HTML5, CSS, JavaScript, MySQL, Node.js, THREE.js",
+        "member": "신동민 / 장예진 / 한성진",
         "day": "OYR 6th",
         "content": "Dawson이라는 콩고의 한 아이를 모티브로 전세계의 아동 노동 착취를 알리고, 실제 아동들의 노동들을 바탕으로 제작된 웹 게임"
     },
     "MY NOTE": {
-        "tech": "Reac.js, Next.js",
-        "member": "최준영 / 최세인 / 신동민",
+        "tech": "HTML5, CSS, JavaScript, MySQL, Node.js",
+        "member": "가재희 / 박정환",
         "day": "OYR 6th",
         "content": "웹 상에서 자신이 원하는 자료를 정리하고 사람들과 공유할 수 있는 웹 노트 서비스"
     },
