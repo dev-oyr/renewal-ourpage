@@ -9,6 +9,9 @@ $pointColor: #ff6d70;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    & a {
+        width: 100%;
+    }
 }
 .project-header {
     text-align: center;
@@ -20,11 +23,12 @@ $pointColor: #ff6d70;
     padding: 15px 0;
     display: flex;
     justify-content: space-around;
-    border-bottom: 1.4px solid #333333;
+    border-bottom: 1.2px solid rgba(0, 0, 0, 0.12);
 }
 .count {
+    font-size: 22px;
     & p {
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 

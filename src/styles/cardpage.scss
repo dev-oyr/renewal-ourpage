@@ -1,0 +1,47 @@
+.cardpage {
+    margin: 50px 0;
+}
+
+.cardPage-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 55px;
+
+    border-bottom: solid 1.2px #e5e5e5;
+    & .cardPage-header-avator {
+        margin-right: 20px;
+    }
+}
+.member {
+    font-family: 'Noto Sans KR';
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333333;
+
+    & + & {
+        margin-left: 13px;
+    }
+}
+
+.cardPage-content {
+    padding-bottom: 20px;
+
+    & .header {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.47;
+        letter-spacing: -1.6px;
+        text-align: left;
+        color: #333333;
+        margin-bottom: 15px;
+    }
+}
