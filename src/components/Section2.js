@@ -40,6 +40,10 @@ const ProgressSlider = withStyles({
     },
     thumb: {
         marginTop: '-0.31rem',
+        backgroundColor: '#ffffff',
+        border: '2px solid #ff6d70',
+        width: '13px',
+        height: '13px',
     },
     markLabel: {
         marginTop: '-2.75rem',
