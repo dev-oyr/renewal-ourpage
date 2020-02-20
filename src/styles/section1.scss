@@ -1,41 +1,63 @@
-.header-image {
-    width: 100%;
-    height: 90vh;
-    background-color: white;
+.section1 {
     color: black;
     text-align: center;
     font-size: 50px; //...
-    padding-top: 15vh; //45
+    width: 100%;
+    min-height: 100vw;
+    background-color: #ffffff;
 }
+
+.maxWidth {
+    max-width: 480px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+
 .summary {
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 6.5vw;
 }
 .divider {
     width: 100%;
+    height: 8px;
+    display: flex;
+
+    &.top {
+        margin: 1.666vw 0 4.8vw 0;
+    }
+
+    &.bottom {
+        margin: 4.8vw 0 1.666vw 0;
+    }
 }
 
 .webStudy {
     width: 100%;
-    margin-top: 5vh;
+    display: flex;
 }
 
 .oyr_kr {
     width: 100%;
+    display: flex;
 }
 .recruit2020 {
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 6.5vw;
+    letter-spacing: 0.1em;
 }
 .collaboX {
     width: 15%;
     pointer-events: none;
+    display: flex;
+    margin: 4vw auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .collaboX {
-        animation-delay: 5s;
-        animation-iteration-count: infinite;
-        animation-duration: 20s;
-        animation-timing-function: linear;
+        animation-delay: 1s;
+        animation-iteration-count: unset;
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.71, 0, 0.29, 1);
         animation-name: spin;
     }
 }
@@ -44,9 +66,54 @@
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(720deg);
     }
 }
+
+@media (min-width: 580px) {
+    .section1 {
+        min-height: 620px;
+    }
+
+    .summary {
+        font-size: 0.75em;
+    }
+
+    .divider {
+        &.top {
+            margin: 11px 0 25px 0;
+        }
+
+        &.bottom {
+            margin: 25px 0 11px 0;
+        }
+    }
+
+    .collaboX {
+        margin: 28px auto;
+    }
+
+    .recruit2020 {
+        font-size: 0.75em;
+    }
+}
+// @media (max-width: 1920px) and (min-width: 769px) {
+//     .responsive {
+//         width: 760px;
+//         margin: 0 auto;
+//     }
+//     .card {
+//         width: 31%;
+//         & + & {
+//             &:nth-child(3n-1) {
+//                 margin-left: 3.5%;
+//             }
+//             &:nth-child(3n) {
+//                 margin-left: 3.5%;
+//             }
+//         }
+//     }
+// }
 
 /*
 @media (prefers-reduced-motion: no-preference) {
