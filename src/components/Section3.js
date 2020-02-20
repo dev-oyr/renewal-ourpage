@@ -25,22 +25,24 @@ function Section3() {
 
     const useCountUps = [
         useCountUp({
-            start: 0,
+            start: 1000,
             end: 107,
-            delay: 5000,
-            duration: 6,
+            duration: 3,
+            prefix: '0',
         }),
         useCountUp({
-            start: 0,
+            start: 60,
             end: 24,
-            delay: 5000,
-            duration: 6,
+            duration: 3,
+            prefix: '00',
+            useEasing: false,
         }),
         useCountUp({
-            start: 0,
+            start: 70,
             end: 15,
-            delay: 5000,
-            duration: 6,
+            duration: 3,
+            prefix: '00',
+            useEasing: false,
         }),
     ];
 
