@@ -7,6 +7,7 @@ import Recruit from './pages/Recruit';
 import FAQ from './pages/FAQ';
 import Login from './pages/Login';
 import Apply from './pages/Apply';
+import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/faq" component={FAQ} />
                 <Route path="/login" component={Login} />
                 <Route path="/apply" component={Apply} />
+                <Route path="/cardpage/:title" component={CardPage} />
             </Wrapper>
             <Footer></Footer>
         </>

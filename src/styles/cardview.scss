@@ -14,6 +14,9 @@
             transform: translate(6px, 0);
         }
     }
+    & a {
+        display: flex;
+    }
 }
 
 .card-header {
@@ -81,9 +84,11 @@
 }
 
 .more {
+    margin-left: 5px;
     cursor: pointer;
     color: $pointColor;
     font-size: 12px;
+    font-weight: 500;
 }
 
 .title {
