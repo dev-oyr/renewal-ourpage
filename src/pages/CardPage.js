@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/cardpage.scss';
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
 import activities from '../datas/activities.json';
 
 function CardPage({ match }) {
     const { title } = match.params;
     const content = activities[title].content;
+    const member = activities[title].member;
+    const day = activities[title].day;
+
+    const useStyles = makeStyles(theme => ({
+        small: {
+            width: theme.spacing(3),
+            height: theme.spacing(3),
+        },
+        large: {
+            width: theme.spacing(7),
+            height: theme.spacing(7),
+        },
+    }));
+    const classes = useStyles();
 
     return (
-        <div className="section3">
+        <div className="cardpage">
             <div className="responsive">
-                <p>Card view</p>
-                <h1>{title}</h1>
-                <h1>{content}</h1>
+                <div className="cardPage-header">
+                    <span className="cardPage-header-avator">
+                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
+                    </span>
+                    <span className="cardPage-header-text">
+                        <div>
+                            <span className="en member">{day} </span>
+                            <span className="member">{member}</span>
+                        </div>
+                        <div className="kr header-font">{title}</div>
+                    </span>
+                </div>
+
+                <div classNmae="kr desc-font">{content}</div>
             </div>
         </div>
     );
