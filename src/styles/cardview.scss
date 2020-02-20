@@ -8,11 +8,13 @@
 
     &:hover {
         box-shadow: 3px 3px 13px 0 rgba(0, 0, 0, 0.1);
-        cursor: pointer;
 
         .button-primary {
             transform: translate(6px, 0);
         }
+    }
+    & a {
+        display: flex;
     }
 }
 
@@ -81,9 +83,11 @@
 }
 
 .more {
+    margin-left: 5px;
     cursor: pointer;
     color: $pointColor;
     font-size: 12px;
+    font-weight: 500;
 }
 
 .title {

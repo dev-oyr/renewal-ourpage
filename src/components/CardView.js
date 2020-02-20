@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/cardview.scss';
+import { Link } from 'react-router-dom';
+import { FaAngleRight } from 'react-icons/fa';
 import Zoom from 'react-reveal/Zoom';
 
 function CardHeader({ image }) {
@@ -12,10 +14,12 @@ function CardHeader({ image }) {
         </header>
     );
 }
-function Button() {
+function Button({ title }) {
     return (
         <button className="button button-primary">
-            <i className="fa fa-chevron-right"></i> <span className="more en">more</span>
+            <Link to={`/cardpage/${title}`}>
+                <FaAngleRight color={'#ff6d70'}></FaAngleRight> <span className="more en">more</span>
+            </Link>
         </button>
     );
 }
@@ -29,16 +33,16 @@ function CardBody({ title, contents, day }) {
 
             <p className="body-content kr">{contents}</p>
 
-            <Button />
+            <Button title={title} />
         </div>
     );
 }
 
-function Card({ title, contents, day }) {
+function Card({ title, contents, day, id }) {
     return (
         <article className="card">
             <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
-            <CardBody title={title} contents={contents} day={day} />
+            <CardBody title={title} contents={contents} day={day} id={id} />
         </article>
     );
 }
