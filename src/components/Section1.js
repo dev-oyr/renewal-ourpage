@@ -14,7 +14,7 @@ function Section1() {
             <div className="responsive">
                 <div className="maxWidth">
                     <Fade duration={2000} delay={1000}>
-                        <div className="summary">세종대학교 웹 개발 학술동아리</div> {/*이거도 컴포넌트 나눠야하나*/}
+                        <div className="summary kr">세종대학교 웹 개발 학술동아리</div> {/*이거도 컴포넌트 나눠야하나*/}
                     </Fade>
                     <Zoom duration={1500}>
                         <div className="divider_div">
@@ -38,7 +38,7 @@ function Section1() {
                         </div>
                     </Zoom>
                     <Fade duration={2000} delay={1000}>
-                        <div className="recruit2020">2020년도 신입부원 모집중</div>
+                        <div className="recruit2020 kr">2020년도 신입부원 모집중</div>
                     </Fade>
                 </div>
             </div>

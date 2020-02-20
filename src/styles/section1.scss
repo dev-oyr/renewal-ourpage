@@ -14,8 +14,8 @@
 }
 
 .summary {
-    font-weight: bold;
-    font-size: 6.85vw;
+    font-weight: 600;
+    font-size: 6.5vw;
 }
 .divider {
     width: 100%;
@@ -41,9 +41,9 @@
     display: flex;
 }
 .recruit2020 {
-    font-weight: bold;
-    font-size: 6.85vw;
-    letter-spacing: 0.095em;
+    font-weight: 600;
+    font-size: 6.5vw;
+    letter-spacing: 0.1em;
 }
 .collaboX {
     width: 15%;
@@ -76,7 +76,7 @@
     }
 
     .summary {
-        font-size: 39px;
+        font-size: 0.75em;
     }
 
     .divider {
@@ -94,7 +94,7 @@
     }
 
     .recruit2020 {
-        font-size: 39px;
+        font-size: 0.75em;
     }
 }
 // @media (max-width: 1920px) and (min-width: 769px) {
