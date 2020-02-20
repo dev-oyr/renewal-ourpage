@@ -9,6 +9,7 @@ function CardPage({ match }) {
     const content = activities[title].content;
     const member = activities[title].member;
     const day = activities[title].day;
+    const tech = activities[title].tech;
 
     const useStyles = makeStyles(theme => ({
         small: {
@@ -34,11 +35,30 @@ function CardPage({ match }) {
                             <span className="en member">{day} </span>
                             <span className="member">{member}</span>
                         </div>
+
                         <div className="kr header-font">{title}</div>
                     </span>
                 </div>
 
-                <div classNmae="kr desc-font">{content}</div>
+                <div className="cardPage-content">
+                    <div className="kr header">프로젝트 간단소개</div>
+                    <div className="kr desc-font">{content}</div>
+                </div>
+
+                <div className="cardPage-content">
+                    <div className="kr header">사용 스택</div>
+                    <div className="kr desc-font">{tech}</div>
+                </div>
+
+                <div className="cardPage-content">
+                    <div className="kr header">데모 이미지</div>
+                    <div className="kr desc-font"></div>
+                </div>
+
+                <div className="cardPage-content">
+                    <div className="kr header">저장 주소</div>
+                    <div className="kr desc-font"></div>
+                </div>
             </div>
         </div>
     );
