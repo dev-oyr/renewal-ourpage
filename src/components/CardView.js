@@ -14,17 +14,17 @@ function CardHeader({ image }) {
         </header>
     );
 }
-function Button({ id }) {
+function Button({ title }) {
     return (
         <button className="button button-primary">
-            <Link to={`/cardpage`}>
+            <Link to={`/cardpage/${title}`}>
                 <FaAngleRight color={'#ff6d70'}></FaAngleRight> <span className="more en">more</span>
             </Link>
         </button>
     );
 }
 
-function CardBody({ title, contents, day, id }) {
+function CardBody({ title, contents, day }) {
     return (
         <div className="card-body">
             <p className="date en">{day}</p>
@@ -33,7 +33,7 @@ function CardBody({ title, contents, day, id }) {
 
             <p className="body-content kr">{contents}</p>
 
-            <Button id={id} />
+            <Button title={title} />
         </div>
     );
 }
