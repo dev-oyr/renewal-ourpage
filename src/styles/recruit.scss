@@ -1,6 +1,19 @@
 $pointColor: #ff6d70;
 
 .target {
-    margin: 50px auto;
-    width: 80%;
+    width: 100%;
+
+    & + & {
+        margin-top: 50px;
+    }
+}
+
+.background-cover {
+    background-size: cover;
+    background-position: center;
+    height: 24vw;
+
+    &.recruit {
+        background-image: url('../cover.jpg');
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 function Wrapper({ children }) {
     const style = {
+        marginTop: '120px',
         minHeight: '70vh',
     };
 
