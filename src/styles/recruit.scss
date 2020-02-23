@@ -21,6 +21,17 @@ $pointColor: #ff6d70;
 .schedule-wrapper {
     & .section-calendar {
         // width: 70%;
+        .MuiTypography-h6 {
+            font-family: 'Monsterrat' !important;
+        }
+
+        .HeaderCell-cell-412,
+        .MuiTableCell-head,
+        .MuiTableCell-body,
+        .MuiButton-label,
+        .MuiGrid-root {
+            font-family: 'Monsterrat' !important;
+        }
     }
 
     & .section-list {
@@ -28,17 +39,17 @@ $pointColor: #ff6d70;
     }
 }
 
-.MuiTypography-h6 {
-    font-family: 'Monsterrat' !important;
-}
+// .MuiTypography-h6 {
+//     font-family: 'Monsterrat' !important;
+// }
 
-.HeaderCell-cell-412,
-.MuiTableCell-head,
-.MuiTableCell-body,
-.MuiButton-label,
-.MuiGrid-root {
-    font-family: 'Monsterrat' !important;
-}
+// .HeaderCell-cell-412,
+// .MuiTableCell-head,
+// .MuiTableCell-body,
+// .MuiButton-label,
+// .MuiGrid-root {
+//     font-family: 'Monsterrat' !important;
+// }
 
 @media (max-width: 579px) {
     .section-list {
