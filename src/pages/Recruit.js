@@ -12,6 +12,11 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import '../styles/recruit.scss';
 
 const dummyDate = [
@@ -24,6 +29,12 @@ const dummyDate = [
         startDate: '2020-02-10 18:00',
         endDate: '2020-02-10 19:30',
         title: '지원서 접수',
+    },
+    {
+        startDate: '2020-02-24 00:00',
+        endDate: '2020-02-24 23:00',
+        title: '군자동 털림',
+        allDay: 1,
     },
 ];
 
@@ -70,7 +81,27 @@ const MonthViewComp = ({ children, style, ...restProps }) => (
     </MonthView.TimeTableCell>
 );
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+        position: 'relative',
+        overflow: 'auto',
+        // maxHeight: 300,
+    },
+    listSection: {
+        backgroundColor: 'inherit',
+    },
+    ul: {
+        backgroundColor: 'inherit',
+        padding: 0,
+    },
+}));
+
 function Recruit() {
+    const classes = useStyles();
+
     return (
         <div className="responsive">
             <div className="target">
@@ -100,7 +131,22 @@ function Recruit() {
                             </Paper>
                         </MuiThemeProvider>
                     </div>
-                    <div className="section-list"></div>
+                    <div className="section-list">
+                        <List className={classes.root} subheader={<li />}>
+                            {[0, 1, 2, 3, 4].map(sectionId => (
+                                <li key={`section-${sectionId}`} className={classes.listSection}>
+                                    <ul className={classes.ul}>
+                                        <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
+                                        {dummyDate.map(({ title, startDate, endDate }, idx) => (
+                                            <ListItem button key={idx}>
+                                                <ListItemText primary={title} secondary={`${startDate} to ${endDate}`} />
+                                            </ListItem>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </List>
+                    </div>
                 </div>
             </div>
         </div>

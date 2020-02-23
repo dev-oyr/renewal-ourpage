@@ -11,10 +11,20 @@ $pointColor: #ff6d70;
 .background-cover {
     background-size: cover;
     background-position: center;
-    height: 24vw;
+    height: 120px;
 
     &.recruit {
         background-image: url('../cover.jpg');
+    }
+}
+
+.schedule-wrapper {
+    & .section-calendar {
+        // width: 70%;
+    }
+
+    & .section-list {
+        // width: 10%;
     }
 }
 
@@ -28,4 +38,10 @@ $pointColor: #ff6d70;
 .MuiButton-label,
 .MuiGrid-root {
     font-family: 'Monsterrat' !important;
+}
+
+@media (max-width: 579px) {
+    .section-list {
+        display: none;
+    }
 }
