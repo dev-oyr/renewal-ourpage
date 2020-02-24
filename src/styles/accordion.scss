@@ -1,5 +1,5 @@
 $cAccent: #000000;
-$cBlack: #121212;
+$cBlack: #333;
 $cGray: #666;
 $cLightGray: rgba(#000, 0.1);
 
@@ -8,7 +8,7 @@ $cLightGray: rgba(#000, 0.1);
     margin: 0;
     padding: 0;
     background-color: #fff;
-    max-width: 30rem;
+    max-width: 100%;
     border-radius: 0.4rem;
     overflow: hidden;
     box-shadow: 0 0 0.8rem 0.1rem rgba(darken($cAccent, 20%), 0.06), 0 20px 30px -10px rgba(darken($cAccent, 20%), 0.2);
@@ -57,7 +57,7 @@ $cLightGray: rgba(#000, 0.1);
     }
 
     &__title {
-        font-size: 24px; //
+        font-size: 22px; //
         font-family: 'Noto Sans KR';
         margin: 0;
         font-weight: 600;
