@@ -28,7 +28,7 @@ const dummyDate = [
     {
         startDate: '2020-02-24 00:00',
         endDate: '2020-02-24 23:00',
-        title: '군자동 털림',
+        title: '군자동 털림...ㅜㅜ',
         allDay: 1,
     },
 ];
@@ -56,7 +56,8 @@ const Appointment = ({ children, style, ...restProps }) => (
             borderRadius: '8px',
             maxHeight: '24px',
             marginTop: '16px',
-            fontFamily: 'Noto Sans KR',
+            fontFamily: 'Noto Sans KR, sans-serif',
+            fontSize: '0.8em',
         }}
     >
         {children}

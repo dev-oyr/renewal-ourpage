@@ -11,7 +11,7 @@ $pointColor: #ff6d70;
 .background-cover {
     background-size: cover;
     background-position: center;
-    height: 120px;
+    height: 240px;
 
     &.recruit {
         background-image: url('../cover.jpg');
@@ -32,6 +32,8 @@ $pointColor: #ff6d70;
         .MuiGrid-root {
             font-family: 'Monsterrat' !important;
         }
+
+        padding-bottom: 5%;
     }
 
     & .section-list {
@@ -54,5 +56,19 @@ $pointColor: #ff6d70;
 @media (max-width: 579px) {
     .section-list {
         display: none;
+    }
+
+    .background-cover {
+        height: 30vw;
+    }
+}
+
+@media (max-width: 770px) {
+    .section-list {
+        display: none;
+    }
+
+    .background-cover {
+        height: 30vw;
     }
 }
