@@ -1,36 +1,72 @@
 import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 
-function LoginInput({ type, name, message, feedback }) {
-    return (
-        <div>
-            <input type={type} name={name} placeholder={name} />
-            <Fade bottom collapse when={feedback}>
-                <div className="invalid-feedback" style={{ display: 'block' }}>
-                    {message}
-                </div>
-            </Fade>
-        </div>
-    );
-}
-
 function LoginPannel() {
-    const [check, setCheck] = useState(false);
-    let checkId = true;
-    let checkPassword = true;
-    const testLogin = () => {};
+    let [account, setAccount] = useState({
+        id: '',
+        password: '',
+        checkId: false,
+        checkPassword: false,
+    });
+
+    const handleChange = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+        account[name] = value;
+        setAccount(account);
+    };
+    const login = e => {
+        if (account.id.length % 2) {
+            //일단 아이디가 홀수일때
+            if (account.password.length % 2) {
+                //일단 아이디가 홀수이고 비밀번호가 홀수일때
+                e.preventDefault();
+            } else {
+                account.checkPassword = true;
+                e.preventDefault();
+            }
+        } else {
+            account.checkId = true;
+            console.log(account);
+            e.preventDefault();
+        }
+    };
 
     return (
         <div>
-            <LoginInput type="text" name="아이디" feedback={checkId} message="존재하지 않은 아이디입니다" />
-            {/*아이디를 입력하십시오*/}
-            <LoginInput type="password" name="비밀번호" feedback={checkPassword} message="비밀번호가 일치하지 않습니다" />
-            {/*비밀번호를 입력하십시오 */}
-            <button className="login_btn" type="button" onClick={testLogin}>
-                로그인
-            </button>
+            <form onSubmit={login}>
+                <input type="text" name="id" placeholder="아이디" onChange={handleChange} />
+                <div>{account.checkPassword}</div>
+                <Fade bottom collapse when={account.checkId}>
+                    <div className="invalid-feedback" style={{ display: 'block' }}>
+                        {'존재하지 않는 아이디 입니다'}
+                    </div>
+                </Fade>
+                <input type="password" name="password" placeholder="비밀번호" onChange={handleChange} />
+                <Fade bottom collapse when={account.checkPassword}>
+                    <div className="invalid-feedback" style={{ display: 'block' }}>
+                        {'일치하지 않는 비밀번호입니다'}
+                    </div>
+                </Fade>
+
+                <input type="submit" value="로그인" />
+            </form>
         </div>
     );
 }
 
 export default LoginPannel;
+
+/*
+<form method="post" onSubmit={save}>
+          Username <input type="text" name="username" onChange={handleChange} />
+          <br />
+          Password <input type="password" name="password" onChange={handleChange} />
+          <br />
+          Description
+          <br />
+          <textarea name="description" cols="20" rows="5" onChange={handleChange}></textarea>
+          <br />
+          <input type="submit" value="Save" />
+        </form>
+        */
