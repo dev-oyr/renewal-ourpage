@@ -72,3 +72,10 @@ $pointColor: #ff6d70;
         height: 30vw;
     }
 }
+
+.recruits-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 30px 0;
+}

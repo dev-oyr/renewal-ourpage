@@ -13,6 +13,8 @@ import {
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import '../styles/recruit.scss';
+import RecruitCircle from '../components/RecruitCircle';
+import recruitStep from '../datas/recruitStep.json';
 
 const dummyDate = [
     {
@@ -89,7 +91,18 @@ function Recruit() {
             </div>
             <div className="target">
                 <div className="kr header-font">2020 오픈이어라운드 모집절차</div>
-                <div className="recruits-wrapper"></div>
+                <div className="recruits-wrapper">
+                    {Object.keys(recruitStep).map((step, key) => (
+                        <RecruitCircle
+                            key={key}
+                            step={step}
+                            image={recruitStep[step].image}
+                            str_day={recruitStep[step].str_day}
+                            end_day={recruitStep[step].end_day}
+                            title={recruitStep[step].title}
+                        ></RecruitCircle>
+                    ))}
+                </div>
                 <div className="schedule-wrapper">
                     <div className="section-calendar">
                         <MuiThemeProvider theme={theme}>
