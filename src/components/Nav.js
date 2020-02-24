@@ -64,9 +64,9 @@ function NavBar() {
         prevOpen.current = open;
     }, [open]);
 
-    console.log(when);
+    // console.log(when);
     return (
-        <Fade top when={when}>
+        <Fade top when={when} duration={333}>
             <div className="navbar" style={{ position: 'fixed', top: '0' }}>
                 <div className="responsive">
                     <Link to="/">
