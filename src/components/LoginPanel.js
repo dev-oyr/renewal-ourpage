@@ -1,64 +1,114 @@
 import React, { useState } from 'react';
-import Fade from 'react-reveal/Fade';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import '../styles/login.scss';
+
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: 'black', //눌렀을때 색 어떤걸로 할지 정하기
+        },
+
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {},
+            '&:hover fieldset': {},
+            '&.Mui-focused fieldset': {
+                borderColor: 'black',
+            },
+        },
+    },
+})(TextField);
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        color: '#ff6d70',
+    },
+    input: {},
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    form: {
+        width: '60%',
+        marginTop: theme.spacing(1),
+    },
+    login_button: {
+        margin: theme.spacing(3, 0, 2),
+        color: 'white',
+        backgroundColor: '#ff6d70',
+        '&:hover': {
+            backgroundColor: '#ff6d70',
+        },
+    },
+}));
 
 function LoginPannel() {
-    let [cnt, setCnt] = useState(0);
+    const classes = useStyles();
+
     let [account, setAccount] = useState({
         id: '',
         password: '',
         checkId: false,
         checkPassword: false,
     });
-    const Plus = () => {
-        setCnt(cnt + 1);
-    };
     const handleChange = e => {
         const name = e.target.name;
         const value = e.target.value;
-        account.checkId = !account.checkId;
-
-        setAccount({
-            ...account,
-            [name]: value,
-        });
+        account[name] = value;
+        setAccount(account);
     };
     const loginCheck = () => {
         if (account.id.length % 2) {
-            //일단 아이디가 홀수일때
             account.checkId = false;
             if (account.password.length % 2) {
-                //일단 아이디가 홀수이고 비밀번호가 홀수일때
+                account.checkPassword = false;
             } else {
                 account.checkPassword = true;
             }
         } else {
+            account.checkPassword = false;
             account.checkId = true;
         }
+        setAccount({
+            ...account,
+        });
+        console.log(account);
     };
 
     return (
-        <div>
-            <div>{cnt}</div>
-            <button onClick={Plus}>+</button>
-
-            <form>
-                <input type="text" name="id" placeholder="아이디" onChange={handleChange} />
-                <div>{account.checkPassword}</div>
-                {console.log(account)}
-                <Fade bottom collapse when={account.checkId}>
-                    <div className="invalid-feedback" style={{ display: 'block' }}>
-                        {'존재하지 않는 아이디 입니다'}
-                    </div>
-                </Fade>
-                <input type="password" name="password" placeholder="비밀번호" onChange={handleChange} />
-                <Fade bottom collapse when={account.checkPassword}>
-                    <div className="invalid-feedback" style={{ display: 'block' }}>
-                        {'일치하지 않는 비밀번호입니다'}
-                    </div>
-                </Fade>
-                <button type="button" onClick={loginCheck}>
+        <div className={classes.paper} noValidate>
+            <form className={classes.form} noValidate>
+                <CssTextField
+                    error={account.checkId}
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    id="id"
+                    label="아이디"
+                    name="id"
+                    autoFocus
+                    className={classes.input}
+                    onChange={handleChange}
+                />
+                <CssTextField
+                    error={account.checkPassword}
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    name="password"
+                    label="비밀번호"
+                    type="password"
+                    id="password"
+                    className={classes.input}
+                    onChange={handleChange}
+                />
+                <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
                     로그인
-                </button>
+                </Button>
+                <p>아이디 비밀번호 찾기 => Link로 하기</p>
             </form>
         </div>
     );
