@@ -9,14 +9,20 @@ const CssTextField = withStyles({
         '& label.Mui-focused': {
             color: 'black', //눌렀을때 색 어떤걸로 할지 정하기
         },
-
+        '&label.Mui-error': {
+            color: '#ff6d70',
+        },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {},
             '&:hover fieldset': {},
             '&.Mui-focused fieldset': {
                 borderColor: 'black',
             },
+            '&.Mui-error fieldset': {
+                borderColor: '#ff6d70',
+            },
         },
+        '&label.Mui-error': { color: '#ff6d70' },
     },
 })(TextField);
 
