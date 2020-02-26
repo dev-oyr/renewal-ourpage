@@ -26,7 +26,6 @@ function AccordionItem({ paragraph, title }, arr) {
     );
 }
 function Accordion({ match }) {
-    console.log(match);
     const { id } = match.params;
 
     return (
