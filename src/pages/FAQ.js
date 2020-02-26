@@ -23,7 +23,7 @@ function FAQ() {
                     </ul>
                 </div>
                 <div className="accordion">
-                    <Route path="/faq/:01" component={Accordion}></Route>
+                    <Route path="/faq/:id" exact component={Accordion}></Route>
                 </div>
             </div>
         </div>

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import FAQData from '../datas/FAQData.json';
 import '../styles/accordion.scss';
 
-function AccordionItem({ paragraph, title }) {
+function AccordionItem({ paragraph, title }, arr) {
     const [opened, setOpened] = useState(false);
     return (
         <div
             {...{
                 className: `accordion-item, ${opened && 'accordion-item--opened'}`,
                 onClick: () => {
-                    setOpened(!opened); //디드 마운트
+                    setOpened(!opened);
                 },
             }}
         >
@@ -26,13 +26,16 @@ function AccordionItem({ paragraph, title }) {
     );
 }
 function Accordion({ match }) {
+    console.log(match);
+    const { id } = match.params;
+
     return (
         <div className="wrapper">
             <ul className="accordion-list">
-                {Object.keys(FAQData.data).map((k, idx) => {
+                {Object.keys(FAQData[id]).map((k, idx) => {
                     return (
                         <li key={idx} {...{ className: 'accordion-list__item' }}>
-                            <AccordionItem title={FAQData.data[k].title} paragraph={FAQData.data[k].paragraph} />
+                            <AccordionItem title={FAQData[id][k].title} paragraph={FAQData[id][k].paragraph} />
                         </li>
                     );
                 })}
