@@ -83,7 +83,7 @@ function Section3() {
                 <Fade bottom>
                     <div className="cardView">
                         {Object.keys(activities)
-                            .filter((i, key) => key <= 5)
+                            .filter((i, idx) => idx <= 5)
                             .map((act, key) => (
                                 <Card
                                     class="card"

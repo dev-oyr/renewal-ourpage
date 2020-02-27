@@ -18,7 +18,7 @@ function App() {
             <Wrapper>
                 <Route path="/" component={Main} exact />
                 <Route path="/recruit" component={Recruit} />
-                <Route path="/faq" component={FAQ} />
+                <Route path="/faq/:id" component={FAQ} />
                 <Route path="/login" component={Login} />
                 <Route path="/apply" component={Apply} />
                 <Route path="/cardpage/:title" component={CardPage} />
