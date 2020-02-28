@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import '../styles/login.scss';
 
 const CssTextField = withStyles({
@@ -28,6 +30,14 @@ const CssTextField = withStyles({
         '&label.Mui-error': { color: '#ff6d70' },
     },
 })(TextField);
+
+const SnackbarStyle = withStyles({
+    root: {
+        '& .MuiSnackbarContent-root': {
+            backgroundColor: '#ff6d70',
+        },
+    },
+})(Snackbar);
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -93,6 +103,7 @@ function LoginPannel() {
         if (reason === 'clickaway') {
             return;
         }
+
         open.open = false;
         setOpen({ ...open });
     };
@@ -112,50 +123,62 @@ function LoginPannel() {
             ...account,
         });
         handleClick();
+        console.log(open);
         console.log(account);
     };
 
     return (
-        <div className={classes.paper} noValidate>
-            <form className={classes.form} noValidate>
-                <CssTextField
-                    error={account.checkId}
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    id="id"
-                    label="아이디"
-                    name="id"
-                    autoFocus
-                    className={classes.input}
-                    onChange={handleChange}
-                />
-                <CssTextField
-                    error={account.checkPassword}
-                    variant="outlined"
-                    margin="normal"
-                    fullWidth
-                    name="password"
-                    label="비밀번호"
-                    type="password"
-                    id="password"
-                    className={classes.input}
-                    onChange={handleChange}
-                />
-                <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
-                    로그인
-                </Button>
-                <Snackbar
+        <>
+            <div className={classes.paper} noValidate>
+                <form className={classes.form} noValidate>
+                    <CssTextField
+                        error={account.checkId}
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        id="id"
+                        label="아이디"
+                        name="id"
+                        autoFocus
+                        className={classes.input}
+                        onChange={handleChange}
+                    />
+                    <CssTextField
+                        error={account.checkPassword}
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        name="password"
+                        label="비밀번호"
+                        type="password"
+                        id="password"
+                        className={classes.input}
+                        onChange={handleChange}
+                    />
+                    <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
+                        로그인
+                    </Button>
+                </form>
+                <SnackbarStyle
+                    className={classes.snack}
                     anchorOrigin={{
                         vertical: 'bottom',
+                        horizontal: 'center',
                     }}
                     open={open.open}
-                    autoHideDuration={6000}
+                    autoHideDuration={6000000000}
                     onClose={handleClose}
                     message={open.message}
+                    action={
+                        <React.Fragment>
+                            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                                <CloseIcon fontSize="small" />
+                            </IconButton>
+                        </React.Fragment>
+                    }
                 />
-            </form>
-        </div>
+            </div>
+        </>
     );
 }
 
