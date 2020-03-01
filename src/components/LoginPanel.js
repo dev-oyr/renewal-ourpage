@@ -34,7 +34,8 @@ const CssTextField = withStyles({
 const SnackbarStyle = withStyles({
     root: {
         '& .MuiSnackbarContent-root': {
-            backgroundColor: '#ff6d70',
+            backgroundColor: '#ff9800',
+            width: '350px',
         },
     },
 })(Snackbar);
