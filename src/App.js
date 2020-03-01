@@ -10,6 +10,11 @@ import Apply from './pages/Apply';
 import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
+import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
+
+// 임시로 전역 객체로 등록한 거임!!
+window.firebase = firebase;
+window.fbdb = fbdb;
 
 function App() {
     return (
