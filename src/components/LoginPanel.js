@@ -6,6 +6,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import '../styles/login.scss';
+import { dbCtrl } from '../database/DBCtrl';
 
 const CssTextField = withStyles({
     root: {
@@ -126,6 +127,10 @@ function LoginPannel() {
         handleClick();
         console.log(open);
         console.log(account);
+        dbCtrl.userLogin(account.id, account.password, session => {
+            console.info('로그인 완료 클라이언트단 테스트');
+            console.log(session);
+        });
     };
 
     return (
