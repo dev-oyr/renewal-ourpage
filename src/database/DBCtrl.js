@@ -36,38 +36,72 @@ const dbCtrl = {
     /** 관리자 로그인 상태를 해제하고 회원 로그인
      * @param stdNo 회원 학번
      * @param pw 회원 암호
-     * @function callbackAfterUserLogin 로그인 후 작업 콜백 함수
+     * @callback callback.onSuccess 로그인 후 작업 콜백 함수
+     * @callback callback.onError 로그인 실패 시 콜백 함수
      */
-    userLogin(stdNo, pw, callbackAfterUserLogin) {
+    userLogin(stdNo, pw, callback = { onSuccess(session) {}, onError(err) {} }) {
         // users 테이블에서 학번으로 이메일 조회
         fbdb.ref('/users/' + stdNo)
             .once('value')
             .then(snapshot => {
+                // 학번이 없으면 에러
+                if (!snapshot.val()) {
+                    callback.onError({ code: 'stdNoNotFound', message: 'Current student number not found' });
+                    return;
+                }
                 // 회원 이메일 및 암호로 회원 로그인
-                console.log(snapshot.val());
                 firebase
                     .auth()
                     .signInWithEmailAndPassword(snapshot.val().email, pw)
-                    .then(res => {
-                        console.log(res);
-                        console.info('회원 로그인 완료!');
+                    .then(async res => {
                         firebase.auth().currentUser.updateProfile({
                             displayName: stdNo,
                         });
                         // 로그인이 끝난 후 처리 함수 호출(현재 로그인 한 사용자 정보)
-                        callbackAfterUserLogin(firebase.auth().currentUser);
+                        callback.onSuccess(await this.userCurrent);
                     })
                     .catch(err => {
-                        const errCode = err.code;
-                        const errMsg = err.message;
-                        console.error(errCode, errMsg);
-                        alert(`Firebase 사용자 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
+                        console.error(err.code, err.message);
+                        callback.onError(err);
                     });
             })
             .catch(err => {
-                console.error(err);
+                console.error(err.code, err.message);
                 console.error('회원 데이터 조회 실패!');
+                callback.onError(err);
             });
+    },
+    /** 사용자 로그아웃
+     * @callback callback.onSuccess 로그아웃 후 작업 콜백 함수
+     * @callback callback.onError 로그아웃 실패 시 콜백 함수
+     */
+    userLogout(callback = { onSuccess() {}, onError(err) {} }) {
+        firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                callback.onSuccess();
+            })
+            .catch(err => {
+                callback.onError(err);
+            });
+    },
+    /** @async userCurrent 현재 로그인 사용자 정보 */
+    get userCurrent() {
+        const session = firebase.auth().currentUser;
+        if (!session || session.email === id) {
+            return null;
+        }
+        return new Promise((resolve, reject) => {
+            fbdb.ref('/users/' + session.displayName)
+                .once('value')
+                .then(snapshot => {
+                    resolve(snapshot.val());
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
     },
 };
 

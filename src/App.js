@@ -15,6 +15,7 @@ import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
 // 임시로 전역 객체로 등록한 거임!!
 window.firebase = firebase;
 window.fbdb = fbdb;
+window.dbCtrl = dbCtrl;
 
 function App() {
     return (

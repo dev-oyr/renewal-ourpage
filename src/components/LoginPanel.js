@@ -127,9 +127,15 @@ function LoginPannel() {
         handleClick();
         console.log(open);
         console.log(account);
-        dbCtrl.userLogin(account.id, account.password, session => {
-            console.info('로그인 완료 클라이언트단 테스트');
-            console.log(session);
+        dbCtrl.userLogin(account.id, account.password, {
+            onSuccess(session) {
+                console.info('로그인 완료 클라이언트단 테스트');
+                console.log(session);
+            },
+            onError(err) {
+                console.error(err);
+                alert(`Firebase 사용자 인증 오류 발생!\n 에러 코드: ${err.code}\n 에러 내용: ${err.message}`);
+            },
         });
     };
 
