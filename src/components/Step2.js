@@ -30,7 +30,7 @@ function Step2() {
                         multiline
                         variant="outlined"
                         fullWidth
-                        placeholder="오픈이어라운드 사람들에게 당신에 대해 이야기해주세요."
+                        placeholder="지원하게된 계기가 무엇인가요?"
                     />
                 </Grid>
                 <Grid item xs={12}>
