@@ -103,6 +103,19 @@ const dbCtrl = {
                 });
         });
     },
+    addApplication(
+        form = {
+            name: '<성명>',
+            stdNo: '<학번>',
+            major: '<전공>',
+            phone: '<전화번호>',
+            email: '<이메일>',
+            birthday: '<생년월일>',
+            motive: '<지원동기>',
+            projects: '<프로젝트 경험>',
+        },
+        callback = { onSuccess(res) {}, onError(err) {} },
+    ) {},
 };
 
 export { dbCtrl, firebase, fbdb };
