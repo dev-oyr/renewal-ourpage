@@ -103,16 +103,20 @@ const dbCtrl = {
                 });
         });
     },
-    addApplication(
+    submitApplication(
         form = {
-            name: '<성명>',
-            stdNo: '<학번>',
-            major: '<전공>',
-            phone: '<전화번호>',
-            email: '<이메일>',
+            name: '<이름>',
             birthday: '<생년월일>',
+            gender: '<성별>',
+            military: '<군필여부>',
+            phone: '<연락처>',
+            email: '<이메일>',
+            major: '<학과>',
+            stdNo: '<학번>',
             motive: '<지원동기>',
+            introduce: '<자기소개>',
             projects: '<프로젝트 경험>',
+            myWish: '<만들고 싶은 웹 서비스>',
         },
         callback = { onSuccess(res) {}, onError(err) {} },
     ) {},
