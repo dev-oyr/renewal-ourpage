@@ -96,16 +96,20 @@ function Recruit() {
             <div className="target">
                 <div className="kr header-font">2020 오픈이어라운드 모집절차</div>
                 <div className="recruits-wrapper">
-                    {Object.keys(recruitStep).map((step, key) => (
-                        <RecruitCircle
-                            key={key}
-                            step={step}
-                            image={recruitStep[step].image}
-                            str_day={recruitStep[step].str_day}
-                            end_day={recruitStep[step].end_day}
-                            title={recruitStep[step].title}
-                        ></RecruitCircle>
-                    ))}
+                    {Object.keys(recruitStep).map((step, key) =>
+                        key < 4 ? (
+                            <RecruitCircle
+                                key={key}
+                                step={step}
+                                image={recruitStep[step].image}
+                                str_day={recruitStep[step].str_day}
+                                end_day={recruitStep[step].end_day}
+                                title={recruitStep[step].title}
+                            ></RecruitCircle>
+                        ) : (
+                            false
+                        ),
+                    )}
                 </div>
                 <div className="schedule-wrapper">
                     <div className="section-calendar">
