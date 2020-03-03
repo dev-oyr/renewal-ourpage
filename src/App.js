@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
 
 function App() {
+    console.log('=================', location);
     return (
         <>
             <Nav current="mail"></Nav>

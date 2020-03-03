@@ -9,7 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { MdArrowDropDown } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { Link as Link2 } from 'react-scroll';
 import Fade from 'react-reveal/Fade';
+import qs from 'qs';
 
 let direction = 0;
 let when;
@@ -113,9 +115,15 @@ function NavBar() {
                                                 <Paper>
                                                     <ClickAwayListener onClickAway={handleClose}>
                                                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                                            <MenuItem onClick={handleClose}>소개</MenuItem>
-                                                            <MenuItem onClick={handleClose}>프로젝트</MenuItem>
-                                                            <MenuItem onClick={handleClose}>연혁</MenuItem>
+                                                            <Link2 activeClass="active" to="test1" spy={true} smooth={true} duration={700}>
+                                                                <MenuItem onClick={handleClose}>오픈이어라운드</MenuItem>
+                                                            </Link2>
+                                                            <Link2 activeClass="active" to="test2" spy={true} smooth={true} duration={700}>
+                                                                <MenuItem onClick={handleClose}>우리들의 프로젝트</MenuItem>
+                                                            </Link2>
+                                                            <Link2 activeClass="active" to="test3" spy={true} smooth={true} duration={700}>
+                                                                <MenuItem onClick={handleClose}>우리들의 역사</MenuItem>
+                                                            </Link2>
                                                         </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>
