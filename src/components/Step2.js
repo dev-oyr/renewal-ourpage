@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import '../styles/apply_form.scss';
+
 const CssTextField = withStyles({
     root: {
         '& .MuiInputBase-root': {
@@ -44,17 +45,7 @@ function Step2() {
                         placeholder="오픈이어라운드 사람들에게 당신에 대해 이야기해주세요."
                     />
                 </Grid>
-                <Grid item xs={12}>
-                    <CssTextField
-                        id="form2"
-                        name="form2"
-                        label="프로젝트 경험이 있으신가요? 어떤 프로젝트였나요?"
-                        multiline
-                        variant="outlined"
-                        fullWidth
-                        placeholder="개인이든 팀이든 상관없습니다! 없으셔도 괜찮습니다!"
-                    />
-                </Grid>
+
                 <Grid item xs={12}>
                     <CssTextField
                         id="form3"
@@ -64,6 +55,18 @@ function Step2() {
                         variant="outlined"
                         fullWidth
                         placeholder="자유롭게 적어주세요."
+                    />
+                </Grid>
+
+                <Grid item xs={12}>
+                    <CssTextField
+                        id="form2"
+                        name="form2"
+                        label="프로젝트 경험이 있으신가요? 어떤 프로젝트였나요?"
+                        multiline
+                        variant="outlined"
+                        fullWidth
+                        placeholder="개인이든 팀이든 상관없습니다! 없으셔도 괜찮습니다!"
                     />
                 </Grid>
             </Grid>
