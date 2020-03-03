@@ -18,6 +18,7 @@ window.fbdb = fbdb;
 window.dbCtrl = dbCtrl;
 
 function App() {
+    console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
         <>
             <Nav current="mail"></Nav>

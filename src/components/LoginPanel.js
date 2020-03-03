@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import '../styles/login.scss';
 import { dbCtrl } from '../database/DBCtrl';
+import { Redirect } from 'react-router-dom';
 
 const CssTextField = withStyles({
     root: {
@@ -72,8 +73,8 @@ function LoginPannel() {
     let [account, setAccount] = useState({
         id: '',
         password: '',
-        checkId: false,
-        checkPassword: false,
+        checkId: true,
+        checkPassword: true,
         open: false,
     });
 
@@ -82,22 +83,26 @@ function LoginPannel() {
         open: false,
     });
 
+    const { id, password } = account;
+
     const handleChange = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        account[name] = value;
-        setAccount(account);
+        const { value, name } = e.target;
+        setAccount({
+            ...account,
+            [name]: value,
+        });
     };
 
     const handleClick = () => {
-        if (account.checkId == true) {
-            open.message = '존재하지 않는 아이디입니다.';
+        if (account.checkId === false) {
+            open.message = '아이디를 확인해 주세요.';
+            open.open = true;
         } else {
-            if (account.checkPassword == true) {
-                open.message = '비밀번호가 일치하지 않습니다.';
+            if (account.checkPassword === false) {
+                open.message = '비밀번호를 확인해 주세요.';
+                open.open = true;
             }
         }
-        open.open = true;
         setOpen({ ...open });
     };
 
@@ -105,36 +110,54 @@ function LoginPannel() {
         if (reason === 'clickaway') {
             return;
         }
-
         open.open = false;
         setOpen({ ...open });
     };
+
     const loginCheck = () => {
-        if (account.id.length % 2) {
+        if (account.id.trim() === '') {
             account.checkId = false;
-            if (account.password.length % 2) {
-                account.checkPassword = false;
-            } else {
-                account.checkPassword = true;
-            }
+            account.id = '';
         } else {
-            account.checkPassword = false;
             account.checkId = true;
         }
+
+        if (account.password.trim() === '') {
+            account.checkPassword = false;
+            account.password = '';
+        } else {
+            account.checkPassword = true;
+        }
+
         setAccount({
             ...account,
         });
-        handleClick();
-        console.log(open);
-        console.log(account);
+
+        if (!account.checkId || !account.checkPassword) {
+            handleClick();
+            return;
+        }
+
         dbCtrl.userLogin(account.id, account.password, {
             onSuccess(session) {
+                account.checkId = true;
+                account.checkPassword = true;
                 console.info('로그인 완료 클라이언트단 테스트');
                 console.log(session);
             },
             onError(err) {
                 console.error(err);
-                alert(`Firebase 사용자 인증 오류 발생!\n 에러 코드: ${err.code}\n 에러 내용: ${err.message}`);
+                if (err.code === 'stdNoNotFound') {
+                    account.checkId = false;
+                } else if (err.code === 'auth/wrong-password') {
+                    account.checkPassword = false;
+                } else {
+                    alert('로그인 실패 횟수 초과. 잠시 후 다시 시도해 주세요.');
+                }
+                setAccount({
+                    ...account,
+                });
+                handleClick();
             },
         });
     };
@@ -144,7 +167,7 @@ function LoginPannel() {
             <div className={classes.paper} noValidate>
                 <form className={classes.form} noValidate>
                     <CssTextField
-                        error={account.checkId}
+                        error={!account.checkId}
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -154,9 +177,10 @@ function LoginPannel() {
                         autoFocus
                         className={classes.input}
                         onChange={handleChange}
+                        value={id}
                     />
                     <CssTextField
-                        error={account.checkPassword}
+                        error={!account.checkPassword}
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -166,6 +190,7 @@ function LoginPannel() {
                         id="password"
                         className={classes.input}
                         onChange={handleChange}
+                        value={password}
                     />
                     <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
                         로그인
@@ -178,7 +203,7 @@ function LoginPannel() {
                         horizontal: 'center',
                     }}
                     open={open.open}
-                    autoHideDuration={6000000000}
+                    autoHideDuration={3000}
                     onClose={handleClose}
                     message={open.message}
                     action={

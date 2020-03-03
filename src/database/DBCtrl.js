@@ -14,7 +14,7 @@ import 'firebase/database';
 firebase.initializeApp(apiConfig);
 
 // 마스터키로 관리자 로그인
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(async user => {
     // 로그인한 사용자가 없으면 관리자로 로그인
     if (!user) {
         firebase
@@ -26,6 +26,14 @@ firebase.auth().onAuthStateChanged(user => {
                 console.error(errCode, errMsg);
                 alert(`Firebase 관리자 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
             });
+    } else {
+        // 세션 스토리지에도 저장함...
+        console.log('saving current user at session storage...');
+        if (await dbCtrl.userCurrent) {
+            sessionStorage.setItem('currentUser', JSON.stringify({ stdno: user.displayName, name: (await dbCtrl.userCurrent)['name'] }));
+        } else {
+            sessionStorage.setItem('currentUser', null);
+        }
     }
 });
 // 파이어베이스 실시간 데이터베이스 선언
