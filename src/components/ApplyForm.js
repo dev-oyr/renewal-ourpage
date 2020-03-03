@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const steps = ['1단계-기본 정보 입력', '2단계-지원 사항', '3단계-제출하기'];
+const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
 function getStepContent(step) {
     switch (step) {
