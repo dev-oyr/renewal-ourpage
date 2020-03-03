@@ -43,7 +43,7 @@ function Step1() {
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <TextField id="name" name="name" label="이름" fullWidth />
+                    <TextField id="name" name="name" label="이름" fullWidth placeholder="ex)신동민" />
                 </Grid>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid item xs={12}>
@@ -83,16 +83,19 @@ function Step1() {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField id="phonenumber" name="phonenuber" label="연락처" fullWidth />
+                    <TextField id="phonenumber" name="phonenuber" label="연락처" fullWidth placeholder="ex)01012345678" />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField id="email" name="email" label="이메일" fullWidth />
+                    <TextField id="email" name="email" label="이메일" fullWidth placeholder="ex)sju@sju.ac.kr" />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField id="department" name="department" label="학과" fullWidth />
+                <Grid item xs={12} sm={4}>
+                    <TextField id="studentnumber" name="studentnumber" label="학번" fullWidth placeholder="ex)17011558" />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField id="grade" name="grade" label="학년/학기" fullWidth />
+                <Grid item xs={12} sm={4}>
+                    <TextField id="department" name="department" label="학과" fullWidth placeholder="ex)컴퓨터공학과" />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <TextField id="grade" name="grade" label="학년/학기" fullWidth placeholder="ex)3학년 1학기" />
                 </Grid>
             </Grid>
         </React.Fragment>
