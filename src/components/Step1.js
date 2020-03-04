@@ -39,7 +39,7 @@ function Step1() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                1단계-기본 정보 입력
+                기본 정보
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
