@@ -1,42 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FAQData from '../datas/FAQData.json';
 import '../styles/accordion.scss';
 
-class Accordion extends React.Component {
-    render() {
-        return (
-            <div className="wrapper">
-                <ul className="accordion-list">
-                    {Object.keys(FAQData.data).map(k => {
-                        return (
-                            <li {...{ className: 'accordion-list__item' }}>
-                                <AccordionItem title={FAQData.data[k].title} paragraph={FAQData.data[k].paragraph} />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        );
-    }
-}
+function Accordion({ match }) {
+    const { id } = match.params;
 
-class AccordionItem extends React.Component {
-    state = {
-        opened: false, //상태가 변해야 하는 같이기 때문에 state이고 그래서 클래스컴포넌트를 쓴다
-    };
-
-    render() {
-        const {
-            props: { paragraph, title },
-            state: { opened },
-        } = this;
-
+    function AccordionItem({ paragraph, title }) {
+        const [opened, setOpened] = useState(false);
         return (
             <div
                 {...{
                     className: `accordion-item, ${opened && 'accordion-item--opened'}`,
                     onClick: () => {
-                        this.setState({ opened: !opened }); //디드 마운트
+                        setOpened(!opened);
                     },
                 }}
             >
@@ -52,6 +28,18 @@ class AccordionItem extends React.Component {
             </div>
         );
     }
+
+    return (
+        <div className="wrapper">
+            <ul className="accordion-list">
+                {Object.keys(FAQData[id]).map((k, idx) => (
+                    <li key={idx} {...{ className: 'accordion-list__item' }}>
+                        <AccordionItem title={FAQData[id][k].title} paragraph={FAQData[id][k].paragraph} />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default Accordion;

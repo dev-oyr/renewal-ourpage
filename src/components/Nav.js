@@ -129,7 +129,7 @@ function NavBar() {
                                     <span>모집안내 </span>
                                 </Button>
                             </Link>
-                            <Link to="/faq">
+                            <Link to="/faq/01">
                                 <Button aria-controls="simple-menu" aria-haspopup="true">
                                     <span>FAQ </span>
                                 </Button>
