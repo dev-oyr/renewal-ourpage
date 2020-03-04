@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
+import { Button, Link } from '@material-ui/core';
 import {
     Scheduler,
     MonthView,
@@ -10,11 +11,12 @@ import {
     AppointmentTooltip,
     TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import '../styles/recruit.scss';
 import RecruitCircle from '../components/RecruitCircle';
 import recruitStep from '../datas/recruitStep.json';
+import { Redirect } from 'react-router-dom';
 
 const convertDate = (dateStr, additional = '') => {
     let dt = dateStr;
@@ -83,7 +85,30 @@ const MonthViewComp = ({ children, style, ...restProps }) => (
     </MonthView.TimeTableCell>
 );
 
+const useStyles = makeStyles(theme => ({
+    applybutton: {
+        display: 'flex',
+        maxWidth: '360px',
+        height: '56px',
+        margin: '0 auto',
+        marginBottom: '5.5%',
+        color: 'white',
+        fontSize: '16px',
+        backgroundColor: '#ff6d70',
+        '&:hover': {
+            backgroundColor: '#ff6d70',
+        },
+    },
+}));
+
 function Recruit() {
+    const classes = useStyles();
+    const [toApply, gotoApply] = useState(false);
+
+    const handleApply = () => {
+        gotoApply(true);
+    };
+
     return (
         <div className="responsive">
             <div className="target">
@@ -130,6 +155,10 @@ function Recruit() {
                     {/* <div className="section-list"></div> */}
                 </div>
             </div>
+            {toApply ? <Redirect push to="/apply"></Redirect> : false}
+            <Button fullWidth variant="contained" color="primary" className={classes.applybutton} onClick={handleApply}>
+                지금 지원하기
+            </Button>
         </div>
     );
 }
