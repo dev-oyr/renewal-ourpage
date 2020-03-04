@@ -10,9 +10,7 @@ import Apply from './pages/Apply';
 import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
-
 function App() {
-    console.log('=================', location);
     return (
         <>
             <Nav current="mail"></Nav>

@@ -8,31 +8,30 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { MdArrowDropDown } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Link as Link2 } from 'react-scroll';
 import Fade from 'react-reveal/Fade';
-import qs from 'qs';
 
 let direction = 0;
 let when;
-function NavBar() {
+function NavBar({ location, match }) {
     /******************** nav-scroll계산 ********************/
     const useScroll = () => {
-        const [state, setState] = useState(0);
+        const [scroll, setScroll] = useState(0);
         const onScroll = () => {
-            setState(window.scrollY);
+            setScroll(window.scrollY);
         };
         useEffect(() => {
             window.addEventListener('scroll', onScroll);
-            when = state > direction ? 0 : 1;
+            when = scroll > direction ? 0 : 1;
             return () => {
                 window.removeEventListener('scroll', onScroll);
-                direction = state;
+                direction = scroll;
             };
-        }, [state]);
-        return state;
+        }, [scroll]);
+        return scroll;
     };
-    const state = useScroll();
+    const scroll = useScroll();
 
     /******************** meterial-UI ********************/
     const [open, setOpen] = React.useState(false);
@@ -57,16 +56,7 @@ function NavBar() {
         }
     }
 
-    const prevOpen = React.useRef(open);
-    React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
-
-        prevOpen.current = open;
-    }, [open]);
-
-    // console.log(when);
+    let path = location.pathname;
     return (
         <Fade top when={when} duration={333}>
             <div className="navbar" style={{ position: 'fixed', top: '0' }}>
@@ -94,15 +84,19 @@ function NavBar() {
                         <span className="nav_list">
                             <span>
                                 <Link to="/">
-                                    <Button
-                                        ref={anchorRef}
-                                        aria-controls={open ? 'menu-list-grow' : undefined}
-                                        aria-haspopup="true"
-                                        onClick={handleToggle}
-                                    >
-                                        소개
-                                        <MdArrowDropDown className="dropIcon" />
-                                    </Button>
+                                    {path !== '/' ? (
+                                        <Button>소개</Button>
+                                    ) : (
+                                        <Button
+                                            ref={anchorRef}
+                                            aria-controls={open ? 'menu-list-grow' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleToggle}
+                                        >
+                                            소개
+                                            <MdArrowDropDown className="dropIcon" />
+                                        </Button>
+                                    )}
                                 </Link>
 
                                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
@@ -132,21 +126,28 @@ function NavBar() {
                                     )}
                                 </Popper>
                             </span>
-                            <Link to="/recruit">
-                                <Button aria-controls="simple-menu" aria-haspopup="true">
-                                    <span>모집안내 </span>
-                                </Button>
-                            </Link>
-                            <Link to="/faq/01">
-                                <Button aria-controls="simple-menu" aria-haspopup="true">
-                                    <span>FAQ </span>
-                                </Button>
-                            </Link>
-                            <Link to="/login">
-                                <Button aria-controls="simple-menu" aria-haspopup="true">
-                                    <span>로그인 </span>
-                                </Button>
-                            </Link>
+
+                            <span>
+                                <Link to="/recruit">
+                                    <Button aria-controls="simple-menu" aria-haspopup="true">
+                                        <span>모집안내 </span>
+                                    </Button>
+                                </Link>
+                            </span>
+                            <span>
+                                <Link to="/faq/01">
+                                    <Button aria-controls="simple-menu" aria-haspopup="true">
+                                        <span>FAQ </span>
+                                    </Button>
+                                </Link>
+                            </span>
+                            <span>
+                                <Link to="/login">
+                                    <Button aria-controls="simple-menu" aria-haspopup="true">
+                                        <span>로그인 </span>
+                                    </Button>
+                                </Link>
+                            </span>
                         </span>
 
                         <span className="nav_button">
@@ -164,4 +165,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default withRouter(NavBar);
