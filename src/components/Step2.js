@@ -2,9 +2,12 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Chip from '@material-ui/core/Chip';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import '../styles/apply_form.scss';
+import { techskills, testdata } from '../datas/technicalSkills.json';
 
 const CssTextField = withStyles({
     root: {
@@ -122,14 +125,26 @@ function Step2() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField
+                        <Autocomplete
+                            multiple
                             id="techstack"
                             name="techstack"
-                            label="어떤 기술스택을 사용했나요?"
-                            multiline
-                            variant="outlined"
-                            fullWidth
-                            placeholder="ex)"
+                            options={techskills}
+                            getOptionLabel={option => option}
+                            filterSelectedOptions
+                            freeSolo
+                            renderInput={params => (
+                                <TextField
+                                    {...params}
+                                    fullWidth
+                                    variant="outlined"
+                                    label="어떤 기술스택을 사용했나요?"
+                                    placeholder="ex) C C++ JAVA"
+                                />
+                            )}
+                            onChange={(obj, val) => {
+                                console.log(val);
+                            }}
                         />
                     </Grid>
                     <Grid item xs={12}>
