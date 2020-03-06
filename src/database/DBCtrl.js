@@ -24,7 +24,7 @@ firebase.auth().onAuthStateChanged(async user => {
                 const errCode = err.code;
                 const errMsg = err.message;
                 console.error(errCode, errMsg);
-                alert(`Firebase 관리자 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
+                alert(`Firebase 마스터 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
             });
     } else {
         // 세션 스토리지에도 저장함...
@@ -167,6 +167,47 @@ const dbCtrl = {
                 }
             },
         );
+    },
+    /** 모든 지원서 조회
+     * @param sub 구분 카테고리
+     * @callback callback.onSuccess 조회 후 작업 콜백 함수
+     * @callback callback.onError 조회 실패 시 콜백 함수
+     */
+    getAllApplications(sub = '', callback = { onSuccess(res) {}, onError(err) {} }) {
+        fbdb.ref(`/applications/${sub}`)
+            .once('value')
+            .then(snapshot => {
+                callback.onSuccess(snapshot.val());
+            })
+            .catch(err => {
+                callback.onError(err);
+            });
+    },
+    /** 특정 지원서 조회
+     * @param sub 구분 카테고리
+     * @param stdNo 조회할 학번
+     * @callback callback.onSuccess 조회 후 작업 콜백 함수
+     * @callback callback.onError 조회 실패 시 콜백 함수
+     */
+    getApplication(sub = '', stdNo = '', callback = { onSuccess(res) {}, onError(err) {} }) {
+        fbdb.ref(`/applications/${sub}/${stdNo}`)
+            .once('value')
+            .then(snapshot => {
+                callback.onSuccess(snapshot.val());
+            })
+            .catch(err => {
+                callback.onError(err);
+            });
+    },
+    /** 지원서 업데이트 시 실행할 함수
+     * @param sub 구분 카테고리
+     * @callback callback.onSuccess 업데이트 시 작업 콜백 함수
+     * @callback callback.onError 업데이트 실패 시 콜백 함수
+     */
+    onApplicationUpdated(sub = '', callback = { onSuccess(res) {}, onError(err) {} }) {
+        fbdb.ref(`/applications/${sub}`).on('value', snapshot => {
+            callback.onSuccess(snapshot.val());
+        });
     },
 };
 
