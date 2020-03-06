@@ -111,23 +111,63 @@ const dbCtrl = {
                 });
         });
     },
+    /** 지원서 제출
+     * @param sub 구분 카테고리
+     * @param form 제출 데이터
+     * @callback callback.onSuccess 제출 후 작업 콜백 함수
+     * @callback callback.onError 제출 실패 시 콜백 함수
+     */
     submitApplication(
+        sub = '',
         form = {
-            name: '<이름>',
-            birthday: '<생년월일>',
-            gender: '<성별>',
-            military: '<군필여부>',
-            phone: '<연락처>',
-            email: '<이메일>',
-            major: '<학과>',
             stdNo: '<학번>',
-            motive: '<지원동기>',
+            birthday: '<생년월일>',
+            email: '<이메일>',
+            gender: '<성별>',
             introduce: '<자기소개>',
-            projects: '<프로젝트 경험>',
+            major: '<학과>',
+            military: '<군필여부>',
+            motive: '<지원동기>',
             myWish: '<만들고 싶은 웹 서비스>',
+            name: '<이름>',
+            phone: '<연락처>',
+            projDetail: '<프로젝트 상세 설명>',
+            projGithub: '<프로젝트 깃허브 주소>',
+            projName: '<프로젝트 이름>',
+            projOtherLink: '<프로젝트 기타 링크>',
+            projSummary: '<프로젝트 요약>',
+            projTechStacks: '<프로젝트 기술 스택>',
         },
         callback = { onSuccess(res) {}, onError(err) {} },
-    ) {},
+    ) {
+        fbdb.ref(`/applications/${sub}/${form.stdNo}`).set(
+            {
+                birthday: form.birthday,
+                email: form.email,
+                gender: form.gender,
+                introduce: form.introduce,
+                major: form.major,
+                military: form.military,
+                motive: form.motive,
+                myWish: form.myWish,
+                name: form.name,
+                phone: form.phone,
+                projDetail: form.projDetail,
+                projGithub: form.projGithub,
+                projName: form.projName,
+                projOtherLink: form.projOtherLink,
+                projSummary: form.projSummary,
+                projTechStacks: form.projTechStacks,
+            },
+            err => {
+                if (err) {
+                    callback.onError(err);
+                } else {
+                    callback.onSuccess(null);
+                }
+            },
+        );
+    },
 };
 
 export { dbCtrl, firebase, fbdb };
