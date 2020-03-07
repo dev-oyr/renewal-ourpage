@@ -100,7 +100,7 @@ function Step1({ errors }) {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <FormControl error={errors.military} className={classes.formControl}>
+                    <FormControl error={errors.duty} className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">군필여부</InputLabel>
                         <Select id="demo-controlled-open-select" name="duty" value={duty} onChange={handleChange}>
                             <MenuItem value={'미필'}>미필</MenuItem>
@@ -110,7 +110,7 @@ function Step1({ errors }) {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        error={errors.phone}
+                        error={errors.phonenumber}
                         onChange={textFieldChange}
                         value={phonenumber}
                         id="phonenumber"
@@ -134,7 +134,7 @@ function Step1({ errors }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
-                        error={errors.stdNo}
+                        error={errors.studentnumber}
                         onChange={textFieldChange}
                         value={studentnumber}
                         id="studentnumber"
@@ -146,7 +146,7 @@ function Step1({ errors }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
-                        error={errors.major}
+                        error={errors.department}
                         onChange={textFieldChange}
                         value={department}
                         id="department"
@@ -178,11 +178,11 @@ Step1.defaultProps = {
         name: false,
         birthday: false,
         gender: false,
-        military: false,
-        phone: false,
+        duty: false,
+        phonenumber: false,
         email: false,
-        stdNo: false,
-        major: false,
+        studentnumber: false,
+        department: false,
         grade: false,
     },
 };

@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Step2() {
+function Step2({ errors }) {
     const classes = useStyles();
     /**************** TextField value ***************/
     const state = useApplyState();
@@ -85,6 +85,7 @@ function Step2() {
                 <Grid container spacing={6}>
                     <Grid item xs={12}>
                         <CssTextField
+                            error={errors.form0}
                             onChange={fieldChange}
                             value={form0}
                             className="form"
@@ -99,6 +100,7 @@ function Step2() {
                     </Grid>
                     <Grid item xs={12}>
                         <CssTextField
+                            error={errors.form0}
                             onChange={fieldChange}
                             value={form1}
                             id="form1"
@@ -226,5 +228,12 @@ function Step2() {
         </React.Fragment>
     );
 }
+
+Step2.defaultProps = {
+    errors: {
+        form0: false,
+        form1: false,
+    },
+};
 
 export default Step2;
