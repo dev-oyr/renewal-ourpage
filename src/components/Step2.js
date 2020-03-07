@@ -6,7 +6,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import '../styles/apply_form.scss';
-import { techskills, testdata } from '../datas/technicalSkills.json';
+import { techskills } from '../datas/technicalSkills.json';
 import { useApplyState, useApplyDispatch } from '../context/applyContext';
 
 const CssTextField = withStyles({
@@ -45,10 +45,11 @@ function Step2({ errors }) {
     const state = useApplyState();
     const dispatch = useApplyDispatch();
     const { project_name, project_summary, github, subdata } = state.textInputs;
-    const { form0, form1, form2, desc } = state.fieldInputs;
-    const tech = state.tech.stack;
-    console.log(tech);
 
+    const { form0, form1, form2, desc } = state.fieldInputs;
+
+    const tech = state.tech;
+    console.log('현재상태는 !', tech);
     const textFieldChange = useCallback(e => {
         const { name, value } = e.target;
         dispatch({
@@ -69,6 +70,7 @@ function Step2({ errors }) {
 
     const techChange = useCallback(e => {
         const { value } = e.target;
+        console.log('이벤트 value', value);
         dispatch({
             type: 'TECH',
             value,
@@ -177,16 +179,15 @@ function Step2({ errors }) {
                         <Autocomplete
                             multiple
                             id="techstack"
-                            onChange={techChange}
-                            value={tech}
                             name="tech"
                             options={techskills}
                             getOptionLabel={option => option}
                             filterSelectedOptions
                             freeSolo
-                            value={['Node.js', 'C++']}
                             renderInput={params => (
                                 <TextField
+                                    onChange={techChange}
+                                    value={tech}
                                     name="tech"
                                     {...params}
                                     fullWidth
@@ -230,10 +231,7 @@ function Step2({ errors }) {
 }
 
 Step2.defaultProps = {
-    errors: {
-        form0: false,
-        form1: false,
-    },
+    errors: { form1: false, form0: false },
 };
 
 export default Step2;

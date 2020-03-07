@@ -70,6 +70,7 @@ export default function Checkout() {
                 },
                 err(fields) {
                     setFieldsError(fields);
+                    setActiveStep(activeStep + 1);
                 },
             });
         } else if (activeStep === 1) {
@@ -80,6 +81,7 @@ export default function Checkout() {
                 },
                 err(fields) {
                     setFieldsError(fields);
+                    setActiveStep(activeStep + 1);
                 },
             });
         } else if (activeStep === 2) {

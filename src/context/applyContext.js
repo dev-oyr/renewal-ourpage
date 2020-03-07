@@ -24,12 +24,7 @@ const initialApply = {
         gender: '',
         duty: '',
     },
-    tech: [
-        {
-            id: 1,
-            stack: 'cccc',
-        },
-    ],
+    tech: ['cccccc'],
 };
 
 function applyReducer(state, action) {
@@ -60,10 +55,11 @@ function applyReducer(state, action) {
                 },
             };
         case 'TECH':
-            console.log('-----', state.tech);
+            console.log('-----------------------', state.tech.concat(action.value));
             return {
                 tech: state.tech.concat(action.value),
             };
+
         case 'CHECK_STEP1':
             const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
             const { gender, duty } = state.selects;
