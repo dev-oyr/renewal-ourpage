@@ -170,6 +170,7 @@ function Step2() {
                             getOptionLabel={option => option}
                             filterSelectedOptions
                             freeSolo
+                            value={['Node.js', 'C++']}
                             renderInput={params => (
                                 <TextField
                                     onChange={textFieldChange}
