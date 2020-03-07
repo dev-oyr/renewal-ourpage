@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import { useApplyDispatch } from '../context/applyContext';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -51,6 +52,7 @@ const useStyles = makeStyles(theme => ({
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
 export default function Checkout() {
+    /**************** Select value ***************/
     const [info, setInfo] = useState({
         gender: '',
         duty: '',
@@ -61,13 +63,18 @@ export default function Checkout() {
         const value = event.target.value;
         setInfo({ ...info, [name]: value });
     };
+    /***************************************************/
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
 
+    const dispatch = useApplyDispatch();
     const handleNext = () => {
         setActiveStep(activeStep + 1);
         if (activeStep === 2) {
+            dispatch({
+                type: 'FIREBASE_PATCH',
+            });
         }
     };
 

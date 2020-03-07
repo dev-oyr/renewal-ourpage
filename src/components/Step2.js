@@ -165,15 +165,15 @@ function Step2() {
                         <Autocomplete
                             multiple
                             id="techstack"
-                            name="techstack"
+                            onChange={textFieldChange}
+                            value={tech}
+                            name="tech"
                             options={techskills}
                             getOptionLabel={option => option}
                             filterSelectedOptions
                             freeSolo
                             renderInput={params => (
                                 <TextField
-                                    onChange={textFieldChange}
-                                    value={tech}
                                     name="tech"
                                     {...params}
                                     fullWidth
