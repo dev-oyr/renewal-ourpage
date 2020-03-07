@@ -3,8 +3,8 @@ import AdminApplications from './AdminApplications';
 import AdminMembers from './AdminMembers';
 
 function TabPanel({ value, ...children }) {
-    return <AdminApplications></AdminApplications>;
-    // <AdminMembers></AdminMembers>;
+    if (value === 0) return <AdminApplications></AdminApplications>;
+    else return <AdminMembers></AdminMembers>;
 }
 
 export default TabPanel;

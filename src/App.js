@@ -42,6 +42,7 @@ function App() {
                         <Route path="/login" component={Login} />
                         <Route path="/apply" component={Apply} />
                         <Route path="/cardpage/:title" component={CardPage} />
+                        <Route path="/admins" component={Admins} />
                     </Wrapper>
                     <Footer></Footer>
                 </>
