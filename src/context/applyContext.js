@@ -112,10 +112,12 @@ function applyReducer(state, action) {
                 },
                 {
                     onSuccess(res) {
+                        console.log('Success!');
                         ok(res);
                     },
-                    onError(err) {
-                        err(err);
+                    onError(e) {
+                        console.log('Failed...');
+                        err(e);
                     },
                 },
             );
