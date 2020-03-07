@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Apply from './pages/Apply';
 import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
-import { Route } from 'react-router-dom';
 import MobileApply from './pages/MobileApply';
 import Admins from './pages/Admins';
 import { Route, Redirect } from 'react-router-dom';
@@ -26,12 +25,12 @@ const checkAdmin = () => {
     return session.stdno === 'admin' && session.name === '오픈이어라운드 관리자, 건들지 마세요';
 };
 
-let mobile = true;
+window.mobile = false;
 function App() {
     console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
         <>
-            {mobile ? (
+            {window.mobile ? (
                 <Route path="/" component={MobileApply} />
             ) : (
                 <>
