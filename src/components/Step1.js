@@ -19,10 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 function Step1({ errors }) {
     const classes = useStyles();
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const handleDateChange = date => {
-        setSelectedDate(date);
-    };
 
     /**************** TextField value ***************/
     const state = useApplyState();
@@ -52,6 +48,19 @@ function Step1({ errors }) {
 
     /***************************************************/
 
+    /******************* Date value *********************/
+    const { birthday } = state.dateFields;
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const handleDateChange = useCallback(date => {
+        setSelectedDate(date);
+        dispatch({
+            type: 'DATE',
+            name: 'birthday',
+            value: new Date(date).toLocaleDateString(),
+        });
+    }, []);
+    /***************************************************/
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -76,11 +85,12 @@ function Step1({ errors }) {
                             error={errors.birthday}
                             disableToolbar
                             variant="inline"
-                            format="yyyy/MM/dd"
+                            format="yyyy-MM-dd"
                             margin="normal"
                             id="date-picker-inline"
                             label="생년월일"
-                            value={selectedDate}
+                            name="birthday"
+                            value={birthday}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',

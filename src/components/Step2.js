@@ -102,7 +102,7 @@ function Step2({ errors }) {
                     </Grid>
                     <Grid item xs={12}>
                         <CssTextField
-                            error={errors.form0}
+                            error={errors.form1}
                             onChange={fieldChange}
                             value={form1}
                             id="form1"

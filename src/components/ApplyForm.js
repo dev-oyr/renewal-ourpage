@@ -65,7 +65,8 @@ export default function Checkout() {
         if (activeStep === 0) {
             dispatch({
                 type: 'CHECK_STEP1',
-                ok() {
+                ok(fields) {
+                    setFieldsError(fields);
                     setActiveStep(activeStep + 1);
                 },
                 err(fields) {
@@ -76,7 +77,8 @@ export default function Checkout() {
         } else if (activeStep === 1) {
             dispatch({
                 type: 'CHECK_STEP2',
-                ok() {
+                ok(fields) {
+                    setFieldsError(fields);
                     setActiveStep(activeStep + 1);
                 },
                 err(fields) {
@@ -99,6 +101,7 @@ export default function Checkout() {
                     `);
                 },
             });
+            setActiveStep(activeStep + 1);
         }
     };
 
