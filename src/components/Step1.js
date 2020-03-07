@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Step1({ handleChange, gender, duty }) {
+function Step1({ errors }) {
     const classes = useStyles();
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = date => {
@@ -40,19 +40,15 @@ function Step1({ handleChange, gender, duty }) {
     /***************************************************/
 
     /**************** Select value ***************/
-
-    // const { gender, duty } = state.textInputs;
-
-    // const handleChange = e => {
-    //     const { name, value } = e.target;
-
-    //     console.log(name, value);
-    //     dispatch({
-    //         type: 'SELECT',
-    //         name,
-    //         value,
-    //     });
-    // };
+    const { gender, duty } = state.selects;
+    const handleChange = useCallback(e => {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'SELECT',
+            name,
+            value,
+        });
+    }, []);
 
     /***************************************************/
 
@@ -64,6 +60,7 @@ function Step1({ handleChange, gender, duty }) {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <TextField
+                        error={errors.name}
                         onChange={textFieldChange}
                         value={name}
                         id="name"
@@ -76,6 +73,7 @@ function Step1({ handleChange, gender, duty }) {
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid item xs={12}>
                         <KeyboardDatePicker
+                            error={errors.birthday}
                             disableToolbar
                             variant="inline"
                             format="yyyy/MM/dd"
@@ -92,7 +90,7 @@ function Step1({ handleChange, gender, duty }) {
                     </Grid>
                 </MuiPickersUtilsProvider>
                 <Grid item xs={12} sm={6}>
-                    <FormControl className={classes.formControl}>
+                    <FormControl error={errors.gender} className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">성별</InputLabel>
                         <Select id="demo-controlled-open-select" name="gender" value={gender} onChange={handleChange}>
                             <MenuItem value={'남자'}>남자</MenuItem>
@@ -102,7 +100,7 @@ function Step1({ handleChange, gender, duty }) {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <FormControl className={classes.formControl}>
+                    <FormControl error={errors.military} className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">군필여부</InputLabel>
                         <Select id="demo-controlled-open-select" name="duty" value={duty} onChange={handleChange}>
                             <MenuItem value={'미필'}>미필</MenuItem>
@@ -112,6 +110,7 @@ function Step1({ handleChange, gender, duty }) {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        error={errors.phone}
                         onChange={textFieldChange}
                         value={phonenumber}
                         id="phonenumber"
@@ -123,6 +122,7 @@ function Step1({ handleChange, gender, duty }) {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        error={errors.email}
                         onChange={textFieldChange}
                         value={email}
                         id="email"
@@ -134,6 +134,7 @@ function Step1({ handleChange, gender, duty }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
+                        error={errors.stdNo}
                         onChange={textFieldChange}
                         value={studentnumber}
                         id="studentnumber"
@@ -145,6 +146,7 @@ function Step1({ handleChange, gender, duty }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
+                        error={errors.major}
                         onChange={textFieldChange}
                         value={department}
                         id="department"
@@ -156,6 +158,7 @@ function Step1({ handleChange, gender, duty }) {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
+                        error={errors.grade}
                         onChange={textFieldChange}
                         value={grade}
                         id="grade"
@@ -169,5 +172,19 @@ function Step1({ handleChange, gender, duty }) {
         </React.Fragment>
     );
 }
+
+Step1.defaultProps = {
+    errors: {
+        name: false,
+        birthday: false,
+        gender: false,
+        military: false,
+        phone: false,
+        email: false,
+        stdNo: false,
+        major: false,
+        grade: false,
+    },
+};
 
 export default Step1;

@@ -63,6 +63,20 @@ function applyReducer(state, action) {
             return {
                 tech: state.tech.concat(action.value),
             };
+        case 'CHECK_STEP1':
+            const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
+            const { gender, duty, ok, err } = state.selects;
+            console.log(name, phonenumber, email, studentnumber, department, grade, gender, duty);
+            if (name && phonenumber && email && studentnumber && department && grade && gender && duty) {
+                ok();
+            } else {
+                console.warn('something is empty');
+                const fields = {};
+                // Object.keys(state.textInputs).forEach((keys) => {
+                //     !state.textInputs[keys] ? fields
+                // })
+            }
+            return state;
         case 'FIREBASE_PATCH':
             console.log(action.gender);
             dbCtrl.submitApplication(
@@ -71,11 +85,11 @@ function applyReducer(state, action) {
                     stdNo: state.textInputs.studentnumber,
                     birthday: '199',
                     email: state.textInputs.email,
-                    gender: action.gender,
+                    gender: state.selects.gender,
                     grade: state.textInputs.grade,
                     introduce: state.fieldInputs.form1,
                     major: state.textInputs.department,
-                    military: action.duty,
+                    military: state.selects.duty,
                     motive: state.fieldInputs.form0,
                     myWish: state.fieldInputs.form2,
                     name: state.textInputs.name,
@@ -88,15 +102,15 @@ function applyReducer(state, action) {
                     projTechStacks: '[]',
                 },
                 {
-                    onSuccess() {
-                        return '지원해주셔서 감사합니다 :)';
+                    onSuccess(res) {
+                        action.onSuccess(res);
                     },
-                    onError() {
-                        return 'Error!';
+                    onError(err) {
+                        action.onError(err);
                     },
                 },
             );
-
+            return state;
         default:
             return state;
     }

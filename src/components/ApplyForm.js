@@ -52,30 +52,48 @@ const useStyles = makeStyles(theme => ({
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
 export default function Checkout() {
-    /**************** Select value ***************/
-    const [info, setInfo] = useState({
-        gender: '',
-        duty: '',
-    });
-    const { gender, duty } = info;
-    const handleChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInfo({ ...info, [name]: value });
-    };
-    /***************************************************/
+    /** 지원서 결과 메시지 */
+    const [resultTxt, setResultTxt] = useState('');
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
 
     const dispatch = useApplyDispatch();
     const handleNext = () => {
-        setActiveStep(activeStep + 1);
-        if (activeStep === 2) {
+        if (activeStep === 0) {
+            dispatch({
+                type: 'CHECK_STEP1',
+
+                ok() {
+                    setActiveStep(activeStep + 1);
+                },
+                err(fields) {},
+            });
+        } else if (activeStep === 1) {
+            dispatch({
+                type: 'CHECK_STEP2',
+
+                ok() {
+                    setActiveStep(activeStep + 1);
+                },
+                err(fields) {},
+            });
+        } else if (activeStep === 2) {
             dispatch({
                 type: 'FIREBASE_PATCH',
-                gender,
-                duty,
+
+                onSuccess(res) {
+                    console.log(res);
+                    setResultTxt('지원해 주셔서 감사합니다! :)');
+                },
+                onError(err) {
+                    console.error(err);
+                    setResultTxt(`
+                        오류가 발생했어요... :'( \n
+                        아래 코드를 문의 해 주시면 신속하게 처리해 드리겠습니다. \n
+                        ${err}
+                    `);
+                },
             });
         }
     };
@@ -87,7 +105,7 @@ export default function Checkout() {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <Step1 handleChange={handleChange} gender={gender} duty={duty} />;
+                return <Step1 />;
             case 1:
                 return <Step2 />;
             case 2:
@@ -114,8 +132,8 @@ export default function Checkout() {
                     <React.Fragment>
                         {activeStep === steps.length ? (
                             <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                    지원해주셔서 감사합니다.
+                                <Typography style={{ whiteSpace: 'pre-line' }} variant="h5" gutterBottom>
+                                    {resultTxt}
                                 </Typography>
                             </React.Fragment>
                         ) : (
