@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Chip from '@material-ui/core/Chip';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import '../styles/apply_form.scss';
 import { techskills, testdata } from '../datas/technicalSkills.json';
+import { useApplyState, useApplyDispatch } from '../context/applyContext';
 
 const CssTextField = withStyles({
     root: {
@@ -41,6 +41,31 @@ const useStyles = makeStyles(theme => ({
 
 function Step2() {
     const classes = useStyles();
+    /**************** TextField value ***************/
+    const state = useApplyState();
+    const dispatch = useApplyDispatch();
+    const { project_name, project_summary, tech, github, subdata } = state.textInputs;
+    const { form0, form1, form2, desc } = state.fieldInputs;
+
+    const textFieldChange = useCallback(e => {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'CHANGE_TEXT',
+            name,
+            value,
+        });
+    }, []);
+
+    const fieldChange = useCallback(e => {
+        const { name, value } = e.target;
+        dispatch({
+            type: 'CHANGE_FIELD',
+            name,
+            value,
+        });
+    }, []);
+    /***************************************************/
+
     return (
         <React.Fragment>
             <Paper className={classes.paper} variant="outlined">
@@ -50,6 +75,8 @@ function Step2() {
                 <Grid container spacing={6}>
                     <Grid item xs={12}>
                         <CssTextField
+                            onChange={fieldChange}
+                            value={form0}
                             className="form"
                             id="form0"
                             name="form0"
@@ -62,6 +89,8 @@ function Step2() {
                     </Grid>
                     <Grid item xs={12}>
                         <CssTextField
+                            onChange={fieldChange}
+                            value={form1}
                             id="form1"
                             name="form1"
                             label="자기소개를 해주세요."
@@ -74,6 +103,8 @@ function Step2() {
 
                     <Grid item xs={12}>
                         <CssTextField
+                            onChange={fieldChange}
+                            value={form2}
                             id="form2"
                             name="form2"
                             label="평소에 만들고 싶었던 웹 서비스가 있나요?"
@@ -92,6 +123,8 @@ function Step2() {
                 <Grid container spacing={6}>
                     <Grid item xs={12}>
                         <TextField
+                            onChange={textFieldChange}
+                            value={project_name}
                             id="project_name"
                             name="project_name"
                             label="프로젝트 이름이 무엇인가요?"
@@ -103,6 +136,8 @@ function Step2() {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
+                            onChange={textFieldChange}
+                            value={project_summary}
                             id="project_summary"
                             name="project_summary"
                             label="프로젝트를 한줄로 설명해주세요."
@@ -115,8 +150,10 @@ function Step2() {
 
                     <Grid item xs={12}>
                         <CssTextField2
-                            id="github"
-                            name="github"
+                            onChange={fieldChange}
+                            value={desc}
+                            id="desc"
+                            name="desc"
                             label="어떤 프로젝트 상세하게 알려주세요"
                             multiline
                             variant="outlined"
@@ -135,6 +172,9 @@ function Step2() {
                             freeSolo
                             renderInput={params => (
                                 <TextField
+                                    onChange={textFieldChange}
+                                    value={tech}
+                                    name="tech"
                                     {...params}
                                     fullWidth
                                     variant="outlined"
@@ -149,6 +189,8 @@ function Step2() {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
+                            onChange={textFieldChange}
+                            value={github}
                             id="github"
                             name="github"
                             label="github 같은 저장소가 있다면 알려주세요."
@@ -160,6 +202,8 @@ function Step2() {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
+                            onChange={textFieldChange}
+                            value={subdata}
                             id="subdata"
                             name="subdata"
                             label="추가로 보여주고 싶으신 자료를 구글드라이브 링크로 올려주세요."

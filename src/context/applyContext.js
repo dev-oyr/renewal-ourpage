@@ -8,6 +8,21 @@ const initialApply = {
         studentnumber: '',
         department: '',
         grade: '',
+        project_name: '',
+        project_summary: '',
+        tech: '',
+        github: '',
+        subdata: '',
+    },
+    fieldInputs: {
+        form0: '',
+        form1: '',
+        form2: '',
+        desc: '',
+    },
+    selects: {
+        gender: '',
+        duty: '',
     },
 };
 
@@ -21,6 +36,24 @@ function applyReducer(state, action) {
                     [action.name]: action.value,
                 },
             };
+        case 'CHANGE_FIELD':
+            return {
+                ...state,
+                fieldInputs: {
+                    ...state.fieldInputs,
+                    [action.name]: action.value,
+                },
+            };
+        case 'SELECT':
+            return {
+                ...state,
+                selects: {
+                    ...state.selects,
+                    [action.name]: action.value,
+                },
+            };
+        case 'FIREBASE_PATCH':
+            return {};
         default:
             return state;
     }

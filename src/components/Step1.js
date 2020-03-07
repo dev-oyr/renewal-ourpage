@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -17,22 +17,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Step1() {
+function Step1({ handleChange, gender, duty }) {
     const classes = useStyles();
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = date => {
         setSelectedDate(date);
-    };
-
-    const [info, setInfo] = useState({
-        gender: '',
-        duty: '',
-    });
-
-    const handleChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInfo({ ...info, [name]: value });
     };
 
     /**************** TextField value ***************/
@@ -49,6 +38,24 @@ function Step1() {
         });
     }, []);
     /***************************************************/
+
+    /**************** Select value ***************/
+
+    // const { gender, duty } = state.textInputs;
+
+    // const handleChange = e => {
+    //     const { name, value } = e.target;
+
+    //     console.log(name, value);
+    //     dispatch({
+    //         type: 'SELECT',
+    //         name,
+    //         value,
+    //     });
+    // };
+
+    /***************************************************/
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -87,7 +94,7 @@ function Step1() {
                 <Grid item xs={12} sm={6}>
                     <FormControl className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">성별</InputLabel>
-                        <Select id="demo-controlled-open-select" name="gender" value={info.gender} onChange={handleChange}>
+                        <Select id="demo-controlled-open-select" name="gender" value={gender} onChange={handleChange}>
                             <MenuItem value={'남자'}>남자</MenuItem>
                             <MenuItem value={'여자'}>여자</MenuItem>
                             <MenuItem value={'알리고 싶지 않음'}>알리고 싶지 않음</MenuItem>
@@ -97,7 +104,7 @@ function Step1() {
                 <Grid item xs={12} sm={6}>
                     <FormControl className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">군필여부</InputLabel>
-                        <Select id="demo-controlled-open-select" name="duty" value={info.duty} onChange={handleChange}>
+                        <Select id="demo-controlled-open-select" name="duty" value={duty} onChange={handleChange}>
                             <MenuItem value={'미필'}>미필</MenuItem>
                             <MenuItem value={'군필 또는 해당사항 없음'}>군필 또는 해당사항 없음</MenuItem>
                         </Select>

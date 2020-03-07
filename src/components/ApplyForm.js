@@ -51,11 +51,24 @@ const useStyles = makeStyles(theme => ({
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
 export default function Checkout() {
+    const [info, setInfo] = useState({
+        gender: '',
+        duty: '',
+    });
+    const { gender, duty } = info;
+    const handleChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInfo({ ...info, [name]: value });
+    };
+
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
+        if (activeStep === 2) {
+        }
     };
 
     const handleBack = () => {
@@ -65,7 +78,7 @@ export default function Checkout() {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <Step1 />;
+                return <Step1 handleChange={handleChange} gender={gender} duty={duty} />;
             case 1:
                 return <Step2 />;
             case 2:
