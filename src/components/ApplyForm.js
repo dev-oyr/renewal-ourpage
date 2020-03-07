@@ -55,6 +55,8 @@ export default function Checkout() {
     /** 지원서 결과 메시지 */
     const [resultTxt, setResultTxt] = useState('');
 
+    const [fieldsError, setFieldsError] = useState({});
+
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
 
@@ -63,30 +65,30 @@ export default function Checkout() {
         if (activeStep === 0) {
             dispatch({
                 type: 'CHECK_STEP1',
-
                 ok() {
                     setActiveStep(activeStep + 1);
                 },
-                err(fields) {},
+                err(fields) {
+                    setFieldsError(fields);
+                },
             });
         } else if (activeStep === 1) {
             dispatch({
                 type: 'CHECK_STEP2',
-
                 ok() {
                     setActiveStep(activeStep + 1);
                 },
-                err(fields) {},
+                err(fields) {
+                    setFieldsError(fields);
+                },
             });
         } else if (activeStep === 2) {
             dispatch({
                 type: 'FIREBASE_PATCH',
-
-                onSuccess(res) {
-                    console.log(res);
+                ok(res) {
                     setResultTxt('지원해 주셔서 감사합니다! :)');
                 },
-                onError(err) {
+                err(err) {
                     console.error(err);
                     setResultTxt(`
                         오류가 발생했어요... :'( \n
@@ -105,9 +107,9 @@ export default function Checkout() {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <Step1 />;
+                return <Step1 errors={fieldsError} />;
             case 1:
-                return <Step2 />;
+                return <Step2 errors={fieldsError} />;
             case 2:
                 return <Step3 />;
             default:

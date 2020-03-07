@@ -28,6 +28,7 @@ const initialApply = {
 };
 
 function applyReducer(state, action) {
+    const { ok, err } = action;
     switch (action.type) {
         case 'CHANGE_TEXT':
             return {
@@ -57,19 +58,36 @@ function applyReducer(state, action) {
             return {};
         case 'CHECK_STEP1':
             const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
-            const { gender, duty, ok, err } = state.selects;
-            console.log(name, phonenumber, email, studentnumber, department, grade, gender, duty);
+            const { gender, duty } = state.selects;
             if (name && phonenumber && email && studentnumber && department && grade && gender && duty) {
                 ok();
             } else {
                 console.warn('something is empty');
                 const fields = {};
-                // Object.keys(state.textInputs).forEach((keys) => {
-                //     !state.textInputs[keys] ? fields
-                // })
+                Object.keys(state.textInputs).forEach(key => {
+                    !state.textInputs[key] ? (fields[key] = true) : (fields[key] = false);
+                });
+                Object.keys(state.selects).forEach(key => {
+                    !state.selects[key] ? (fields[key] = true) : (fields[key] = false);
+                });
+                err(fields);
+            }
+            return state;
+        case 'CHECK_STEP2':
+            const { form0, form1 } = state.fieldInputs;
+            if (form0 && form1) {
+                ok();
+            } else {
+                console.warn('something is empty');
+                const fields = {};
+                Object.keys(state.fieldInputs).forEach(key => {
+                    !state.fieldInputs[key] ? (fields[key] = true) : (fields[key] = false);
+                });
+                err(fields);
             }
             return state;
         case 'FIREBASE_PATCH':
+            console.log('firebase patch');
             dbCtrl.submitApplication(
                 '2020-1',
                 {
@@ -94,10 +112,10 @@ function applyReducer(state, action) {
                 },
                 {
                     onSuccess(res) {
-                        action.onSuccess(res);
+                        ok(res);
                     },
                     onError(err) {
-                        action.onError(err);
+                        err(err);
                     },
                 },
             );
