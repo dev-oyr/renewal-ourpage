@@ -53,6 +53,8 @@ function applyReducer(state, action) {
                     [action.name]: action.value,
                 },
             };
+        case 'TECH':
+            return {};
         case 'FIREBASE_PATCH':
             dbCtrl.submitApplication(
                 '2020-1',
@@ -60,11 +62,11 @@ function applyReducer(state, action) {
                     stdNo: state.textInputs.studentnumber,
                     birthday: '199',
                     email: state.textInputs.email,
-                    gender: state.selects.gender,
+                    gender: action.gender,
                     grade: state.textInputs.grade,
                     introduce: state.fieldInputs.form1,
                     major: state.textInputs.department,
-                    military: state.selects.duty,
+                    military: action.duty,
                     motive: state.fieldInputs.form0,
                     myWish: state.fieldInputs.form2,
                     name: state.textInputs.name,

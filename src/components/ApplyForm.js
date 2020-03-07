@@ -74,6 +74,8 @@ export default function Checkout() {
         if (activeStep === 2) {
             dispatch({
                 type: 'FIREBASE_PATCH',
+                gender,
+                duty,
             });
         }
     };
