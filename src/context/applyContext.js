@@ -25,10 +25,18 @@ const initialApply = {
         gender: '',
         duty: '',
     },
+    dateFields: {
+        birthday: new Date().toLocaleDateString(),
+    },
 };
 
 function applyReducer(state, action) {
+    const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
+    const { form0, form1 } = state.fieldInputs;
+    const { gender, duty } = state.selects;
+    const { birthday } = state.dateFields;
     const { ok, err } = action;
+    const errFields = {};
     switch (action.type) {
         case 'CHANGE_TEXT':
             return {
@@ -54,36 +62,42 @@ function applyReducer(state, action) {
                     [action.name]: action.value,
                 },
             };
+        case 'DATE':
+            return {
+                ...state,
+                dateFields: {
+                    ...state.dateFields,
+                    [action.name]: action.value,
+                },
+            };
         case 'TECH':
             return {};
         case 'CHECK_STEP1':
-            const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
-            const { gender, duty } = state.selects;
-            if (name && phonenumber && email && studentnumber && department && grade && gender && duty) {
-                ok();
+            Object.keys(state.textInputs).forEach(key => {
+                !state.textInputs[key] ? (errFields[key] = true) : (errFields[key] = false);
+            });
+            Object.keys(state.selects).forEach(key => {
+                !state.selects[key] ? (errFields[key] = true) : (errFields[key] = false);
+            });
+            Object.keys(state.dateFields).forEach(key => {
+                !state.dateFields[key] ? (errFields[key] = true) : (errFields[key] = false);
+            });
+            if (name && phonenumber && email && birthday && studentnumber && department && grade && gender && duty) {
+                ok(errFields);
             } else {
                 console.warn('something is empty');
-                const fields = {};
-                Object.keys(state.textInputs).forEach(key => {
-                    !state.textInputs[key] ? (fields[key] = true) : (fields[key] = false);
-                });
-                Object.keys(state.selects).forEach(key => {
-                    !state.selects[key] ? (fields[key] = true) : (fields[key] = false);
-                });
-                err(fields);
+                err(errFields);
             }
             return state;
         case 'CHECK_STEP2':
-            const { form0, form1 } = state.fieldInputs;
+            Object.keys(state.fieldInputs).forEach(key => {
+                !state.fieldInputs[key] ? (errFields[key] = true) : (errFields[key] = false);
+            });
             if (form0 && form1) {
-                ok();
+                ok(errFields);
             } else {
                 console.warn('something is empty');
-                const fields = {};
-                Object.keys(state.fieldInputs).forEach(key => {
-                    !state.fieldInputs[key] ? (fields[key] = true) : (fields[key] = false);
-                });
-                err(fields);
+                err(errFields);
             }
             return state;
         case 'FIREBASE_PATCH':
@@ -92,7 +106,7 @@ function applyReducer(state, action) {
                 '2020-1',
                 {
                     stdNo: state.textInputs.studentnumber,
-                    birthday: '199',
+                    birthday: state.dateFields.birthday,
                     email: state.textInputs.email,
                     gender: state.selects.gender,
                     grade: state.textInputs.grade,

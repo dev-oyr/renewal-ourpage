@@ -146,6 +146,7 @@ const dbCtrl = {
                 birthday: form.birthday,
                 email: form.email,
                 gender: form.gender,
+                grade: form.grade,
                 introduce: form.introduce,
                 major: form.major,
                 military: form.military,
