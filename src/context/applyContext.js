@@ -11,7 +11,6 @@ const initialApply = {
         grade: '',
         project_name: '',
         project_summary: '',
-        tech: '',
         github: '',
         subdata: '',
     },
@@ -25,6 +24,12 @@ const initialApply = {
         gender: '',
         duty: '',
     },
+    tech: [
+        {
+            id: 1,
+            stack: 'cccc',
+        },
+    ],
 };
 
 function applyReducer(state, action) {
@@ -54,8 +59,12 @@ function applyReducer(state, action) {
                 },
             };
         case 'TECH':
-            return {};
+            console.log('-----', state.tech);
+            return {
+                tech: state.tech.concat(action.value),
+            };
         case 'FIREBASE_PATCH':
+            console.log(action.gender);
             dbCtrl.submitApplication(
                 '2020-1',
                 {

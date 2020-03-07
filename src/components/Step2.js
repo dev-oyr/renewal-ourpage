@@ -44,8 +44,10 @@ function Step2() {
     /**************** TextField value ***************/
     const state = useApplyState();
     const dispatch = useApplyDispatch();
-    const { project_name, project_summary, tech, github, subdata } = state.textInputs;
+    const { project_name, project_summary, github, subdata } = state.textInputs;
     const { form0, form1, form2, desc } = state.fieldInputs;
+    const tech = state.tech.stack;
+    console.log(tech);
 
     const textFieldChange = useCallback(e => {
         const { name, value } = e.target;
@@ -61,6 +63,14 @@ function Step2() {
         dispatch({
             type: 'CHANGE_FIELD',
             name,
+            value,
+        });
+    }, []);
+
+    const techChange = useCallback(e => {
+        const { value } = e.target;
+        dispatch({
+            type: 'TECH',
             value,
         });
     }, []);
@@ -165,7 +175,7 @@ function Step2() {
                         <Autocomplete
                             multiple
                             id="techstack"
-                            onChange={textFieldChange}
+                            onChange={techChange}
                             value={tech}
                             name="tech"
                             options={techskills}
@@ -182,9 +192,6 @@ function Step2() {
                                     placeholder="ex) C C++ JAVA"
                                 />
                             )}
-                            onChange={(obj, val) => {
-                                console.log(val);
-                            }}
                         />
                     </Grid>
                     <Grid item xs={12}>
