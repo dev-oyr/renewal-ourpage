@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -50,31 +50,43 @@ const useStyles = makeStyles(theme => ({
 
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
-function getStepContent(step) {
-    switch (step) {
-        case 0:
-            return <Step1 />;
-        case 1:
-            return <Step2 />;
-        case 2:
-            return <Step3 />;
-        default:
-            throw new Error('Unknown step');
-    }
-}
-
 export default function Checkout() {
+    const [info, setInfo] = useState({
+        gender: '',
+        duty: '',
+    });
+    const { gender, duty } = info;
+    const handleChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInfo({ ...info, [name]: value });
+    };
+
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+    const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
+        if (activeStep === 2) {
+        }
     };
 
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
 
+    function getStepContent(step) {
+        switch (step) {
+            case 0:
+                return <Step1 handleChange={handleChange} gender={gender} duty={duty} />;
+            case 1:
+                return <Step2 />;
+            case 2:
+                return <Step3 />;
+            default:
+                throw new Error('Unknown step');
+        }
+    }
     return (
         <React.Fragment>
             <CssBaseline />

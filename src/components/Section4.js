@@ -42,7 +42,7 @@ function Section4() {
             <div className="responsive">
                 <div className="inner-header">
                     <Fade bottom distance="108px" fraction={1}>
-                        <div className="header-font kr">동아리 연혁</div>
+                        <div className="header-font kr">우리들의 역사</div>
                     </Fade>
                 </div>
                 <div className="inner-content">

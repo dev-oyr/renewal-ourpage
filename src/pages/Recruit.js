@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
+import { Button, Link } from '@material-ui/core';
 import {
     Scheduler,
     MonthView,
@@ -10,30 +11,35 @@ import {
     AppointmentTooltip,
     TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import '../styles/recruit.scss';
 import RecruitCircle from '../components/RecruitCircle';
 import recruitStep from '../datas/recruitStep.json';
+import { Redirect } from 'react-router-dom';
 
-const dummyDate = [
-    {
-        startDate: '2020-02-20 10:00',
-        endDate: '2020-02-21 11:00',
-        title: '면접 기간',
-    },
-    {
-        startDate: '2020-02-10 18:00',
-        endDate: '2020-02-10 19:30',
-        title: '지원서 접수',
-    },
-    {
-        startDate: '2020-02-24 00:00',
-        endDate: '2020-02-24 23:00',
-        title: '군자동 털림...ㅜㅜ',
-        allDay: 1,
-    },
-];
+const convertDate = (dateStr, additional = '') => {
+    let dt = dateStr;
+    dt = dt.replace('년 ', '-');
+    dt = dt.replace('월 ', '-');
+    dt = dt.replace('일 ', '');
+    dt = dt.replace(dt.substr(dt.indexOf('('), dt.indexOf(')') + 1), '');
+    dt += ' ';
+    dt += additional;
+    return dt;
+};
+
+let dates = [];
+Object.keys(recruitStep).forEach(step => {
+    dates.push({
+        startDate:
+            recruitStep[step].str_day === ''
+                ? convertDate(recruitStep[step].end_day, recruitStep[step].time_range['s'])
+                : convertDate(recruitStep[step].str_day, recruitStep[step].time_range['s']),
+        endDate: convertDate(recruitStep[step].end_day, recruitStep[step].time_range['e']),
+        title: recruitStep[step].title,
+    });
+});
 
 const theme = createMuiTheme({ palette: { type: 'light', primary: red } });
 
@@ -79,7 +85,30 @@ const MonthViewComp = ({ children, style, ...restProps }) => (
     </MonthView.TimeTableCell>
 );
 
+const useStyles = makeStyles(theme => ({
+    applybutton: {
+        display: 'flex',
+        maxWidth: '360px',
+        height: '56px',
+        margin: '0 auto',
+        marginBottom: '5.5%',
+        color: 'white',
+        fontSize: '16px',
+        backgroundColor: '#ff6d70',
+        '&:hover': {
+            backgroundColor: '#ff6d70',
+        },
+    },
+}));
+
 function Recruit() {
+    const classes = useStyles();
+    const [toApply, gotoApply] = useState(false);
+
+    const handleApply = () => {
+        gotoApply(true);
+    };
+
     return (
         <div className="responsive">
             <div className="target">
@@ -92,22 +121,26 @@ function Recruit() {
             <div className="target">
                 <div className="kr header-font">2020 오픈이어라운드 모집절차</div>
                 <div className="recruits-wrapper">
-                    {Object.keys(recruitStep).map((step, key) => (
-                        <RecruitCircle
-                            key={key}
-                            step={step}
-                            image={recruitStep[step].image}
-                            str_day={recruitStep[step].str_day}
-                            end_day={recruitStep[step].end_day}
-                            title={recruitStep[step].title}
-                        ></RecruitCircle>
-                    ))}
+                    {Object.keys(recruitStep).map((step, key) =>
+                        key < 4 ? (
+                            <RecruitCircle
+                                key={key}
+                                step={step}
+                                image={recruitStep[step].image}
+                                str_day={recruitStep[step].str_day}
+                                end_day={recruitStep[step].end_day}
+                                title={recruitStep[step].title}
+                            ></RecruitCircle>
+                        ) : (
+                            false
+                        ),
+                    )}
                 </div>
                 <div className="schedule-wrapper">
                     <div className="section-calendar">
                         <MuiThemeProvider theme={theme}>
                             <Paper>
-                                <Scheduler data={dummyDate}>
+                                <Scheduler data={dates}>
                                     <ViewState defaultCurrentDate={new Date()} />
                                     <MonthView timeTableCellComponent={MonthViewComp} />
                                     <Toolbar />
@@ -122,6 +155,10 @@ function Recruit() {
                     {/* <div className="section-list"></div> */}
                 </div>
             </div>
+            {toApply ? <Redirect push to="/apply"></Redirect> : false}
+            <Button fullWidth variant="contained" color="primary" className={classes.applybutton} onClick={handleApply}>
+                지금 지원하기
+            </Button>
         </div>
     );
 }

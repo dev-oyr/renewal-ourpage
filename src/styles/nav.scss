@@ -58,6 +58,10 @@ input {
     align-items: center;
     border-right: 1px solid rgb(229, 229, 229);
     padding-right: 22px;
+
+    & span + span {
+        margin-left: 8px;
+    }
 }
 .nav_list span,
 .nav_list li {
@@ -73,7 +77,7 @@ input {
 }
 
 .nav_button {
-    padding-left: 30px;
+    padding-left: 22px;
 }
 .nav_button button {
     cursor: pointer;
