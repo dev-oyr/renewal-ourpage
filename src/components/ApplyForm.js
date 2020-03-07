@@ -52,19 +52,6 @@ const useStyles = makeStyles(theme => ({
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
 export default function Checkout() {
-    /**************** Select value ***************/
-    const [info, setInfo] = useState({
-        gender: '',
-        duty: '',
-    });
-    const { gender, duty } = info;
-    const handleChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInfo({ ...info, [name]: value });
-    };
-    /***************************************************/
-
     /** 지원서 결과 메시지 */
     const [resultTxt, setResultTxt] = useState('');
 
@@ -73,12 +60,28 @@ export default function Checkout() {
 
     const dispatch = useApplyDispatch();
     const handleNext = () => {
-        setActiveStep(activeStep + 1);
-        if (activeStep === 2) {
+        if (activeStep === 0) {
+            dispatch({
+                type: 'CHECK_STEP1',
+
+                ok() {
+                    setActiveStep(activeStep + 1);
+                },
+                err(fields) {},
+            });
+        } else if (activeStep === 1) {
+            dispatch({
+                type: 'CHECK_STEP2',
+
+                ok() {
+                    setActiveStep(activeStep + 1);
+                },
+                err(fields) {},
+            });
+        } else if (activeStep === 2) {
             dispatch({
                 type: 'FIREBASE_PATCH',
-                gender,
-                duty,
+
                 onSuccess(res) {
                     console.log(res);
                     setResultTxt('지원해 주셔서 감사합니다! :)');
@@ -102,7 +105,7 @@ export default function Checkout() {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <Step1 handleChange={handleChange} gender={gender} duty={duty} />;
+                return <Step1 />;
             case 1:
                 return <Step2 />;
             case 2:
