@@ -33,6 +33,11 @@ function AdminApplications() {
                 setApplicants(!res ? {} : res);
             },
         });
+        dbCtrl.onApplicationUpdated('2020-1', {
+            onSuccess(res) {
+                setApplicants(!res ? {} : res);
+            },
+        });
     }, []);
 
     const selectApplicant = selection => {};
