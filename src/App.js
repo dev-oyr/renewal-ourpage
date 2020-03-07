@@ -10,6 +10,9 @@ import Apply from './pages/Apply';
 import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import { Route } from 'react-router-dom';
+import MobileApply from './pages/MobileApply';
+import Admins from './pages/Admins';
+import { Route, Redirect } from 'react-router-dom';
 import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
 
 // 임시로 전역 객체로 등록한 거임!!
@@ -17,20 +20,33 @@ window.firebase = firebase;
 window.fbdb = fbdb;
 window.dbCtrl = dbCtrl;
 
+const checkAdmin = () => {
+    const session = JSON.parse(sessionStorage.getItem('currentUser'));
+    if (session === null) return false;
+    return session.stdno === 'admin' && session.name === '오픈이어라운드 관리자, 건들지 마세요';
+};
+
+let mobile = true;
 function App() {
     console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
         <>
-            <Nav current="mail"></Nav>
-            <Wrapper>
-                <Route path="/" component={Main} exact />
-                <Route path="/recruit" component={Recruit} />
-                <Route path="/faq/:id" component={FAQ} />
-                <Route path="/login" component={Login} />
-                <Route path="/apply" component={Apply} />
-                <Route path="/cardpage/:title" component={CardPage} />
-            </Wrapper>
-            <Footer></Footer>
+            {mobile ? (
+                <Route path="/" component={MobileApply} />
+            ) : (
+                <>
+                    <Nav current="mail"></Nav>
+                    <Wrapper>
+                        <Route path="/" component={Main} exact />
+                        <Route path="/recruit" component={Recruit} />
+                        <Route path="/faq/:id" component={FAQ} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/apply" component={Apply} />
+                        <Route path="/cardpage/:title" component={CardPage} />
+                    </Wrapper>
+                    <Footer></Footer>
+                </>
+            )}
         </>
     );
 }
