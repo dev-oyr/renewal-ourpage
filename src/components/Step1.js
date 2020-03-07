@@ -76,7 +76,7 @@ function Step1({ errors }) {
                         name="name"
                         label="이름"
                         fullWidth
-                        placeholder="ex)신동민"
+                        placeholder="ex)홍길동"
                     />
                 </Grid>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -151,7 +151,7 @@ function Step1({ errors }) {
                         name="studentnumber"
                         label="학번"
                         fullWidth
-                        placeholder="ex)17011558"
+                        placeholder="ex)20123456"
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>

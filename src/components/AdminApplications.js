@@ -233,8 +233,8 @@ function AdminApplications() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        {Array.isArray(selection.projTechStacks)
-                            ? selection.projTechStacks.map((value, id) => <Chip label={value} key={id} style={{ margin: 4 }} />)
+                        {!!selection.projTechStacks && Array.isArray(JSON.parse(selection.projTechStacks))
+                            ? JSON.parse(selection.projTechStacks).map((value, id) => <Chip label={value} key={id} style={{ margin: 4 }} />)
                             : false}
                     </Grid>
                     <Grid item xs={12}>

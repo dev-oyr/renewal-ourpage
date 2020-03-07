@@ -24,7 +24,7 @@ const initialApply = {
         gender: '',
         duty: '',
     },
-    tech: ['cccccc'],
+    tech: [],
     dateFields: {
         birthday: new Date().toLocaleDateString(),
     },
@@ -71,9 +71,9 @@ function applyReducer(state, action) {
                 },
             };
         case 'TECH':
-            console.log('-----------------------', state.tech.concat(action.value));
             return {
-                tech: state.tech.concat(action.value),
+                ...state,
+                tech: action.value,
             };
 
         case 'CHECK_STEP1':
@@ -126,7 +126,7 @@ function applyReducer(state, action) {
                     projName: state.textInputs.project_name,
                     projOtherLink: state.textInputs.subdata,
                     projSummary: state.textInputs.project_summary,
-                    projTechStacks: '[]',
+                    projTechStacks: JSON.stringify(state.tech),
                 },
                 {
                     onSuccess(res) {

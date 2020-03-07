@@ -45,11 +45,9 @@ function Step2({ errors }) {
     const state = useApplyState();
     const dispatch = useApplyDispatch();
     const { project_name, project_summary, github, subdata } = state.textInputs;
-
     const { form0, form1, form2, desc } = state.fieldInputs;
-
     const tech = state.tech;
-    console.log('현재상태는 !', tech);
+
     const textFieldChange = useCallback(e => {
         const { name, value } = e.target;
         dispatch({
@@ -68,12 +66,11 @@ function Step2({ errors }) {
         });
     }, []);
 
-    const techChange = useCallback(e => {
-        const { value } = e.target;
-        console.log('이벤트 value', value);
+    const techChange = useCallback((e, v) => {
+        console.log(v);
         dispatch({
             type: 'TECH',
-            value,
+            value: v,
         });
     }, []);
     /***************************************************/
@@ -180,14 +177,14 @@ function Step2({ errors }) {
                             multiple
                             id="techstack"
                             name="tech"
+                            onChange={techChange}
+                            value={tech}
                             options={techskills}
                             getOptionLabel={option => option}
                             filterSelectedOptions
                             freeSolo
                             renderInput={params => (
                                 <TextField
-                                    onChange={techChange}
-                                    value={tech}
                                     name="tech"
                                     {...params}
                                     fullWidth

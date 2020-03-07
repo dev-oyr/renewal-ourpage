@@ -10,7 +10,7 @@ function FAQ() {
                 <div className="faq">
                     <div className="kr header-font">OpenYearRound의 FAQ게시판 입니다.</div>
                     <div className="kr desc-font">
-                        원하는 질문이 없는 경우에는 하단의 이메일이나 카카오톡 플러스친구를 통해 문의 해주시기 바랍니다.
+                        원하는 질문이 없는 경우에는 이메일() 이나 카카오톡 플러스친구(@openyearround) 를 통해 문의 해주시기 바랍니다.
                     </div>
 
                     <div className="subRoute">

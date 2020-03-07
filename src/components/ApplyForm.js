@@ -71,7 +71,6 @@ export default function Checkout() {
                 },
                 err(fields) {
                     setFieldsError(fields);
-                    setActiveStep(activeStep + 1);
                 },
             });
         } else if (activeStep === 1) {
@@ -83,7 +82,6 @@ export default function Checkout() {
                 },
                 err(fields) {
                     setFieldsError(fields);
-                    setActiveStep(activeStep + 1);
                 },
             });
         } else if (activeStep === 2) {
@@ -96,7 +94,7 @@ export default function Checkout() {
                     console.error(err);
                     setResultTxt(`
                         오류가 발생했어요... :'( \n
-                        아래 코드를 문의 해 주시면 신속하게 처리해 드리겠습니다. \n
+                        아래 코드를 카카오톡 플러스친구(@openyearround) 나 이메일() 로 문의 해 주시면 신속하게 처리해 드리겠습니다. \n
                         ${err}
                     `);
                 },
