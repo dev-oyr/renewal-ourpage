@@ -64,6 +64,7 @@ function Step1({ handleChange, gender, duty }) {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <TextField
+                        error
                         onChange={textFieldChange}
                         value={name}
                         id="name"

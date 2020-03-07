@@ -55,6 +55,9 @@ function applyReducer(state, action) {
             };
         case 'TECH':
             return {};
+        case 'CHECK_STEP1':
+            const { name, phonenumber, email, studentnumber, department, grade } = initialApply.textInputs;
+            return state;
         case 'FIREBASE_PATCH':
             dbCtrl.submitApplication(
                 '2020-1',
@@ -79,15 +82,15 @@ function applyReducer(state, action) {
                     projTechStacks: '[]',
                 },
                 {
-                    onSuccess() {
-                        return '지원해주셔서 감사합니다 :)';
+                    onSuccess(res) {
+                        action.onSuccess(res);
                     },
-                    onError() {
-                        return 'Error!';
+                    onError(err) {
+                        action.onError(err);
                     },
                 },
             );
-
+            return state;
         default:
             return state;
     }
