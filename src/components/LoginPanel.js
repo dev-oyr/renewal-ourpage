@@ -128,7 +128,14 @@ function LoginPannel() {
         console.log(account);
     };
 
-    return (
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            console.log(window.event);
+            loginCheck();
+        }
+    }
+
+    https: return (
         <>
             <div className={classes.paper} noValidate>
                 <form className={classes.form} noValidate>
@@ -143,6 +150,7 @@ function LoginPannel() {
                         autoFocus
                         className={classes.input}
                         onChange={handleChange}
+                        onKeyDown={enterkey}
                     />
                     <CssTextField
                         error={account.checkPassword}
@@ -155,8 +163,16 @@ function LoginPannel() {
                         id="password"
                         className={classes.input}
                         onChange={handleChange}
+                        onKeyDown={enterkey}
                     />
-                    <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.login_button}
+                        onClick={loginCheck}
+                        onKeyDown={enterkey}
+                    >
                         로그인
                     </Button>
                 </form>
