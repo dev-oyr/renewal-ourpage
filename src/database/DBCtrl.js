@@ -124,6 +124,7 @@ const dbCtrl = {
             birthday: '<생년월일>',
             email: '<이메일>',
             gender: '<성별>',
+            grade: '<학년/학기>',
             introduce: '<자기소개>',
             major: '<학과>',
             military: '<군필여부>',
