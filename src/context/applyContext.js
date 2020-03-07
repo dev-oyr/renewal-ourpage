@@ -1,4 +1,5 @@
 import React, { useReducer, useContext, createContext } from 'react';
+import { dbCtrl } from '../database/DBCtrl';
 
 const initialApply = {
     textInputs: {
@@ -53,7 +54,38 @@ function applyReducer(state, action) {
                 },
             };
         case 'FIREBASE_PATCH':
-            return {};
+            dbCtrl.submitApplication(
+                '2020-1',
+                {
+                    stdNo: state.textInputs.studentnumber,
+                    birthday: '199',
+                    email: state.textInputs.email,
+                    gender: state.selects.gender,
+                    grade: state.textInputs.grade,
+                    introduce: state.fieldInputs.form1,
+                    major: state.textInputs.department,
+                    military: state.selects.duty,
+                    motive: state.fieldInputs.form0,
+                    myWish: state.fieldInputs.form2,
+                    name: state.textInputs.name,
+                    phone: state.textInputs.phonenumber,
+                    projDetail: state.fieldInputs.desc,
+                    projGithub: state.textInputs.github,
+                    projName: state.textInputs.project_name,
+                    projOtherLink: state.textInputs.subdata,
+                    projSummary: state.textInputs.project_summary,
+                    projTechStacks: '[]',
+                },
+                {
+                    onSuccess() {
+                        return '지원해주셔서 감사합니다 :)';
+                    },
+                    onError() {
+                        return 'Error!';
+                    },
+                },
+            );
+
         default:
             return state;
     }
