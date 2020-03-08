@@ -7,6 +7,8 @@ import Zoom from 'react-reveal/Zoom';
 function CardHeader({ image }) {
     var style = {
         backgroundImage: 'url(' + image + ')',
+        backgroundPosition: 'center',
+        backgroundColor: 'white',
     };
     return (
         <header style={style} id={image} className="card-header">
@@ -38,10 +40,10 @@ function CardBody({ title, contents, day }) {
     );
 }
 
-function Card({ title, contents, day, id }) {
+function Card({ title, contents, day, id, image }) {
     return (
         <article className="card">
-            <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
+            <CardHeader image={image} />
             <CardBody title={title} contents={contents} day={day} id={id} />
         </article>
     );

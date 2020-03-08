@@ -5,6 +5,7 @@ import { FiChevronsRight } from 'react-icons/fi';
 function RecruitCircle({ step, image, title, str_day, end_day }) {
     const img = {
         backgroundImage: `url(${image})`,
+        backgroundPosition: 'center',
     };
     const right = {
         paddingTop: '9%',

@@ -6,8 +6,8 @@ import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-
 import Zoom from 'react-reveal/Zoom';
+import { 진행된프로젝트, 공모전수상, 총회원수 } from '../datas/projectCounts.json';
 
 function Section3() {
     const nameInput = useRef();
@@ -27,23 +27,23 @@ function Section3() {
 
     const useCountUps = [
         useCountUp({
-            start: 1000,
-            end: 107,
+            start: 0,
+            end: 진행된프로젝트,
             duration: 3,
             prefix: '0',
         }),
         useCountUp({
-            start: 60,
-            end: 24,
+            start: 0,
+            end: 공모전수상,
             duration: 3,
-            prefix: '00',
+            prefix: '0',
             useEasing: false,
         }),
         useCountUp({
-            start: 70,
-            end: 15,
+            start: 0,
+            end: 총회원수,
             duration: 3,
-            prefix: '00',
+            prefix: '0',
             useEasing: false,
         }),
     ];
@@ -76,7 +76,7 @@ function Section3() {
                         </span>
                         <span className="count">
                             <div>{useCountUps[2].countUp}</div>
-                            <p>스터디 진행</p>
+                            <p>총 회원 수</p>
                         </span>
                     </div>
                 </Fade>
@@ -90,6 +90,7 @@ function Section3() {
                                     title={act}
                                     day={activities[act].day}
                                     contents={activities[act].content}
+                                    image={`${activities[act].image}`}
                                     key={key}
                                     id={key}
                                 ></Card>
@@ -98,7 +99,13 @@ function Section3() {
                 </Fade>
 
                 <div className="moreButton">
-                    <ColorButton variant="contained" color="primary">
+                    <ColorButton
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            alert('아직 준비 중입니다.');
+                        }}
+                    >
                         <p className="kr" ref={nameInput}>
                             프로젝트 더 보기
                         </p>

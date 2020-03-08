@@ -11,7 +11,6 @@ const checkAdmin = () => {
 };
 
 function Admins() {
-    const [redirect, setRedirect] = useState(false);
     if (!checkAdmin()) document.location.replace('/');
 
     const [value, setValue] = React.useState(0);
@@ -21,8 +20,7 @@ function Admins() {
 
     return (
         <>
-            {redirect ? <Redirect push to="/"></Redirect> : false}
-            <div className="responsive">
+            <div className="responsive" style={{ marginTop: '-48px' }}>
                 <Tabs value={value} indicatorColor="primary" onChange={handleChange}>
                     <Tab label="지원서 조회" />
                     <Tab label="회원 관리" />
