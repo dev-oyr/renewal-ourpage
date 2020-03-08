@@ -1,0 +1,85 @@
+$pointColor: #ff6d70;
+.MuiTypography-h4,
+.MuiTypography-body2,
+.MuiTypography-h6,
+.MuiInputBase-root,
+.MuiButton-root,
+.MuiFormLabel-root {
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
+.MuiChip-root {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.MuiTypography-body2 {
+    font-size: 1.2rem !important;
+}
+
+.headerText {
+    margin-bottom: 24px;
+}
+.headerText2 {
+    margin-bottom: 48px;
+}
+.headerText3 {
+    margin-top: 60px;
+    margin-bottom: 48px;
+}
+#nec {
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: -1.8px;
+    text-align: left;
+    color: #ff3e85;
+}
+
+.MuiGrid-spacing-xs-6 > .MuiGrid-item {
+    padding: 12px 24px !important;
+}
+.MuiStepIcon-root.MuiStepIcon-active,
+.MuiStepIcon-root.MuiStepIcon-completed {
+    color: $pointColor !important;
+}
+.MuiPickersDay-daySelected,
+.MuiPickersToolbar-toolbar {
+    background-color: $pointColor !important;
+}
+.MuiTypography-colorPrimary {
+    color: $pointColor !important;
+}
+
+.optional::after {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    content: ' (optional)';
+    letter-spacing: -0.01875rem;
+    color: #b2c0cc;
+    padding-left: 8px;
+}
+
+.step3_Header {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.46;
+    letter-spacing: -1.4px;
+    color: #333333;
+
+    margin-bottom: 10px;
+}
+.step3_desc {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.64;
+    letter-spacing: -1.1px;
+    color: #333333;
+}

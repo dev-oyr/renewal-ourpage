@@ -1,9 +1,13 @@
 import React from 'react';
 import '../styles/cardview.scss';
+import { Link } from 'react-router-dom';
+import { FaAngleRight } from 'react-icons/fa';
 
 function CardHeader({ image }) {
     var style = {
         backgroundImage: 'url(' + image + ')',
+        backgroundPosition: 'center',
+        backgroundColor: 'white',
     };
     return (
         <header style={style} id={image} className="card-header">
@@ -11,33 +15,35 @@ function CardHeader({ image }) {
         </header>
     );
 }
-function Button() {
+function Button({ title }) {
     return (
         <button className="button button-primary">
-            <i className="fa fa-chevron-right"></i> 자세히
+            <Link to={`/cardpage/${title}`}>
+                <FaAngleRight color={'#ff6d70'}></FaAngleRight> <span className="more en">more</span>
+            </Link>
         </button>
     );
 }
 
-function CardBody({ title, contents }) {
+function CardBody({ title, contents, day }) {
     return (
         <div className="card-body">
-            <p className="date">OYR 7th</p>
+            <p className="date en">{day}</p>
 
-            <h2 className="header-font en">{title}</h2>
+            <h2 className="title kr">{title}</h2>
 
-            <p className="body-content desc-font kr">{contents}</p>
+            <p className="body-content kr">{contents}</p>
 
-            <Button />
+            <Button title={title} />
         </div>
     );
 }
 
-function Card({ title, contents }) {
+function Card({ title, contents, day, id, image }) {
     return (
         <article className="card">
-            <CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
-            <CardBody title={title} contents={contents} />
+            <CardHeader image={image} />
+            <CardBody title={title} contents={contents} day={day} id={id} />
         </article>
     );
 }

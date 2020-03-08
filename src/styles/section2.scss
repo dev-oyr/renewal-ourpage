@@ -1,0 +1,78 @@
+$pointColor: #ff6d70;
+$fontPrimary: #333333;
+$fontSecondary: #666666;
+$fontInActive: #999999;
+
+.section2 {
+    margin: 0;
+    padding-top: calc(50vh - 220px);
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: column;
+
+    & .icons-wrapper {
+        align-self: center;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 420px;
+
+        & img {
+            height: 64px;
+            width: 64px;
+            filter: invert(0.666);
+            transition: filter, transform 0.3s;
+
+            &.active {
+                filter: invert(0.333);
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+img + img {
+    margin-left: 12px;
+}
+
+.slider-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 36px 32px 16px 32px;
+
+    & span {
+        max-width: 360px;
+    }
+}
+
+.introduce {
+    &.inner-header {
+        & .header-font {
+            font-size: 48px;
+            text-align: center;
+        }
+    }
+
+    &.inner-content {
+        width: 100%;
+        padding: 0;
+
+        & .comments-wrapper {
+            display: flex;
+            justify-content: center;
+            height: 16vh;
+
+            & p {
+                position: absolute;
+                width: 90%;
+                white-space: pre-line;
+                word-break: keep-all;
+                text-align: center;
+            }
+        }
+    }
+}

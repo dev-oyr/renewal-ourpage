@@ -1,0 +1,27 @@
+.circle-section {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .desc-font {
+        font-size: 16px;
+    }
+    & .header-font {
+        margin-top: 5px;
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+    }
+}
+.circle-img {
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    margin-bottom: 15px;
+    border: 1px solid #b9b9b9;
+}
+.day {
+    height: 45px;
+}

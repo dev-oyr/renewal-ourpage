@@ -1,0 +1,43 @@
+$pointColor: #ff6d70;
+
+.section3 {
+    width: 100%;
+    background-color: #f5f7fa;
+    padding: 64px 0;
+}
+.cardView {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    & a {
+        width: 100%;
+    }
+}
+.project-header {
+    text-align: center;
+}
+
+.project-count {
+    text-align: center;
+    margin: 15px 0;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1.2px solid rgba(0, 0, 0, 0.12);
+}
+.count {
+    font-size: 22px;
+    & p {
+        font-size: 18px;
+    }
+}
+
+.moreButton {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    & p {
+        margin: 0;
+        color: white;
+    }
+}

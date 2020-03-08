@@ -1,0 +1,36 @@
+{
+    "Step1": {
+        "image": "../images/recruit_circle1.jpeg",
+        "str_day": "2020년 3월 9일 (월)",
+        "end_day": "2020년 4월 3일 (금) 23:59",
+        "time_range": { "s": "00:00", "e": "23:59" },
+        "title": "지원서 접수"
+    },
+    "Step2": {
+        "image": "../images/recruit_circle2.jpeg",
+        "str_day": "",
+        "end_day": "2020년 4월 4일 (토)",
+        "time_range": { "s": "18:00:00", "e": "18:00:01" },
+        "title": "서류 결과 발표"
+    },
+    "Step3": {
+        "image": "../images/recruit_circle3.jpeg",
+        "str_day": "2020년 4월 6일 (월)",
+        "end_day": "2020년 4월 8일 (수)",
+        "time_range": { "s": "10:00", "e": "18:00" },
+        "title": "면접 진행"
+    },
+    "Step4": {
+        "image": "../images/recruit_circle4.jpeg",
+        "str_day": "",
+        "end_day": "2020년 4월 9일 (목)",
+        "time_range": { "s": "18:00:00", "e": "18:00:01" },
+        "title": "최종 결과 발표"
+    },
+    "Step5": {
+        "str_day": "",
+        "end_day": "2020년 5월 2일 (토) 이후",
+        "time_range": { "s": "18:00:00", "e": "18:00:01" },
+        "title": "첫 스터디 진행"
+    }
+}
