@@ -43,6 +43,13 @@ $pointColor: #ff6d70;
 .MuiStepIcon-root.MuiStepIcon-completed {
     color: $pointColor !important;
 }
+.MuiPickersDay-daySelected,
+.MuiPickersToolbar-toolbar {
+    background-color: $pointColor !important;
+}
+.MuiTypography-colorPrimary {
+    color: $pointColor !important;
+}
 
 .optional::after {
     font-family: 'Noto Sans KR', sans-serif;

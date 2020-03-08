@@ -23,8 +23,17 @@ const CssTextField = withStyles({
         '& label.Mui-focused': {
             color: '#666666',
         },
+        '& .MuiFormLabel-root.Mui-error': {
+            color: '#f44336',
+        },
         '& .MuiInput-underline:after': {
             borderBottomColor: '#666666',
+        },
+        '& .MuiInput-underline.Mui-error:after': {
+            borderBottomColor: '#f44336',
+            '&:hover': {
+                borderBottomColor: '#d6372b',
+            },
         },
     },
 })(TextField);
@@ -34,11 +43,34 @@ const CssForm = withStyles({
         '& .MuiInput-underline:after': {
             borderBottom: '2px solid #666666',
         },
+        '& .MuiFormLabel-root.Mui-error': {
+            color: '#f44336',
+        },
+        '& .MuiInput-underline.Mui-error:after': {
+            borderBottomColor: '#f44336',
+            '&:hover': {
+                borderBottomColor: '#d6372b',
+            },
+        },
         '& .MuiFormLabel-root.Mui-focused': {
+            color: '#666666',
+        },
+        '& .MuiFormLabel-root.Mui-focused.Mui-error': {
             color: '#666666',
         },
     },
 })(FormControl);
+
+const CssKeyboardDatePicker = withStyles({
+    root: {
+        '& .MuiFormLabel-root.Mui-focused': {
+            color: '#666666',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: '#666666',
+        },
+    },
+})(KeyboardDatePicker);
 
 function Step1({ errors }) {
     const classes = useStyles();
@@ -171,9 +203,8 @@ function Step1({ errors }) {
 
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid item xs={12}>
-                        <KeyboardDatePicker
+                        <CssKeyboardDatePicker
                             error={errors.birthday}
-                            disableToolbar
                             variant="inline"
                             format="yyyy-MM-dd"
                             margin="normal"
