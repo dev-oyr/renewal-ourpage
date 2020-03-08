@@ -13,6 +13,7 @@ import MobileApply from './pages/MobileApply';
 import Admins from './pages/Admins';
 import { Route, Redirect } from 'react-router-dom';
 import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
+import isMobile from './method/ismobile';
 
 // 임시로 전역 객체로 등록한 거임!!
 window.firebase = firebase;
@@ -25,7 +26,7 @@ const checkAdmin = () => {
     return session.stdno === 'admin' && session.name === '오픈이어라운드 관리자, 건들지 마세요';
 };
 
-window.mobile = false;
+window.mobile = isMobile;
 function App() {
     console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
