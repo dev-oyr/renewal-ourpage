@@ -1,16 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
-import { useApplyDispatch } from '../context/applyContext';
+import Step1 from './MobileStep1';
+import Step2 from './MobileStep2';
+import Step3 from './MobileStep3';
+import { useApplyDispatch } from '../../context/applyContext';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -18,8 +16,9 @@ const useStyles = makeStyles(theme => ({
     },
     layout: {
         width: 'auto',
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(4),
+        marginBottom: theme.spacing(4),
         [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
             width: '100%',
             marginLeft: 'auto',
@@ -74,6 +73,8 @@ export default function Checkout() {
 
     const dispatch = useApplyDispatch();
     const nameInput = useRef();
+    const nameInput2 = useRef();
+
     const handleNext = () => {
         if (activeStep === 0) {
             dispatch({
@@ -83,6 +84,7 @@ export default function Checkout() {
                     setActiveStep(activeStep + 1);
                 },
                 err(fields) {
+                    nameInput2.current.focus();
                     setFieldsError(fields);
                 },
             });
@@ -124,7 +126,7 @@ export default function Checkout() {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <Step1 errors={fieldsError} />;
+                return <Step1 errors={fieldsError} nameInput2={nameInput2} />;
             case 1:
                 return <Step2 errors={fieldsError} nameInput={nameInput} />;
             case 2:
@@ -135,41 +137,44 @@ export default function Checkout() {
     }
     return (
         <React.Fragment>
-            <CssBaseline />
             <main className={classes.layout}>
                 <div className="kr">
-                    <Paper className={classes.paper}>
-                        <Stepper activeStep={activeStep} className={classes.stepper}>
-                            {steps.map(label => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
-                        <React.Fragment>
-                            {activeStep === steps.length ? (
-                                <React.Fragment>
-                                    <Typography style={{ whiteSpace: 'pre-line' }} variant="h5" gutterBottom>
-                                        {resultTxt}
-                                    </Typography>
-                                </React.Fragment>
-                            ) : (
-                                <React.Fragment>
-                                    {getStepContent(activeStep)}
-                                    <div className={classes.buttons}>
-                                        {activeStep !== 0 && (
-                                            <Button onClick={handleBack} className={classes.button1}>
-                                                뒤로가기
-                                            </Button>
-                                        )}
-                                        <Button variant="contained" onClick={handleNext} className={classes.button2}>
-                                            {activeStep === steps.length - 1 ? '제출하기' : '다음'}
+                    <div className="header">
+                        <Typography variant="h4" gutterBottom>
+                            지원서
+                        </Typography>
+                    </div>
+
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                        {steps.map(label => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <React.Fragment>
+                        {activeStep === steps.length ? (
+                            <React.Fragment>
+                                <Typography style={{ whiteSpace: 'pre-line' }} variant="h5" gutterBottom>
+                                    {resultTxt}
+                                </Typography>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+                                {getStepContent(activeStep)}
+                                <div className={classes.buttons}>
+                                    {activeStep !== 0 && (
+                                        <Button onClick={handleBack} className={classes.button1}>
+                                            뒤로가기
                                         </Button>
-                                    </div>
-                                </React.Fragment>
-                            )}
-                        </React.Fragment>
-                    </Paper>
+                                    )}
+                                    <Button variant="contained" onClick={handleNext} className={classes.button2}>
+                                        {activeStep === steps.length - 1 ? '제출하기' : '다음'}
+                                    </Button>
+                                </div>
+                            </React.Fragment>
+                        )}
+                    </React.Fragment>
                 </div>
             </main>
         </React.Fragment>

@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Step2({ errors }) {
+function Step2({ errors, nameInput }) {
     /**************** TextField value ***************/
     const state = useApplyState();
     const dispatch = useApplyDispatch();
@@ -124,6 +124,7 @@ function Step2({ errors }) {
                         variant="outlined"
                         fullWidth
                         placeholder="지원하게된 계기가 무엇인가요?"
+                        inputRef={nameInput}
                     />
                 </Grid>
                 <Grid item xs={12}>

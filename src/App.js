@@ -32,7 +32,7 @@ function App() {
     return (
         <>
             {window.mobile ? (
-                <Route path="/" component={MobileApply} />
+                <Route path="/" component={MobileApply} exact />
             ) : (
                 <>
                     <Nav current="mail"></Nav>
