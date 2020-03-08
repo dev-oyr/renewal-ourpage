@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/cardview.scss';
 import { Link } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
-import Zoom from 'react-reveal/Zoom';
 
 function CardHeader({ image }) {
     var style = {

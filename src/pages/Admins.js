@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import TabPanel from '../components/TabPanel';
@@ -13,7 +12,7 @@ const checkAdmin = () => {
 function Admins() {
     if (!checkAdmin()) document.location.replace('/');
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

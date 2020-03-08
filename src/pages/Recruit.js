@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
-import { Button, Link } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import {
     Scheduler,
     MonthView,

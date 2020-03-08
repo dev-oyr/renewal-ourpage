@@ -11,7 +11,7 @@ import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import MobileApply from './pages/MobileApply';
 import Admins from './pages/Admins';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
 import isMobile from './method/ismobile';
 
