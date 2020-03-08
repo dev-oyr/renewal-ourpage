@@ -10,6 +10,7 @@ function CardPage({ match }) {
     const member = activities[title].member;
     const day = activities[title].day;
     const tech = activities[title].tech;
+    const image = activities[title].image;
 
     const useStyles = makeStyles(theme => ({
         small: {
@@ -19,6 +20,7 @@ function CardPage({ match }) {
         large: {
             width: theme.spacing(7),
             height: theme.spacing(7),
+            border: '1px solid #dedede',
         },
     }));
     const classes = useStyles();
@@ -28,7 +30,7 @@ function CardPage({ match }) {
             <div className="responsive">
                 <div className="cardPage-header">
                     <span className="cardPage-header-avator">
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
+                        <Avatar alt="Remy Sharp" src={image} className={classes.large} />
                     </span>
                     <span className="cardPage-header-text">
                         <div>
