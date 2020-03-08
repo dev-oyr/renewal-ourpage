@@ -99,7 +99,13 @@ function Section3() {
                 </Fade>
 
                 <div className="moreButton">
-                    <ColorButton variant="contained" color="primary">
+                    <ColorButton
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            alert('아직 준비 중입니다.');
+                        }}
+                    >
                         <p className="kr" ref={nameInput}>
                             프로젝트 더 보기
                         </p>

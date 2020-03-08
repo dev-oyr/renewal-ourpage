@@ -212,7 +212,7 @@ const dbCtrl = {
             callback.onSuccess(snapshot.val());
         });
     },
-    isApplyAvailable() {
+    isApplyAvailable(enabled) {
         let starts = recruitStep.Step1.str_day;
         let ends = recruitStep.Step1.end_day;
 
@@ -237,10 +237,8 @@ const dbCtrl = {
         ends.setSeconds(0);
         ends.setMilliseconds(0);
 
-        console.log(starts, ends);
-
         const today = new Date();
-        return starts <= today && ends > today;
+        return enabled ? starts <= today && ends > today : true;
     },
 };
 
