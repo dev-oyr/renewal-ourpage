@@ -83,7 +83,6 @@ function Step1({ errors }) {
                     <Grid item xs={12}>
                         <KeyboardDatePicker
                             error={errors.birthday}
-                            disableToolbar
                             variant="inline"
                             format="yyyy-MM-dd"
                             margin="normal"

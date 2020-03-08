@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Chip, IconButton, Menu, MenuItem, Fade, Grid, TextField, Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import {
+    Button,
+    Chip,
+    IconButton,
+    Menu,
+    MenuItem,
+    Fade,
+    Grid,
+    TextField,
+    Typography,
+    List,
+    ListItem,
+    ListItemText,
+} from '@material-ui/core';
 import { dbCtrl } from '../database/DBCtrl';
 import '../styles/adminapplications.scss';
 
@@ -41,6 +54,15 @@ function AdminApplications() {
         setSelection({ stdNo: stdNo, ...applicants[stdNo] });
     };
 
+    const adminLogout = () => {
+        dbCtrl.userLogout({
+            onSuccess() {
+                document.location.replace('/');
+            },
+            onError() {},
+        });
+    };
+
     return (
         <div className="root-container">
             {console.log('check rerendering')}
@@ -78,6 +100,9 @@ function AdminApplications() {
                         ))}
                     </List>
                 </div>
+                <Button onClick={adminLogout} style={{ float: 'right' }}>
+                    관리자 로그아웃
+                </Button>
             </div>
 
             <div className="appdatas">

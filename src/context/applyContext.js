@@ -26,7 +26,7 @@ const initialApply = {
     },
     tech: [],
     dateFields: {
-        birthday: new Date().toLocaleDateString(),
+        birthday: '1998. 6. 1.',
     },
 };
 
