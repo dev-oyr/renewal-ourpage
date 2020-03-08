@@ -8,9 +8,13 @@
 
     &:hover {
         box-shadow: 3px 3px 13px 0 rgba(0, 0, 0, 0.1);
+        transition: 1.25s;
 
         .button-primary {
-            transform: translate(6px, 0);
+            transform: translate(10px, 0);
+        }
+        .more {
+            font-weight: 550;
         }
     }
     & a {
@@ -68,7 +72,7 @@
     color: grey;
     font-size: 15px;
     transition: 0.25s;
-
+    padding: 10px 0;
     i {
         padding-right: 4px;
     }
@@ -85,9 +89,10 @@
 .more {
     margin-left: 5px;
     cursor: pointer;
-    color: $pointColor;
-    font-size: 12px;
+    color: #ff6d70;
+    font-size: 15px;
     font-weight: 500;
+    line-height: 15px;
 }
 
 .title {
