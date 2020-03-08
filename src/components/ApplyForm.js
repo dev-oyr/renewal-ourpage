@@ -21,12 +21,13 @@ const useStyles = makeStyles(theme => ({
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-            width: 600,
+            width: '100%',
             marginLeft: 'auto',
             marginRight: 'auto',
         },
     },
     paper: {
+        fontFamily: 'Noto Sans KR !important',
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3),
         padding: theme.spacing(2),
@@ -39,13 +40,24 @@ const useStyles = makeStyles(theme => ({
     stepper: {
         padding: theme.spacing(3, 0, 5),
     },
+
     buttons: {
         display: 'flex',
         justifyContent: 'flex-end',
+        marginTop: '32px',
     },
-    button: {
+    button1: {
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
+    },
+    button2: {
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+        backgroundColor: '#ff6d70',
+        color: 'white',
+        '&:hover': {
+            backgroundColor: '#ed4e51',
+        },
     },
 }));
 
@@ -123,41 +135,40 @@ export default function Checkout() {
         <React.Fragment>
             <CssBaseline />
             <main className={classes.layout}>
-                <Paper className={classes.paper}>
-                    <Typography component="h1" variant="h4" align="center">
-                        지원서
-                    </Typography>
-                    <Stepper activeStep={activeStep} className={classes.stepper}>
-                        {steps.map(label => (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <React.Fragment>
-                        {activeStep === steps.length ? (
-                            <React.Fragment>
-                                <Typography style={{ whiteSpace: 'pre-line' }} variant="h5" gutterBottom>
-                                    {resultTxt}
-                                </Typography>
-                            </React.Fragment>
-                        ) : (
-                            <React.Fragment>
-                                {getStepContent(activeStep)}
-                                <div className={classes.buttons}>
-                                    {activeStep !== 0 && (
-                                        <Button onClick={handleBack} className={classes.button}>
-                                            뒤로가기
+                <div className="kr">
+                    <Paper className={classes.paper}>
+                        <Stepper activeStep={activeStep} className={classes.stepper}>
+                            {steps.map(label => (
+                                <Step key={label}>
+                                    <StepLabel>{label}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        <React.Fragment>
+                            {activeStep === steps.length ? (
+                                <React.Fragment>
+                                    <Typography style={{ whiteSpace: 'pre-line' }} variant="h5" gutterBottom>
+                                        {resultTxt}
+                                    </Typography>
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    {getStepContent(activeStep)}
+                                    <div className={classes.buttons}>
+                                        {activeStep !== 0 && (
+                                            <Button onClick={handleBack} className={classes.button1}>
+                                                뒤로가기
+                                            </Button>
+                                        )}
+                                        <Button variant="contained" onClick={handleNext} className={classes.button2}>
+                                            {activeStep === steps.length - 1 ? '제출하기' : '다음'}
                                         </Button>
-                                    )}
-                                    <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                                        {activeStep === steps.length - 1 ? '제출하기' : '다음'}
-                                    </Button>
-                                </div>
-                            </React.Fragment>
-                        )}
-                    </React.Fragment>
-                </Paper>
+                                    </div>
+                                </React.Fragment>
+                            )}
+                        </React.Fragment>
+                    </Paper>
+                </div>
             </main>
         </React.Fragment>
     );
