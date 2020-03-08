@@ -162,6 +162,14 @@ function LoginPannel() {
         });
     };
 
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            console.log(window.event);
+            //여기에 로그인 처리
+            loginCheck();
+        }
+    }
+
     return (
         <>
             <div className={classes.paper} noValidate>
@@ -178,6 +186,7 @@ function LoginPannel() {
                         className={classes.input}
                         onChange={handleChange}
                         value={id}
+                        onKeyDown={enterkey}
                     />
                     <CssTextField
                         error={!account.checkPassword}
@@ -191,8 +200,16 @@ function LoginPannel() {
                         className={classes.input}
                         onChange={handleChange}
                         value={password}
+                        onKeyDown={enterkey}
                     />
-                    <Button fullWidth variant="contained" color="primary" className={classes.login_button} onClick={loginCheck}>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.login_button}
+                        onClick={loginCheck}
+                        onKeyDown={enterkey}
+                    >
                         로그인
                     </Button>
                 </form>
