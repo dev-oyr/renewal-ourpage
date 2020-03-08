@@ -17,7 +17,7 @@ $pointColor: #ff6d70;
 }
 
 .MuiTypography-body2 {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
 }
 
 .headerText {
@@ -55,6 +55,9 @@ $pointColor: #ff6d70;
 .MuiTypography-colorPrimary {
     color: $pointColor !important;
 }
+.makeStyles-stepper-4 {
+    padding: 24px 0px 24px !important;
+}
 
 .optional::after {
     font-family: 'Noto Sans KR', sans-serif;
@@ -87,4 +90,13 @@ $pointColor: #ff6d70;
     line-height: 1.64;
     letter-spacing: -1.1px;
     color: #333333;
+}
+
+.mobile_warn {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.01875rem;
+    color: #b2c0cc;
 }

@@ -116,6 +116,11 @@ function Step1({ errors, nameInput2 }) {
 
     return (
         <React.Fragment>
+            <div className="mobile_warn">
+                모바일 환경에서는 지원서 작성만 가능합니다.
+                <br></br>
+                PC 브라우저 이용을 권장드립니다.
+            </div>
             <div className="headerText">
                 <span>
                     <Typography variant="h6" gutterBottom display="inline">
