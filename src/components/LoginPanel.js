@@ -131,6 +131,7 @@ function LoginPannel() {
     function enterkey() {
         if (window.event.keyCode == 13) {
             console.log(window.event);
+            //여기에 로그인 처리
             loginCheck();
         }
     }
