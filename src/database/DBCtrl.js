@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/database';
+import recruitStep from '../datas/recruitStep.json';
 
 /** 파이어베이스 초기화 및 초반 관리자 로그인 상태 */
 // 파이어베이스 초기화
@@ -210,6 +211,36 @@ const dbCtrl = {
         fbdb.ref(`/applications/${sub}`).on('value', snapshot => {
             callback.onSuccess(snapshot.val());
         });
+    },
+    isApplyAvailable() {
+        let starts = recruitStep.Step1.str_day;
+        let ends = recruitStep.Step1.end_day;
+
+        starts = starts.replace('년 ', '-');
+        starts = starts.replace('월 ', '-');
+        starts = starts.replace('일 ', '');
+        starts = starts.replace(starts.substr(starts.indexOf('('), starts.indexOf(')') + 1), '');
+        starts = new Date(starts);
+        starts.setHours(0);
+        starts.setMinutes(0);
+        starts.setSeconds(0);
+        starts.setMilliseconds(0);
+
+        ends = ends.replace('년 ', '-');
+        ends = ends.replace('월 ', '-');
+        ends = ends.replace('일 ', '');
+        ends = ends.replace(ends.substr(ends.indexOf('('), ends.indexOf(')') + 1), '');
+        ends = new Date(ends);
+        ends.setDate(ends.getDate() + 1);
+        ends.setHours(0);
+        ends.setMinutes(0);
+        ends.setSeconds(0);
+        ends.setMilliseconds(0);
+
+        console.log(starts, ends);
+
+        const today = new Date();
+        return starts <= today && ends > today;
     },
 };
 
