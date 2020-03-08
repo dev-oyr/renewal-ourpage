@@ -13,6 +13,7 @@ import MobileApply from './pages/MobileApply';
 import Admins from './pages/Admins';
 import { Route, Redirect } from 'react-router-dom';
 import { dbCtrl, firebase, fbdb } from './database/DBCtrl';
+import mobileCheck from './method/mobileCheck';
 
 // 임시로 전역 객체로 등록한 거임!!
 window.firebase = firebase;
@@ -36,13 +37,13 @@ function App() {
                 <>
                     <Nav current="mail"></Nav>
                     <Wrapper>
-                        <Route path="/" component={Main} exact />
+                        {/* <Route path="/" component={Main} exact />
                         <Route path="/recruit" component={Recruit} />
                         <Route path="/faq/:id" component={FAQ} />
-                        <Route path="/login" component={Login} />
+                        <Route path="/login" component={Login} /> */}
                         <Route path="/apply" component={Apply} />
-                        <Route path="/cardpage/:title" component={CardPage} />
-                        <Route path="/admins" component={Admins} />
+                        {/* <Route path="/cardpage/:title" component={CardPage} />
+                        <Route path="/admins" component={Admins} /> */}
                     </Wrapper>
                     <Footer></Footer>
                 </>

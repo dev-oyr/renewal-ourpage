@@ -8,14 +8,37 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { useApplyState, useApplyDispatch } from '../context/applyContext';
+import '../styles/apply.scss';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
         width: '100%',
     },
 }));
+
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: '#666666',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: '#666666',
+        },
+    },
+})(TextField);
+
+const CssForm = withStyles({
+    root: {
+        '& .MuiInput-underline:after': {
+            borderBottom: '2px solid #666666',
+        },
+        '& .MuiFormLabel-root.Mui-focused': {
+            color: '#666666',
+        },
+    },
+})(FormControl);
 
 function Step1({ errors }) {
     const classes = useStyles();
@@ -45,7 +68,6 @@ function Step1({ errors }) {
             value,
         });
     }, []);
-
     /***************************************************/
 
     /******************* Date value *********************/
@@ -63,12 +85,18 @@ function Step1({ errors }) {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                기본 정보
-            </Typography>
+            <div className="headerText">
+                <span>
+                    <Typography variant="h6" gutterBottom display="inline">
+                        기본 정보
+                    </Typography>
+                </span>
+                <span id="nec"> *</span>
+            </div>
+
             <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TextField
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
                         error={errors.name}
                         onChange={textFieldChange}
                         value={name}
@@ -79,6 +107,68 @@ function Step1({ errors }) {
                         placeholder="ex)홍길동"
                     />
                 </Grid>
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
+                        error={errors.phonenumber}
+                        onChange={textFieldChange}
+                        value={phonenumber}
+                        id="phonenumber"
+                        name="phonenumber"
+                        label="연락처"
+                        fullWidth
+                        placeholder="ex)01012345678"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
+                        error={errors.email}
+                        onChange={textFieldChange}
+                        value={email}
+                        id="email"
+                        name="email"
+                        label="이메일"
+                        fullWidth
+                        placeholder="ex)sju@sju.ac.kr"
+                    />
+                </Grid>
+
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
+                        error={errors.studentnumber}
+                        onChange={textFieldChange}
+                        value={studentnumber}
+                        id="studentnumber"
+                        name="studentnumber"
+                        label="학번"
+                        fullWidth
+                        placeholder="ex)20123456"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
+                        error={errors.department}
+                        onChange={textFieldChange}
+                        value={department}
+                        id="department"
+                        name="department"
+                        label="학과"
+                        fullWidth
+                        placeholder="ex)컴퓨터공학과"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <CssTextField
+                        error={errors.grade}
+                        onChange={textFieldChange}
+                        value={grade}
+                        id="grade"
+                        name="grade"
+                        label="학년/학기"
+                        fullWidth
+                        placeholder="ex)3학년 1학기"
+                    />
+                </Grid>
+
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid item xs={12}>
                         <KeyboardDatePicker
@@ -99,84 +189,25 @@ function Step1({ errors }) {
                         />
                     </Grid>
                 </MuiPickersUtilsProvider>
+
                 <Grid item xs={12} sm={6}>
-                    <FormControl error={errors.gender} className={classes.formControl}>
+                    <CssForm error={errors.gender} className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">성별</InputLabel>
                         <Select id="demo-controlled-open-select" name="gender" value={gender} onChange={handleChange}>
                             <MenuItem value={'남자'}>남자</MenuItem>
                             <MenuItem value={'여자'}>여자</MenuItem>
                             <MenuItem value={'알리고 싶지 않음'}>알리고 싶지 않음</MenuItem>
                         </Select>
-                    </FormControl>
+                    </CssForm>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <FormControl error={errors.duty} className={classes.formControl}>
+                    <CssForm error={errors.duty} className={classes.formControl}>
                         <InputLabel id="demo-controlled-open-select-label">군필여부</InputLabel>
                         <Select id="demo-controlled-open-select" name="duty" value={duty} onChange={handleChange}>
                             <MenuItem value={'미필'}>미필</MenuItem>
                             <MenuItem value={'군필 또는 해당사항 없음'}>군필 또는 해당사항 없음</MenuItem>
                         </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        error={errors.phonenumber}
-                        onChange={textFieldChange}
-                        value={phonenumber}
-                        id="phonenumber"
-                        name="phonenumber"
-                        label="연락처"
-                        fullWidth
-                        placeholder="ex)01012345678"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        error={errors.email}
-                        onChange={textFieldChange}
-                        value={email}
-                        id="email"
-                        name="email"
-                        label="이메일"
-                        fullWidth
-                        placeholder="ex)sju@sju.ac.kr"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <TextField
-                        error={errors.studentnumber}
-                        onChange={textFieldChange}
-                        value={studentnumber}
-                        id="studentnumber"
-                        name="studentnumber"
-                        label="학번"
-                        fullWidth
-                        placeholder="ex)20123456"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <TextField
-                        error={errors.department}
-                        onChange={textFieldChange}
-                        value={department}
-                        id="department"
-                        name="department"
-                        label="학과"
-                        fullWidth
-                        placeholder="ex)컴퓨터공학과"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <TextField
-                        error={errors.grade}
-                        onChange={textFieldChange}
-                        value={grade}
-                        id="grade"
-                        name="grade"
-                        label="학년/학기"
-                        fullWidth
-                        placeholder="ex)3학년 1학기"
-                    />
+                    </CssForm>
                 </Grid>
             </Grid>
         </React.Fragment>
