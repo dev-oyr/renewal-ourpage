@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
-import { useApplyDispatch } from '../context/applyContext';
+import { useApplyState, useApplyDispatch } from '../context/applyContext';
+import { dbCtrl } from '../database/DBCtrl';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -72,6 +73,7 @@ export default function Checkout() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
 
+    const { textInputs } = useApplyState();
     const dispatch = useApplyDispatch();
     const nameInput = useRef();
     const handleNext = () => {
@@ -99,12 +101,47 @@ export default function Checkout() {
                 },
             });
         } else if (activeStep === 2) {
-            dispatch({
-                type: 'FIREBASE_PATCH',
-                ok(res) {
-                    setResultTxt('지원해 주셔서 감사합니다! :)');
+            dbCtrl.getApplication('2020-1', textInputs.studentnumber, {
+                onSuccess(res) {
+                    if (!res) {
+                        dispatch({
+                            type: 'FIREBASE_PATCH',
+                            ok(res) {
+                                setResultTxt('지원해 주셔서 감사합니다! :)');
+                            },
+                            err(err) {
+                                console.error(err);
+                                setResultTxt(`
+                                    오류가 발생했어요... :'( \n
+                                    아래 코드를 카카오톡 플러스친구(@openyearround) 나 이메일() 로 문의 해 주시면 신속하게 처리해 드리겠습니다. \n
+                                    ${err}
+                                `);
+                            },
+                        });
+                    } else {
+                        const dlg = window.confirm('이미 동일한 학번으로 지원 내용이 존재합니다.\n수정하시겠습니까?');
+                        if (dlg) {
+                            dispatch({
+                                type: 'FIREBASE_PATCH',
+                                ok(res) {
+                                    setResultTxt('지원해 주셔서 감사합니다! :)');
+                                },
+                                err(err) {
+                                    console.error(err);
+                                    setResultTxt(`
+                                        오류가 발생했어요... :'( \n
+                                        아래 코드를 카카오톡 플러스친구(@openyearround) 나 이메일() 로 문의 해 주시면 신속하게 처리해 드리겠습니다. \n
+                                        ${err}
+                                    `);
+                                },
+                            });
+                        } else {
+                            alert('취소되었습니다.');
+                            setActiveStep(activeStep - 1);
+                        }
+                    }
                 },
-                err(err) {
+                onError(err) {
                     console.error(err);
                     setResultTxt(`
                         오류가 발생했어요... :'( \n
@@ -113,6 +150,7 @@ export default function Checkout() {
                     `);
                 },
             });
+
             setActiveStep(activeStep + 1);
         }
     };
@@ -163,7 +201,7 @@ export default function Checkout() {
                                             </Button>
                                         )}
                                         <Button variant="contained" onClick={handleNext} className={classes.button2}>
-                                            {activeStep === steps.length - 1 ? '제출하기' : '다음'}
+                                            {activeStep === steps.length - 1 ? '동의 및 제출' : '다음'}
                                         </Button>
                                     </div>
                                 </React.Fragment>
