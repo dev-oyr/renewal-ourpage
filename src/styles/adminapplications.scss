@@ -1,0 +1,42 @@
+.root-container {
+    display: flex;
+
+    .applicant-list {
+        & .mobile-btn {
+            display: none;
+        }
+
+        & .normal-list {
+            min-width: 160px;
+            max-width: 240px;
+            height: calc(100vh - 180px);
+        }
+    }
+
+    .appdatas {
+        margin-top: 6px;
+        padding: 8px;
+        border-left: 1px solid #dddddd;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 768px) {
+    .root-container {
+        display: initial;
+
+        .applicant-list {
+            & .mobile-btn {
+                display: block;
+            }
+
+            & .normal-list {
+                display: none;
+            }
+        }
+
+        .appdatas {
+            border-left: none;
+        }
+    }
+}
