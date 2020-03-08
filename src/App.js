@@ -28,7 +28,7 @@ const checkAdmin = () => {
 
 window.mobile = isMobile;
 function App() {
-    console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
+    //console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
         <>
             {window.mobile ? (
