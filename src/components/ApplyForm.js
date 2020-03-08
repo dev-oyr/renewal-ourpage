@@ -70,7 +70,7 @@ export default function Checkout() {
     const [fieldsError, setFieldsError] = useState({});
 
     const classes = useStyles();
-    const [activeStep, setActiveStep] = useState(0);
+    const [activeStep, setActiveStep] = useState(2);
 
     const dispatch = useApplyDispatch();
     const handleNext = () => {
@@ -161,7 +161,7 @@ export default function Checkout() {
                                             </Button>
                                         )}
                                         <Button variant="contained" onClick={handleNext} className={classes.button2}>
-                                            {activeStep === steps.length - 1 ? '제출하기' : '다음'}
+                                            {activeStep === steps.length - 1 ? '동의 및 제출' : '다음'}
                                         </Button>
                                     </div>
                                 </React.Fragment>
