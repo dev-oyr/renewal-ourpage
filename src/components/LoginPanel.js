@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import '../styles/login.scss';
 import { dbCtrl } from '../database/DBCtrl';
-import { Redirect } from 'react-router-dom';
 
 const CssTextField = withStyles({
     root: {
@@ -29,7 +28,6 @@ const CssTextField = withStyles({
                 borderColor: '#ff6d70',
             },
         },
-        '&label.Mui-error': { color: '#ff6d70' },
     },
 })(TextField);
 
@@ -163,7 +161,7 @@ function LoginPannel() {
     };
 
     function enterkey() {
-        if (window.event.keyCode == 13) {
+        if (window.event.keyCode === 13) {
             console.log(window.event);
             //여기에 로그인 처리
             loginCheck();

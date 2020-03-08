@@ -6,7 +6,6 @@ import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import Zoom from 'react-reveal/Zoom';
 import { 진행된프로젝트, 공모전수상, 총회원수 } from '../datas/projectCounts.json';
 
 function Section3() {
