@@ -100,7 +100,7 @@ function AdminApplications() {
                         ))}
                     </List>
                 </div>
-                <Button onClick={adminLogout} style={{ float: 'right' }}>
+                <Button className="btn-logout" onClick={adminLogout} style={{ float: 'right' }}>
                     관리자 로그아웃
                 </Button>
             </div>

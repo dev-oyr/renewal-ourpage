@@ -16,7 +16,7 @@
 
     .appdatas {
         margin-top: 6px;
-        padding: 8px;
+        padding: 24px;
         border-left: 1px solid #dddddd;
         box-sizing: border-box;
         height: calc(100vh - 132px);
@@ -36,10 +36,15 @@
             & .normal-list {
                 display: none;
             }
+
+            & .btn-logout {
+                display: none;
+            }
         }
 
         .appdatas {
             border-left: none;
+            padding: 16px;
         }
     }
 }
