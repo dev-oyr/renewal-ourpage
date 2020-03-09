@@ -21,7 +21,7 @@ function Footer() {
                     <div className="col1">
                         <div className="kr colHeader">문의</div>
                         <div className="kr desc-font">카카오톡 플러스친구 : </div>
-                        <div className="en desc-font"> @openyaerround</div>
+                        <div className="en desc-font"> @openyearround</div>
                     </div>
                 </div>
 
