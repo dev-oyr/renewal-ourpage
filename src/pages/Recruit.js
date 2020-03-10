@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Recruit() {
+function Recruit(props) {
     const classes = useStyles();
     const [toApply, gotoApply] = useState(false);
 
