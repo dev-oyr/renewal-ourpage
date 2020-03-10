@@ -13,9 +13,16 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 const useStyles = makeStyles(theme => ({
     root: {
         position: 'fixed',
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
-        color: 'blue',
+        bottom: theme.spacing(4),
+        right: theme.spacing(4),
+        '& .MuiFab-root': {
+            color: 'white',
+            backgroundColor: '#ff6d70',
+        },
+        '& .MuiFab-sizeSmall': {
+            width: '46px',
+            height: '46px',
+        },
     },
 }));
 
@@ -38,6 +45,13 @@ function ScrollTop(props) {
     );
 }
 
+const scrollTo = e => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};
+
 function Main(props) {
     return (
         <>
@@ -53,7 +67,7 @@ function Main(props) {
             </Element>
 
             <ScrollTop>
-                <Fab color="secondary" size="small" aria-label="scroll back to top">
+                <Fab size="small" aria-label="scroll back to top" onClick={scrollTo}>
                     <KeyboardArrowUpIcon />
                 </Fab>
             </ScrollTop>
