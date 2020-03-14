@@ -8,6 +8,18 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { 진행된프로젝트, 공모전수상, 총회원수 } from '../datas/projectCounts.json';
 
+function projCardDelay(idx) {
+    const basicDelay = 333;
+    // 2개짜리
+    if (window.innerWidth < 769) {
+        return (idx % 2) * basicDelay;
+    }
+    // 3개짜리
+    else {
+        return (idx % 3) * basicDelay;
+    }
+}
+
 function Section3() {
     const nameInput = useRef();
     const onReset = () => {
@@ -50,7 +62,7 @@ function Section3() {
     return (
         <div className="section3">
             <div className="responsive">
-                <Fade bottom fraction={1}>
+                <Fade bottom distance="84px" fraction={1}>
                     <div onClick={onReset} className="kr header-font project-header">
                         우리들의 프로젝트
                     </div>
@@ -79,36 +91,35 @@ function Section3() {
                         </span>
                     </div>
                 </Fade>
-                <Fade bottom>
-                    <div className="cardView">
-                        {Object.keys(activities)
-                            .filter((i, idx) => idx <= 5)
-                            .map((act, key) => (
-                                <Card
-                                    class="card"
-                                    title={act}
-                                    day={activities[act].day}
-                                    contents={activities[act].content}
-                                    image={`${activities[act].image}`}
-                                    key={key}
-                                    id={key}
-                                ></Card>
-                            ))}
-                    </div>
-                </Fade>
-
+                <div className="cardView">
+                    {Object.keys(activities)
+                        .filter((i, idx) => idx <= 5)
+                        .map((act, key) => (
+                            <Card
+                                title={act}
+                                day={activities[act].day}
+                                contents={activities[act].content}
+                                image={`${activities[act].image}`}
+                                key={key}
+                                id={key}
+                                delay={projCardDelay(key)}
+                            ></Card>
+                        ))}
+                </div>
                 <div className="moreButton">
-                    <ColorButton
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                            alert('아직 준비 중입니다.');
-                        }}
-                    >
-                        <p className="kr" ref={nameInput}>
-                            프로젝트 더 보기
-                        </p>
-                    </ColorButton>
+                    <Fade bottom distance="84px" fraction={1}>
+                        <ColorButton
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                alert('아직 준비 중입니다.');
+                            }}
+                        >
+                            <p className="kr" ref={nameInput}>
+                                프로젝트 더 보기
+                            </p>
+                        </ColorButton>
+                    </Fade>
                 </div>
             </div>
         </div>

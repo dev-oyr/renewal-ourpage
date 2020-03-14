@@ -172,7 +172,7 @@ export default function Checkout() {
         }
     }
 
-    const count = useMemo(() => getStepContent(step), [step]);
+    //const count = useMemo(() => getStepContent(step), [step]);
     return (
         <React.Fragment>
             <CssBaseline />

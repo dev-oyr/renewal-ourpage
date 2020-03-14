@@ -104,7 +104,7 @@ function Section2() {
                     <div className="section2">
                         <div className="responsive">
                             <div className="icons-container">
-                                <Fade bottom cascade fraction={1} duration={666}>
+                                <Fade bottom cascade distance="84px" fraction={1} duration={666}>
                                     <div className="icons-wrapper">
                                         <div>
                                             <img src={icIntroduce} className={pageIndex === 0 ? 'active' : undefined} alt="introduce" />
