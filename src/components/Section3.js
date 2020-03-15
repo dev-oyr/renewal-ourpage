@@ -58,13 +58,7 @@ function Section3() {
         <div className="section3">
             <div className="responsive">
                 <Fade bottom distance="84px" fraction={1}>
-<<<<<<< HEAD
-                    <div onClick={onReset} className="kr header-font project-header">
-                        우리들의 프로젝트
-                    </div>
-=======
                     <div className="kr header-font project-header">우리들의 프로젝트</div>
->>>>>>> master
                 </Fade>
                 <Fade
                     bottom
