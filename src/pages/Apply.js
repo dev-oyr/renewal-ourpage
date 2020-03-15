@@ -19,4 +19,4 @@ function Apply() {
     );
 }
 
-export default Apply;
+export default React.memo(Apply);

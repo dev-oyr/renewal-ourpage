@@ -74,12 +74,15 @@ const CssKeyboardDatePicker = withStyles({
 
 function Step1({ errors }) {
     const classes = useStyles();
-
-    /**************** TextField value ***************/
     const state = useApplyState();
     const dispatch = useApplyDispatch();
-    const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
 
+    const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
+    const { gender, duty } = state.selects;
+    const { birthday } = state.dateFields;
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    /**************** TextField value ***************/
     const textFieldChange = useCallback(e => {
         const { name, value } = e.target;
         dispatch({
@@ -88,10 +91,8 @@ function Step1({ errors }) {
             value,
         });
     }, []);
-    /***************************************************/
 
     /**************** Select value ***************/
-    const { gender, duty } = state.selects;
     const handleChange = useCallback(e => {
         const { name, value } = e.target;
         dispatch({
@@ -100,11 +101,8 @@ function Step1({ errors }) {
             value,
         });
     }, []);
-    /***************************************************/
 
     /******************* Date value *********************/
-    const { birthday } = state.dateFields;
-    const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = useCallback(date => {
         setSelectedDate(date);
         dispatch({
@@ -259,4 +257,4 @@ Step1.defaultProps = {
     },
 };
 
-export default Step1;
+export default React.memo(Step1);

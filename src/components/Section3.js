@@ -2,11 +2,10 @@ import React from 'react';
 import Card from '../components/CardView';
 import '../styles/section3.scss';
 import activities from '../datas/activities.json';
-import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { 진행된프로젝트, 공모전수상, 총회원수 } from '../datas/projectCounts.json';
+import CountUp from './CountUp';
 
 function projCardDelay(idx) {
     const basicDelay = 333;
@@ -31,59 +30,13 @@ function Section3() {
         },
     }))(Button);
 
-    const useCountUps = [
-        useCountUp({
-            start: 0,
-            end: 진행된프로젝트,
-            duration: 3,
-            prefix: '0',
-        }),
-        useCountUp({
-            start: 0,
-            end: 공모전수상,
-            duration: 3,
-            prefix: '0',
-            useEasing: false,
-        }),
-        useCountUp({
-            start: 0,
-            end: 총회원수,
-            duration: 3,
-            prefix: '0',
-            useEasing: false,
-        }),
-    ];
-
     return (
         <div className="section3">
             <div className="responsive">
                 <Fade bottom distance="84px" fraction={1}>
                     <div className="kr header-font project-header">우리들의 프로젝트</div>
                 </Fade>
-                <Fade
-                    bottom
-                    fraction={1}
-                    onReveal={() => {
-                        useCountUps[0].start();
-                        useCountUps[1].start();
-                        useCountUps[2].start();
-                    }}
-                >
-                    <div className="project-count kr desc-font">
-                        <span className="count">
-                            <div>{useCountUps[0].countUp}</div>
-                            <p>진행된 프로젝트</p>
-                        </span>
-                        <span className="count">
-                            <div>{useCountUps[1].countUp}</div>
-                            <p>공모전 수상</p>
-                        </span>
-                        <span className="count">
-                            <div>{useCountUps[2].countUp}</div>
-                            <p>총 회원 수</p>
-                        </span>
-                    </div>
-                </Fade>
+                <CountUp></CountUp>
                 <div className="cardView">
                     {Object.keys(activities)
                         .filter((i, idx) => idx <= 5)
