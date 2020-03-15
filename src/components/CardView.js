@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/cardview.scss';
 import { Link } from 'react-router-dom';
 import { FaAngleRight } from 'react-icons/fa';
+import Fade from 'react-reveal/Fade';
 
 function CardHeader({ image }) {
     var style = {
@@ -39,12 +40,14 @@ function CardBody({ title, contents, day }) {
     );
 }
 
-function Card({ title, contents, day, id, image }) {
+function Card({ title, contents, day, id, image, delay }) {
     return (
-        <article className="card">
-            <CardHeader image={image} />
-            <CardBody title={title} contents={contents} day={day} id={id} />
-        </article>
+        <Fade bottom distance="84px" delay={delay} fraction={0.333}>
+            <article className="card">
+                <CardHeader image={image} />
+                <CardBody title={title} contents={contents} day={day} id={id} />
+            </article>
+        </Fade>
     );
 }
 

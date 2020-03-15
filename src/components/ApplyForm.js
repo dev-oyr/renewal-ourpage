@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -171,6 +171,8 @@ export default function Checkout() {
                 throw new Error('Unknown step');
         }
     }
+
+    //const count = useMemo(() => getStepContent(step), [step]);
     return (
         <React.Fragment>
             <CssBaseline />

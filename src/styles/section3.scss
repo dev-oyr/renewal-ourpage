@@ -3,11 +3,12 @@ $pointColor: #ff6d70;
 .section3 {
     width: 100%;
     background-color: #f5f7fa;
-    padding: 64px 0;
+    padding: 84px 0;
 }
 .cardView {
     display: flex;
     justify-content: flex-start;
+    padding-bottom: 16px;
     flex-wrap: wrap;
     & a {
         width: 100%;
@@ -19,8 +20,8 @@ $pointColor: #ff6d70;
 
 .project-count {
     text-align: center;
-    margin: 15px 0;
-    padding: 15px 0;
+    margin: 48px 0 16px 0;
+    padding: 16px 0;
     display: flex;
     justify-content: space-around;
     border-bottom: 1.2px solid rgba(0, 0, 0, 0.12);
