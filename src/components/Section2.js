@@ -86,6 +86,72 @@ const ProgressSlider = withStyles({
 
 let direction = true;
 
+const IconSet = React.memo(function IconSet({ pageIndex }) {
+    return (
+        <div className="icons-container">
+            <Fade bottom cascade distance="84px" fraction={1} duration={666}>
+                <div className="icons-wrapper">
+                    <div>
+                        <img src={icIntroduce} className={pageIndex === 0 ? 'active' : undefined} alt="introduce" />
+                    </div>
+                    <div>
+                        <img src={icStudy} className={pageIndex === 1 ? 'active' : undefined} alt="study" />
+                    </div>
+                    <div>
+                        <img src={icHomecoming} className={pageIndex === 2 ? 'active' : undefined} alt="homecoming" />
+                    </div>
+                </div>
+            </Fade>
+        </div>
+    );
+});
+
+const SliderWrapper = React.memo(function SliderMemo({ pageIndex, progress, progressLabels }) {
+    return (
+        <div className="slider-wrapper">
+            <ProgressSlider value={pageIndex * 50 + progress * 50} aria-labelledby="discrete-slider-custom" marks={progressLabels} />
+        </div>
+    );
+});
+
+const SliderSet = React.memo(function SliderSet({ pageIndex, progress, progressLabels }) {
+    return (
+        <Zoom fraction={0.7} duration={666}>
+            <SliderWrapper pageIndex={pageIndex} progress={progress} progressLabels={progressLabels} />
+        </Zoom>
+    );
+});
+
+const Title = React.memo(function Title() {
+    return (
+        <div className="introduce inner-header">
+            <Fade bottom distance="108px" fraction={1}>
+                <div className="header-font kr">오픈이어라운드</div>
+            </Fade>
+        </div>
+    );
+});
+
+const Contents = React.memo(function Contents({ pageIndex }) {
+    return (
+        <div className="introduce inner-content">
+            <Fade bottom distance="108px" fraction={1}>
+                <div className="comments-wrapper">
+                    <Fade left when={pageIndex === 0} duration={666}>
+                        <p className="desc-font kr">{comments[0]}</p>
+                    </Fade>
+                    <Fade left={!direction} right={direction} when={pageIndex === 1} duration={666}>
+                        <p className="desc-font kr">{comments[1]}</p>
+                    </Fade>
+                    <Fade right when={pageIndex === 2} duration={666}>
+                        <p className="desc-font kr">{lastComments}</p>
+                    </Fade>
+                </div>
+            </Fade>
+        </div>
+    );
+});
+
 function Section2() {
     return (
         <Stickyroll pages={comments} factor={0.5}>
@@ -103,50 +169,10 @@ function Section2() {
                 return (
                     <div className="section2">
                         <div className="responsive">
-                            <div className="icons-container">
-                                <Fade bottom cascade distance="84px" fraction={1} duration={666}>
-                                    <div className="icons-wrapper">
-                                        <div>
-                                            <img src={icIntroduce} className={pageIndex === 0 ? 'active' : undefined} alt="introduce" />
-                                        </div>
-                                        <div>
-                                            <img src={icStudy} className={pageIndex === 1 ? 'active' : undefined} alt="study" />
-                                        </div>
-                                        <div>
-                                            <img src={icHomecoming} className={pageIndex === 2 ? 'active' : undefined} alt="homecoming" />
-                                        </div>
-                                    </div>
-                                </Fade>
-                            </div>
-                            <Zoom fraction={0.7} duration={666}>
-                                <div className="slider-wrapper">
-                                    <ProgressSlider
-                                        value={pageIndex * 50 + progress * 50}
-                                        aria-labelledby="discrete-slider-custom"
-                                        marks={stickyProgressLabels}
-                                    />
-                                </div>
-                            </Zoom>
-                            <div className="introduce inner-header">
-                                <Fade bottom distance="108px" fraction={1}>
-                                    <div className="header-font kr">오픈이어라운드</div>
-                                </Fade>
-                            </div>
-                            <div className="introduce inner-content">
-                                <Fade bottom distance="108px" fraction={1}>
-                                    <div className="comments-wrapper">
-                                        <Fade left when={pageIndex === 0} duration={666}>
-                                            <p className="desc-font kr">{comments[0]}</p>
-                                        </Fade>
-                                        <Fade left={!direction} right={direction} when={pageIndex === 1} duration={666}>
-                                            <p className="desc-font kr">{comments[1]}</p>
-                                        </Fade>
-                                        <Fade right when={pageIndex === 2} duration={666}>
-                                            <p className="desc-font kr">{lastComments}</p>
-                                        </Fade>
-                                    </div>
-                                </Fade>
-                            </div>
+                            <IconSet pageIndex={pageIndex} />
+                            <SliderSet pageIndex={pageIndex} progress={progress} progressLabels={stickyProgressLabels} />
+                            <Title />
+                            <Contents pageIndex={pageIndex} />
                         </div>
                     </div>
                 );
@@ -155,4 +181,4 @@ function Section2() {
     );
 }
 
-export default Section2;
+export default React.memo(Section2);

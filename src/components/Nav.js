@@ -12,21 +12,21 @@ import { Link, withRouter } from 'react-router-dom';
 import { Link as Link2 } from 'react-scroll';
 import Fade from 'react-reveal/Fade';
 
-let direction = 0;
-let when;
 function NavBar({ location, match }) {
     /******************** nav-scroll계산 ********************/
     const useScroll = () => {
-        const [scroll, setScroll] = useState(0);
+        const [scroll, setScroll] = useState(false);
         const onScroll = () => {
-            setScroll(window.scrollY);
+            if (window.scrollY > 48 && !scroll) {
+                setScroll('scrolled');
+            } else if (window.scrollY <= 48 && scroll) {
+                setScroll(false);
+            }
         };
         useEffect(() => {
             window.addEventListener('scroll', onScroll);
-            when = scroll > direction ? 0 : 1;
             return () => {
                 window.removeEventListener('scroll', onScroll);
-                direction = scroll;
             };
         }, [scroll]);
         return scroll;
@@ -58,8 +58,8 @@ function NavBar({ location, match }) {
 
     let path = location.pathname;
     return (
-        <Fade top when={when} duration={333}>
-            <div className="navbar" style={{ position: 'fixed', top: '0' }}>
+        <Fade top duration={333}>
+            <div className={'navbar ' + scroll} style={{ position: 'fixed', top: '0' }}>
                 <div className="responsive">
                     <Link to="/">
                         <div className="logo">
