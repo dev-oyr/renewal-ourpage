@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Card from '../components/CardView';
 import '../styles/section3.scss';
 import activities from '../datas/activities.json';
@@ -21,11 +21,6 @@ function projCardDelay(idx) {
 }
 
 function Section3() {
-    const nameInput = useRef();
-    const onReset = () => {
-        nameInput.current.focust();
-    };
-
     const ColorButton = withStyles(theme => ({
         root: {
             color: theme.palette.getContrastText('#ff6d70'),
@@ -115,9 +110,7 @@ function Section3() {
                                 alert('아직 준비 중입니다.');
                             }}
                         >
-                            <p className="kr" ref={nameInput}>
-                                프로젝트 더 보기
-                            </p>
+                            <p className="kr">프로젝트 더 보기</p>
                         </ColorButton>
                     </Fade>
                 </div>
