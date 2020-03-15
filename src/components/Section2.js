@@ -106,18 +106,18 @@ const IconSet = React.memo(function IconSet({ pageIndex }) {
     );
 });
 
-const SliderWrapper = React.memo(function SliderMemo({ pageIndex, progress }) {
+const SliderWrapper = React.memo(function SliderMemo({ pageIndex, progress, progressLabels }) {
     return (
         <div className="slider-wrapper">
-            <ProgressSlider value={pageIndex * 50 + progress * 50} aria-labelledby="discrete-slider-custom" marks={stickyProgressLabels} />
+            <ProgressSlider value={pageIndex * 50 + progress * 50} aria-labelledby="discrete-slider-custom" marks={progressLabels} />
         </div>
     );
 });
 
-const SliderSet = React.memo(function SliderSet({ pageIndex, progress }) {
+const SliderSet = React.memo(function SliderSet({ pageIndex, progress, progressLabels }) {
     return (
         <Zoom fraction={0.7} duration={666}>
-            <SliderWrapper pageIndex={pageIndex} progress={progress} />
+            <SliderWrapper pageIndex={pageIndex} progress={progress} progressLabels={progressLabels} />
         </Zoom>
     );
 });
@@ -170,7 +170,7 @@ function Section2() {
                     <div className="section2">
                         <div className="responsive">
                             <IconSet pageIndex={pageIndex} />
-                            <SliderSet pageIndex={pageIndex} progress={progress} />
+                            <SliderSet pageIndex={pageIndex} progress={progress} progressLabels={stickyProgressLabels} />
                             <Title />
                             <Contents pageIndex={pageIndex} />
                         </div>
