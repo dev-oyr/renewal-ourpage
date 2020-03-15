@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 
 const steps = ['기본 정보', '지원 사항', '제출 확인'];
 
-export default function Checkout() {
+function Checkout() {
     /** 지원서 결과 메시지 */
     const [resultTxt, setResultTxt] = useState('');
 
@@ -215,3 +215,5 @@ export default function Checkout() {
         </React.Fragment>
     );
 }
+
+export default React.memo(Checkout);
