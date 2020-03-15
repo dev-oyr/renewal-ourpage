@@ -9,20 +9,20 @@ function CountUp() {
         useCountUp({
             start: 0,
             end: 진행된프로젝트,
-            duration: 8,
+            duration: 3,
             prefix: '0',
         }),
         useCountUp({
             start: 0,
             end: 공모전수상,
-            duration: 8,
+            duration: 3,
             prefix: '0',
             useEasing: false,
         }),
         useCountUp({
             start: 0,
             end: 총회원수,
-            duration: 8,
+            duration: 3,
             prefix: '0',
             useEasing: false,
         }),
