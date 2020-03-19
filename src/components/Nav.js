@@ -11,6 +11,7 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { Link, withRouter } from 'react-router-dom';
 import { Link as Link2 } from 'react-scroll';
 import Fade from 'react-reveal/Fade';
+import Hambuger from './Hambuger';
 
 function NavBar({ location, match }) {
     /******************** nav-scroll계산 ********************/
@@ -157,6 +158,9 @@ function NavBar({ location, match }) {
                                     <span>></span>
                                 </button>
                             </Link>
+                        </span>
+                        <span className="nav_hambuger">
+                            <Hambuger></Hambuger>
                         </span>
                     </div>
                 </div>
