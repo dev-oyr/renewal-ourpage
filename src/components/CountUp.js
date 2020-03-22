@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import '../styles/section3.scss';
 import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';

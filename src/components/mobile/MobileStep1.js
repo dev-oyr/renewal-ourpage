@@ -103,9 +103,8 @@ function Step1({ errors, nameInput2 }) {
 
     /******************* Date value *********************/
     const { birthday } = state.dateFields;
-    const [selectedDate, setSelectedDate] = useState(new Date());
+
     const handleDateChange = useCallback(date => {
-        setSelectedDate(date);
         dispatch({
             type: 'DATE',
             name: 'birthday',

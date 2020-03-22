@@ -80,7 +80,6 @@ function Step1({ errors }) {
     const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
     const { gender, duty } = state.selects;
     const { birthday } = state.dateFields;
-    const [selectedDate, setSelectedDate] = useState(new Date());
 
     /**************** TextField value ***************/
     const textFieldChange = useCallback(e => {
@@ -104,7 +103,6 @@ function Step1({ errors }) {
 
     /******************* Date value *********************/
     const handleDateChange = useCallback(date => {
-        setSelectedDate(date);
         dispatch({
             type: 'DATE',
             name: 'birthday',
