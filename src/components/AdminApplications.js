@@ -121,7 +121,7 @@ function AdminApplications() {
                             size="small"
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={4}>
                         <TextField
                             value={selection.birthday ? selection.birthday : ''}
                             id="v-birthday"
@@ -132,11 +132,22 @@ function AdminApplications() {
                             size="small"
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={4}>
                         <TextField
                             value={selection.gender ? selection.gender : ''}
                             id="v-gender"
                             label="성별"
+                            style={{ margin: 6 }}
+                            fullWidth
+                            margin="normal"
+                            size="small"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <TextField
+                            value={selection.military ? selection.military : ''}
+                            id="v-military"
+                            label="군필여부"
                             style={{ margin: 6 }}
                             fullWidth
                             margin="normal"
