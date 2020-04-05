@@ -32,7 +32,7 @@ function App() {
     //console.log('현재 세션::', JSON.parse(sessionStorage.getItem('currentUser')));
     return (
         <>
-            {window.mobile ? (
+            {/* {window.mobile ? (
                 <Route path="/" component={MobileApply} exact />
             ) : (
                 <>
@@ -50,7 +50,21 @@ function App() {
                     </Wrapper>
                     <Footer></Footer>
                 </>
-            )}
+            )} */}
+
+            <Nav current="mail"></Nav>
+            <Wrapper>
+                <ScrollTop>
+                    <Route path="/" component={Main} exact />
+                    <Route path="/recruit" component={Recruit} />
+                    <Route path="/faq/:id" component={FAQ} />
+                    <Route path="/login" component={Login} />
+                    {window.mobile ? <Route path="/apply" component={MobileApply} /> : <Route path="/apply" component={Apply} />}
+                    <Route path="/cardpage/:title" component={CardPage} />
+                    <Route path="/admins" component={Admins} />
+                </ScrollTop>
+            </Wrapper>
+            <Footer></Footer>
         </>
     );
 }

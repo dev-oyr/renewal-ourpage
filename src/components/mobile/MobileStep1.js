@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { useApplyState, useApplyDispatch } from '../../context/applyContext';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     formControl: {
         width: '100%',
     },
@@ -79,7 +79,7 @@ function Step1({ errors, nameInput2 }) {
     const dispatch = useApplyDispatch();
     const { name, phonenumber, email, studentnumber, department, grade } = state.textInputs;
 
-    const textFieldChange = useCallback(e => {
+    const textFieldChange = useCallback((e) => {
         const { name, value } = e.target;
         dispatch({
             type: 'CHANGE_TEXT',
@@ -91,7 +91,7 @@ function Step1({ errors, nameInput2 }) {
 
     /**************** Select value ***************/
     const { gender, duty } = state.selects;
-    const handleChange = useCallback(e => {
+    const handleChange = useCallback((e) => {
         const { name, value } = e.target;
         dispatch({
             type: 'SELECT',
@@ -104,7 +104,7 @@ function Step1({ errors, nameInput2 }) {
     /******************* Date value *********************/
     const { birthday } = state.dateFields;
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const handleDateChange = useCallback(date => {
+    const handleDateChange = useCallback((date) => {
         setSelectedDate(date);
         dispatch({
             type: 'DATE',
@@ -116,11 +116,11 @@ function Step1({ errors, nameInput2 }) {
 
     return (
         <React.Fragment>
-            <div className="mobile_warn">
+            {/* <div className="mobile_warn">
                 모바일 환경에서는 지원서 작성만 가능합니다.
                 <br></br>
                 PC 브라우저 이용을 권장드립니다.
-            </div>
+            </div> */}
             <div className="headerText">
                 <span>
                     <Typography variant="h6" gutterBottom display="inline">

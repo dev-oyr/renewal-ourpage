@@ -30,19 +30,20 @@ function Hambuger() {
     const [state, setState] = useState({
         right: false,
     });
-    const toggleDrawer = (side, open) => event => {
+    const toggleDrawer = (side, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
 
         setState({ ...state, [side]: open });
     };
-    const sideList = side => (
+    const sideList = (side) => (
         <div className={classes.list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)}>
             <List>
                 <ListItem>
                     <div className="Hamburger_header">
-                        신입부원 <br></br> 모집중입니다 :)
+                        {/* 신입부원 <br></br> 모집중입니다 :) */}
+                        모집 준비중...
                     </div>
                 </ListItem>
                 <ListItem>
