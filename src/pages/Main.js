@@ -9,8 +9,9 @@ import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import MobileSection2 from '../components/mobile/MobileSection2';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
         bottom: theme.spacing(4),
@@ -45,7 +46,7 @@ function ScrollTop(props) {
     );
 }
 
-const scrollTo = e => {
+const scrollTo = (e) => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth',
@@ -56,9 +57,7 @@ function Main(props) {
     return (
         <>
             <Section1></Section1>
-            <Element name="test1">
-                <Section2></Section2>
-            </Element>
+            <Element name="test1">{window.mobile ? <MobileSection2 /> : <Section2 />}</Element>
             <Element name="test2">
                 <Section3></Section3>
             </Element>

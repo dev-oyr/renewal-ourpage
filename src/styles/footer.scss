@@ -3,8 +3,8 @@ $pointColor: #ff6d70;
 .footer {
     box-sizing: content-box !important;
     width: 100%;
-    height: 26vh;
-    padding: 5vh 0;
+    height: fit-content;
+    padding: 24px 0;
     background-color: white;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 
@@ -36,5 +36,29 @@ $pointColor: #ff6d70;
     }
 }
 .copyright {
-    font-size: 12px;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 16px 0;
+        height: fit-content;
+    }
+
+    .col1 {
+        display: flex;
+        flex-direction: column;
+
+        & .colHeader {
+            font-size: 16px;
+        }
+        & .desc-font {
+            font-size: 14px;
+        }
+    }
+
+    .copyright {
+        font-size: 12px;
+    }
 }
