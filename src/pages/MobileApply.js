@@ -8,7 +8,7 @@ import { dbCtrl } from '../database/DBCtrl';
 function MobileApply() {
     return (
         <>
-            {!dbCtrl.isApplyAvailable(false) ? (alert('죄송하지만, 접수 기간이 아닙니다!'), (<Redirect to="/" />)) : false}
+            {!dbCtrl.isApplyAvailable(true) ? (alert('죄송하지만, 접수 기간이 아닙니다!'), (<Redirect to="/" />)) : false}
             <ApplyProvider>
                 <MobileApplyForm />
             </ApplyProvider>
