@@ -124,6 +124,17 @@ body::-webkit-scrollbar {
         width: 1200px;
         margin: 0 auto;
     }
+    .card {
+        width: 31%;
+        & + & {
+            &:nth-child(3n-1) {
+                margin-left: 3.5%;
+            }
+            &:nth-child(3n) {
+                margin-left: 3.5%;
+            }
+        }
+    }
 }
 @media (max-width: 1920px) and (min-width: 769px) {
     .responsive {
