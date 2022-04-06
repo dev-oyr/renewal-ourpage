@@ -15,17 +15,18 @@ import recruitStep from '../datas/recruitStep.json';
 firebase.initializeApp(apiConfig);
 
 // 마스터키로 관리자 로그인
-firebase.auth().onAuthStateChanged(async user => {
+firebase.auth().onAuthStateChanged(async (user) => {
     // 로그인한 사용자가 없으면 관리자로 로그인
     if (!user) {
         firebase
             .auth()
             .signInWithEmailAndPassword(id, pw)
-            .catch(err => {
+            .catch((err) => {
                 const errCode = err.code;
                 const errMsg = err.message;
                 console.error(errCode, errMsg);
-                alert(`Firebase 마스터 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
+                // alert(`Firebase 마스터 인증 오류 발생!\n 에러 코드: ${errCode}\n 에러 내용: ${errMsg}`);
+                alert('현재 데이터베이스 비활성화 상태입니다.');
             });
     } else {
         // 세션 스토리지에도 저장함...
@@ -52,7 +53,7 @@ const dbCtrl = {
         // users 테이블에서 학번으로 이메일 조회
         fbdb.ref('/users/' + stdNo)
             .once('value')
-            .then(snapshot => {
+            .then((snapshot) => {
                 // 학번이 없으면 에러
                 if (!snapshot.val()) {
                     callback.onError({ code: 'stdNoNotFound', message: 'Current student number not found' });
@@ -62,19 +63,19 @@ const dbCtrl = {
                 firebase
                     .auth()
                     .signInWithEmailAndPassword(snapshot.val().email, pw)
-                    .then(async res => {
+                    .then(async (res) => {
                         firebase.auth().currentUser.updateProfile({
                             displayName: stdNo,
                         });
                         // 로그인이 끝난 후 처리 함수 호출(현재 로그인 한 사용자 정보)
                         callback.onSuccess(await this.userCurrent);
                     })
-                    .catch(err => {
+                    .catch((err) => {
                         console.error(err.code, err.message);
                         callback.onError(err);
                     });
             })
-            .catch(err => {
+            .catch((err) => {
                 console.error(err.code, err.message);
                 console.error('회원 데이터 조회 실패!');
                 callback.onError(err);
@@ -91,7 +92,7 @@ const dbCtrl = {
             .then(() => {
                 callback.onSuccess();
             })
-            .catch(err => {
+            .catch((err) => {
                 callback.onError(err);
             });
     },
@@ -104,10 +105,10 @@ const dbCtrl = {
         return new Promise((resolve, reject) => {
             fbdb.ref('/users/' + session.displayName)
                 .once('value')
-                .then(snapshot => {
+                .then((snapshot) => {
                     resolve(snapshot.val());
                 })
-                .catch(err => {
+                .catch((err) => {
                     reject(err);
                 });
         });
@@ -162,7 +163,7 @@ const dbCtrl = {
                 projSummary: form.projSummary,
                 projTechStacks: form.projTechStacks,
             },
-            err => {
+            (err) => {
                 if (err) {
                     callback.onError(err);
                 } else {
@@ -179,10 +180,10 @@ const dbCtrl = {
     getAllApplications(sub = '', callback = { onSuccess(res) {}, onError(err) {} }) {
         fbdb.ref(`/applications/${sub}`)
             .once('value')
-            .then(snapshot => {
+            .then((snapshot) => {
                 callback.onSuccess(snapshot.val());
             })
-            .catch(err => {
+            .catch((err) => {
                 callback.onError(err);
             });
     },
@@ -195,10 +196,10 @@ const dbCtrl = {
     getApplication(sub = '', stdNo = '', callback = { onSuccess(res) {}, onError(err) {} }) {
         fbdb.ref(`/applications/${sub}/${stdNo}`)
             .once('value')
-            .then(snapshot => {
+            .then((snapshot) => {
                 callback.onSuccess(snapshot.val());
             })
-            .catch(err => {
+            .catch((err) => {
                 callback.onError(err);
             });
     },
@@ -208,7 +209,7 @@ const dbCtrl = {
      * @callback callback.onError 업데이트 실패 시 콜백 함수
      */
     onApplicationUpdated(sub = '', callback = { onSuccess(res) {}, onError(err) {} }) {
-        fbdb.ref(`/applications/${sub}`).on('value', snapshot => {
+        fbdb.ref(`/applications/${sub}`).on('value', (snapshot) => {
             callback.onSuccess(snapshot.val());
         });
     },

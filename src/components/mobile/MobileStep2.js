@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { techskills } from '../../datas/technicalSkills.json';
+import techSkills from '../../datas/technicalSkills.json';
 import { useApplyState, useApplyDispatch } from '../../context/applyContext';
 
 const CssTextField = withStyles({
@@ -52,7 +52,7 @@ const CssTextField1 = withStyles({
     },
 })(TextField);
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3),
@@ -73,7 +73,7 @@ function Step2({ errors, nameInput }) {
     const { form0, form1, form2, desc } = state.fieldInputs;
     const tech = state.tech;
 
-    const textFieldChange = useCallback(e => {
+    const textFieldChange = useCallback((e) => {
         const { name, value } = e.target;
         dispatch({
             type: 'CHANGE_TEXT',
@@ -82,7 +82,7 @@ function Step2({ errors, nameInput }) {
         });
     }, []);
 
-    const fieldChange = useCallback(e => {
+    const fieldChange = useCallback((e) => {
         const { name, value } = e.target;
         dispatch({
             type: 'CHANGE_FIELD',
@@ -211,11 +211,11 @@ function Step2({ errors, nameInput }) {
                         name="tech"
                         onChange={techChange}
                         value={tech}
-                        options={techskills}
-                        getOptionLabel={option => option}
+                        options={techSkills.techskills}
+                        getOptionLabel={(option) => option}
                         filterSelectedOptions
                         freeSolo
-                        renderInput={params => (
+                        renderInput={(params) => (
                             <CssTextField1
                                 name="tech"
                                 {...params}

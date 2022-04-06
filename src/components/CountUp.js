@@ -2,26 +2,26 @@ import React, { useMemo } from 'react';
 import '../styles/section3.scss';
 import { useCountUp } from 'react-countup';
 import Fade from 'react-reveal/Fade';
-import { 진행된프로젝트, 공모전수상, 총회원수 } from '../datas/projectCounts.json';
+import projectCounts from '../datas/projectCounts.json';
 
 function CountUp() {
     const useCountUps = [
         useCountUp({
             start: 0,
-            end: 진행된프로젝트,
+            end: projectCounts.진행된프로젝트,
             duration: 3,
             prefix: '0',
         }),
         useCountUp({
             start: 0,
-            end: 공모전수상,
+            end: projectCounts.공모전수상,
             duration: 3,
             prefix: '0',
             useEasing: false,
         }),
         useCountUp({
             start: 0,
-            end: 총회원수,
+            end: projectCounts.총회원수,
             duration: 3,
             prefix: '0',
             useEasing: false,
