@@ -15,7 +15,7 @@
         "antd": "3.26.9",
         "date-fns": "2.10.0",
         "firebase": "7.9.3",
-        "node-sass": "6.0.0",
+        "node-sass": "7.0.0",
         "organism-react-scroll-nav": "^0.15.2",
         "qs": "6.9.1",
         "react": "^18.0.0",
