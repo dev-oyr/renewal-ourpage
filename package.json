@@ -1,54 +1,51 @@
 {
-  "name": "test",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@date-io/date-fns": "1.x",
-    "@devexpress/dx-react-core": "^2.4.1",
-    "@devexpress/dx-react-scheduler": "^2.4.1",
-    "@devexpress/dx-react-scheduler-material-ui": "^2.4.1",
-    "@material-ui/core": "^4.9.2",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.45",
-    "@material-ui/pickers": "^3.2.10",
-    "@stickyroll/stickyroll": "^1.2.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "antd": "^3.26.9",
-    "firebase": "^7.9.3",
-    "date-fns": "^2.10.0",
-    "node-sass": "^4.13.1",
-    "organism-react-scroll-nav": "^0.6.2",
-    "qs": "^6.9.1",
-    "react": "^16.12.0",
-    "react-countup": "^4.3.3",
-    "react-dom": "^16.12.0",
-    "react-icons": "^3.9.0",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.1",
-    "react-scroll": "^1.7.16"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "openyearround-homepage",
+    "version": "1.1.0",
+    "private": true,
+    "dependencies": {
+        "@date-io/date-fns": "^2.13.1",
+        "@devexpress/dx-react-core": "^2.4.1",
+        "@devexpress/dx-react-scheduler": "^2.4.1",
+        "@devexpress/dx-react-scheduler-material-ui": "^2.4.1",
+        "@material-ui/core": "4.9.2",
+        "@material-ui/icons": "4.9.1",
+        "@material-ui/lab": "4.0.0-alpha.45",
+        "@material-ui/pickers": "3.2.10",
+        "@stickyroll/stickyroll": "^1.2.0",
+        "antd": "3.26.9",
+        "date-fns": "2.10.0",
+        "firebase": "7.9.3",
+        "node-sass": "6.0.0",
+        "organism-react-scroll-nav": "^0.15.2",
+        "qs": "6.9.1",
+        "react": "^18.0.0",
+        "react-countup": "4.3.3",
+        "react-dom": "^18.0.0",
+        "react-icons": "^4.3.1",
+        "react-reveal": "1.2.2",
+        "react-router-dom": "5.1.2",
+        "react-scripts": "^5.0.0",
+        "react-scroll": "1.7.16"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
