@@ -17,7 +17,7 @@
         "firebase": "7.9.3",
         "node-sass": "6.0.0",
         "organism-react-scroll-nav": "^0.15.2",
-        "qs": "6.9.1",
+        "qs": "6.9.7",
         "react": "^18.0.0",
         "react-countup": "4.3.3",
         "react-dom": "^18.0.0",
